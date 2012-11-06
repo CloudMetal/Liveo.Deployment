@@ -1,0 +1,96 @@
+﻿@{
+    //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    ViewBag.EnableViewTitles = true;
+}
+
+@{
+    if (ViewBag.EnableViewTitles)
+    {
+        ViewBag.Title_ST01 = "ST01";
+        ViewBag.Title_ST10 = "ST10";
+        ViewBag.Title_ST10_10 = "ST10-10";
+        ViewBag.Title_ST20 = "ST20";
+        ViewBag.Title_ST20_10 = "ST20-10";
+        ViewBag.Title_ST20_20 = "ST20-20";
+        ViewBag.Title_ST20_30 = "ST20-30";
+        ViewBag.Title_ST30 = "ST30";
+        ViewBag.Title_ST40 = "ST40";
+        ViewBag.Title_ST50 = "ST50";
+        ViewBag.Title_ST50_10 = "ST50-10";
+        ViewBag.Title_ST60 = "ST60";
+        ViewBag.Title_ST60_10 = "ST60-10";
+    }
+}
+
+
+@{
+Style.Require("reset");
+Style.Require("font");
+Style.Require("layout");
+Style.Require("modal");
+Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+Script.Require("viewModel_Program");
+Script.Require("viewModel_Goal");
+}
+
+<script>
+    var _duration = 200;
+    var _lastview = "";
+
+    function show(view) {
+        CM.fadeTransition(_lastview, view, _duration);
+        _lastview = view;
+    }
+
+    $(document).ready(function () {
+        $('a[link="INDEX_home"]').click(function () { show('ST01'); })
+        $('a[link="INDEX_mediaInput"]').click(function () { show('ST30'); })
+        $('a[link="INDEX_multistepProcess"]').click(function () { show('ST20'); })
+        $('a[link="INDEX_popups"]').click(function () { show('ST10'); })
+        $('a[link="INDEX_waitSpinner"]').click(function () { show('ST40'); })
+        $('a[link="INDEX_yesNoVerification"]').click(function () { show('ST50'); })
+        $('a[link="INDEX_masterDetail_Popup"]').click(function () { show('ST60'); })
+    });
+</script>
+
+<body style="text-transform:none;">
+
+    <h1>Standard CloudMetal Patterns</h1>
+
+     <p>
+        <a link="INDEX_home">General</a> | 
+        <a link="INDEX_mediaInput">Media Input</a> | 
+        <a link="INDEX_waitSpinner">Wait Spinner</a> | 
+        <a link="INDEX_popups">Popups</a> | 
+        <a link="INDEX_yesNoVerification">Yes/No Verification</a> |
+        <a link="INDEX_masterDetail_Popup">Master/Detail (popup)</a>  | <br />
+        <a link="INDEX_multistepProcess">Multistep Process</a> | 
+
+    </p>
+    <hr />
+
+    <p>@Html.Partial("pvST01")</p>
+    <p>@Html.Partial("pvST10")</p>
+    <p>@Html.Partial("pvST10-10")</p>
+    <p>@Html.Partial("pvST20")</p>
+    <p>@Html.Partial("pvST20-10")</p>
+    <p>@Html.Partial("pvST20-20")</p>
+    <p>@Html.Partial("pvST20-30")</p>
+    <p>@Html.Partial("pvST30")</p>
+    <p>@Html.Partial("pvST40")</p>
+    <p>@Html.Partial("pvST50")</p>
+    <p>@Html.Partial("pvST50-10")</p>
+    <p>@Html.Partial("pvST60")</p>
+    <p>@Html.Partial("pvST60-10")</p>
+
+</body>

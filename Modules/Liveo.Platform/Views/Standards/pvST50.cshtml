@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "pvST50";
+}
+<!--------------------------------------------------------- BEGIN _ST50_ -------------------------------------------------------------->
+<script>
+
+    var _yesNoModel = new CM.yesNoModel();
+    ko.attach("vmYesNo", _yesNoModel);
+
+    function getAnswer() {
+        alert(_yesNoModel.Answer());
+    }
+
+    $(document).ready(function () {
+        $('[link="ST50_deleteThisUser"]').click(function () { verify(); });
+        CM.hookLink('ST50_deleteThisUser', 'popup', 'ST50', 'ST50-10');
+    });
+
+    function verify() {
+        $('[link="ST50-10_modalText"]').html("Do you wish to delete this user?");
+    }
+
+</script>
+
+<div link="ST50" class="panel invisible">
+    <a link="ST50_link" rel="[link='ST50']" style=""></a>
+    <h2>@ViewBag.Title_ST50 - Yes/No Verify</h2>
+    <br />
+    <br />
+
+    - Verification for actionable tasks will be utilized via popup Yes/No modal.
+    <br />
+    <br />
+    - Use the CloudMetal YesNo library class to keep track of user answers:
+    <br />
+    <br />
+    <b>
+    &nbsp&nbsp var _yesNoModel = new CM.yesNoModel(); <br />
+    &nbsp&nbsp ko.attach("vmYesNo", _yesNoModel); <br />
+    </b>
+    <br />
+    <br />
+     - Then wrap the Yes/No buttons in the modal in a DIV using the data-model attribute that requires the use of the answer:
+    <br />
+    <br />
+    <b>
+        &nbsp&nbsp &lt;div  <strong style="background-color:yellow"> data-model=&quot;vmYesNo&quot; </strong>  &gt; <br />
+        &nbsp&nbsp&nbsp&nbsp [yes/no buttons here]<br />
+        &nbsp&nbsp &lt;/div&gt; <br />
+    </b>
+    <br />
+    <br />
+    - The Yes and No buttons should use the knockout "data-bind" attribute and bind to the click function, where you then define the "Answer". You can assign anything you like to this value then test its value in a custom page method:
+    <br />
+    <br />
+    <b>
+        &nbsp&nbsp &lt;button link=&quot;modalokbutton&quot; <br />
+        &nbsp&nbsp&nbsp&nbsp <strong style="background-color:yellow"> data-bind=&quot;click:function(){ Answer('YES'); }&quot; </strong> <br />
+        &nbsp&nbsp&nbsp&nbsp class=&quot;small-nav-btn-light&quot;&gt; <br />
+        &nbsp&nbsp&nbsp&nbsp Yes <br />
+        &nbsp&nbsp  &lt;/button&gt; <br />
+    </b>
+    <br />
+    <br />
+    <b><em>EXAMPLE:</em></b> &nbsp
+    <a link="ST50_deleteThisUser">Delete this user?</a> &nbsp
+
+    <br />
+    <br />
+    <div data-model="vmYesNo">
+        You selected: <strong data-bind="text:Answer"></strong>
+    </div>
+
+    <br />
+    <br />
+
+    <a onclick="getAnswer();">Get current answer</a>
+
+</div>
+<!--------------------------------------------------------- END _ST50_ -------------------------------------------------------------->
+

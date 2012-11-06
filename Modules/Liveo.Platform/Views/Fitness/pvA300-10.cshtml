@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "A300-10_addedit_meal";
+}
+
+
+<div link="A300-10" class="panel invisible">
+    <a link="A300-10_link" rel="[link='A300-10']" style=""></a>
+    @ViewBag.Title_A300_10
+    <div class="wrapper-large border-1 whiteback">
+        <div class="title">Add/Edit Meal</div>
+        <div class="col-fifty">
+            <label>
+                Title:
+               
+            <span class="large-txt">
+                <input type="text" value="ham and cheese omelette" />
+            </span>
+            </label>
+
+            <label>
+                Description:
+               
+            <span class="large-txt">
+                <textarea></textarea>
+            </span>
+            </label>
+            <label>
+                Apply Selected Meal For:
+               
+            <span>
+                <ul class="left">
+                    <li>
+                        <input type="checkbox" />
+                        Sunday</li>
+                    <li>
+                        <input type="checkbox" />
+                        Monday</li>
+                    <li>
+                        <input type="checkbox" />
+                        Tuesday</li>
+                    <li>
+                        <input type="checkbox" />
+                        Wednesday</li>
+                </ul>
+                <ul class="left-list">
+                    <li>
+                        <input type="checkbox" />
+                        Thursday</li>
+                    <li>
+                        <input type="checkbox" />
+                        Friday</li>
+                    <li>
+                        <input type="checkbox" />
+                        Saturday</li>
+                </ul>
+            </span>
+            </label>
+            <div class="clear"></div>
+            <label>
+                Add to Meal Library:
+               
+            <span>
+                <input type="checkbox" /></span>
+            </label>
+
+        </div>
+        <div class="col-fourty">
+            <label>
+                Image For This Meal:
+               
+            <span class="large-txt">
+                <input type="file" />
+            </span>
+                <img src="@Href("../../images/profile-pic.jpg")" height="100px" width="100px" />
+            </label>
+            <label class="small-txt">
+                Calories:
+               
+            <span>
+                <input type="number" />
+                <input type="checkbox" />
+                Override
+                </span>
+            </label>
+
+        </div>
+        <div class="clear"></div>
+        <div class="col-full">
+            <label class="left">Cycles:</label>
+            <div class="right margin-ten"><a link="A300-10_findFood">Find Food/Meal</a> | <a link="A300-10_addFood">Add Food/Meal</a> | <a>Remove Food/Meal</a></div>
+        </div>
+        <table class="col-full" summary="">
+            <caption></caption>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Food</th>
+                    <th>Serving Size</th>
+                    <th>Servings</th>
+                    <th>Calories</th>
+                    <th>Fat (g)</th>
+                    <th>Protein (g)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr1">
+                    <td>
+                        <input type="checkbox" /></td>
+                    <td>Ham</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>80</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr class="tr2">
+                    <td>
+                        <input type="checkbox" /></td>
+                    <td>Cheese</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>80</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="right">
+            <button link="modalcancelbutton" class="nav-btn-light">CANCEL</button>
+            <button link="modalokbutton" class="nav-btn-green">SAVE</button>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,236 @@
+﻿@functions {
+    // To support the layout classifaction below. Implementing as a razor function because we can, could otherwise be a Func<string[], string, string> in the code block following.
+    string CalcuClassify(string[] zoneNames, string classNamePrefix) {
+        var zoneCounter = 0;
+        var zoneNumsFilled = string.Join("", zoneNames.Select(zoneName => { ++zoneCounter; return Model[zoneName] != null ? zoneCounter.ToString() : "";}).ToArray());
+        return HasText(zoneNumsFilled) ? classNamePrefix + zoneNumsFilled : "";
+    }
+}
+@{
+    /* Global includes for the theme
+    ***************************************************************/
+    
+    SetMeta("X-UA-Compatible", "IE=edge,chrome=1");
+    Style.Include("http://fonts.googleapis.com/css?family=Lobster&subset=latin");
+    Style.Include("site.css");
+
+    /* Store each page in a variable for conditionals
+    ***************************************************************/
+
+    var isLiveoCapabilities = HttpContext.Current.Request.Url.AbsolutePath.StartsWith("/capabilities");
+    var isLiveoConnectivity = HttpContext.Current.Request.Url.AbsolutePath.StartsWith("/connectivity");
+    var isLiveoContent = HttpContext.Current.Request.Url.AbsolutePath.StartsWith("/liveocontent");
+    var isLiveoWhy = HttpContext.Current.Request.Url.AbsolutePath.StartsWith("/why_liveo");
+    var isLiveoCorpHome = HttpContext.Current.Request.Url.AbsolutePath.StartsWith("/liveocorphome");
+	var currentUrl = Request.Url.AbsoluteUri;
+	var isOrigin = HttpContext.Current.Request.Url.AbsolutePath.EndsWith("/");
+
+    /* Some useful shortcuts or settings
+    ***************************************************************/
+
+    Func<dynamic, dynamic> Zone = x => Display(x); // Zone as an alias for Display to help make it obvious when we're displaying zones
+
+
+	/* Get image path for images
+    ***************************************************************/
+    var ImgPath = Url.Content("~/Themes/Liveohhh/Content/Images/");
+
+    /* Inserting some ad hoc shapes
+    ***************************************************************/
+    WorkContext.Layout.Header.Add(New.Branding(), "5"); // Site name and link to the home page
+    WorkContext.Layout.Footer.Add(New.BadgeOfHonor(), "5"); // Copyright
+
+    /* Last bit of code to prep the layout wrapper
+    ***************************************************************/
+    
+    Model.Id = "layout-wrapper-main";
+    var tag = Tag(Model, "div"); // using Tag so the layout div gets the classes, id and other attributes added to the Model
+
+}
+@tag.StartElement
+
+@if (Model.Header != null) {
+<div class="wrap-main" id="header-wrap">
+  
+						        @Zone(Model.Header)
+				
+				<div id="top-bar-right">
+						<div id="top-bar-nav">
+
+		@if (Model.Navigation != null) {
+		@Zone(Model.Navigation)
+		}
+
+
+							<div id="header-right">
+                                                          
+<form action="/Users/Account/LogOn?ReturnUrl=%2F" method="post">                                                          
+                             @if (Request.IsAuthenticated)
+ {                   
+                                                          <button class="primaryAction sign-out-button" type="submit">@Html.ActionLink(T("SIGN OUT").ToString(), "LogOff", new { Controller = "Account", Area = "Orchard.Users", ReturnUrl = Context.Request.RawUrl })</button>
+ } else {                                                        
+<input autofocus="autofocus" id="login-input" name="userNameOrEmail" type="text" value="" placeholder="USERNAME" />
+<input id="login-input" name="password" type="password" placeholder="PASSWORD" />
+<button class="primaryAction" type="submit">LOGIN</button>
+<input name="__RequestVerificationToken" type="hidden" value="5ikCdiG451vvRka/ZAg9BGnxEgRe4kGnjyqI9/9dqdtFvSZPEW1Jy+tOIuPxJdFElZQxXa0c6AExPTUzpsh93HJ953xDIqU6mfLjbQ4MNJz0TZgff9WF+MEEuY3H0cG3cEx72zQ4kAEA++Yz8yO7KGoq+wzVkfQ6yAyfZMgb7pZNz/blRR9VOA7bS/ixwP38bLRdSw==" />
+ }						
+        
+                                  				<div id="sign-up-button"><a href="/liveo/account/register" style="font-size:8px;">
+								NOT A MEMBER?
+                                                                SIGN UP NOW</a>
+                                  				</div>
+                                                  </form>
+                                                  </div>
+							
+                                  </div>
+				</div>
+					<div id="lower-nav-bar">
+
+
+                            @if (Model.TripelSecond != null) {
+    <aside id="aside-second" class="aside-second">
+        @Zone(Model.TripelSecond)
+    </aside>
+    }
+                        @if (Model.AsideSecond != null) {
+
+    }
+
+					</div>  
+</div>
+
+}
+			<div id="nav-btm-border">
+    @if (Model.AsideFirst != null) {
+    <aside id="aside-first">
+        @Zone(Model.AsideFirst)
+    </aside>
+    }
+			</div>
+@if (Model.Featured != null) {
+<div id="layout-featured" class="group">
+    @Zone(Model.Featured)
+</div>
+}
+
+
+
+    <div id="layout-content" class="group">
+        @if (Model.Messages != null) {
+        <div id="messages">
+            @Zone(Model.Messages)
+        </div>
+        }
+        @if (Model.BeforeContent != null) {
+        <div id="before-content">
+            @Zone(Model.BeforeContent)
+        </div>
+        }
+		
+
+		@if (isLiveoCorpHome) {
+        @Display.LiveoCorpHome()
+        } 
+		@if (isLiveoWhy) {
+        @Display.LiveoWhy()
+        } 
+		@if (isLiveoContent) {
+        @Display.LiveoContent()
+        } 
+		@if (isLiveoConnectivity) {
+        @Display.LiveoConnectivity()
+        } 
+		@if (isLiveoCapabilities) {
+        @Display.LiveoCapabilities()
+        } 
+        @if (isLiveoCapabilities || isLiveoContent || isLiveoConnectivity || isLiveoWhy || isLiveoCorpHome)
+		{ 
+		
+		}else {
+
+        if (Model.Content != null) {
+        <div id="content" class="group">
+            @Zone(Model.Content)
+        </div>
+        
+		}
+	}
+
+
+
+
+
+
+        @if (Model.AfterContent != null) {
+        <div id="after-content">
+            @Zone(Model.AfterContent)
+        </div>
+        }
+    </div>
+
+
+@if (Model.AfterMain != null) {
+<div id="layout-after-main" class="group">
+    @Zone(Model.AfterMain)
+</div>
+}
+@if (Model.TripelFirst != null || Model.TripelSecond != null || Model.TripelThird != null) {
+<div id="layout-tripel-container">
+<div id="layout-tripel" class="group">
+    @if (Model.TripelFirst != null) {
+    <div id="tripel-first">
+        @Zone(Model.TripelFirst)
+    </div>
+    }
+
+    @if (Model.TripelThird != null) {
+    <div id="tripel-third">
+        @Zone(Model.TripelThird)
+    </div>
+    }
+</div>
+</div>
+}
+
+
+<div class="push"></div>
+
+</div> <!-- end wrapper -->
+
+<div id="layout-footer" class="group">
+    <footer id="footer">
+		<div id="footer-quad-layout">
+
+            @if (Model.FooterQuadFirst != null) {
+            <div id="footer-quad-first">
+                @Zone(Model.FooterQuadFirst)
+            </div>
+            }
+            @if (Model.FooterQuadSecond != null) {
+            <div id="footer-quad-second">
+                @Zone(Model.FooterQuadSecond)
+            </div>
+            }
+
+            @if (Model.FooterQuadThird != null) {
+            <div id="footer-quad-third">
+                @Zone(Model.FooterQuadThird)
+            </div>
+            }
+            @if (Model.FooterQuadFourth != null) {
+            <div id="footer-quad-third">
+                @Zone(Model.FooterQuadFourth)
+			</div>
+            }
+				@if(Model.Footer != null) {
+		    <div class="footer">
+			    @Zone(Model.Footer)
+
+
+	        </div>
+	      }
+			</div>
+    </footer>
+</div>
+@tag.EndElement
+

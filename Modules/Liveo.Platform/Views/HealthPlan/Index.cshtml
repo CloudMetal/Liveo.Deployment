@@ -1,0 +1,80 @@
+﻿@{
+    //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    ViewBag.EnableViewTitles = true;
+}
+
+@{
+    if (ViewBag.EnableViewTitles)
+    {
+        ViewBag.Title_HT05 = "HT05";
+        ViewBag.Title_HP100_10 = "HP100_10";
+        ViewBag.Title_HP300 = "HP300";
+        ViewBag.Title_HP300_10 = "HP300-10";
+        ViewBag.Title_HP300_20 = "HP300-20";
+        ViewBag.Title_HP400 = "HP400";
+        ViewBag.Title_HP400_10 = "HP400_10";
+        ViewBag.Title_HP400_20 = "HP400_20";
+        ViewBag.Title_A100_10 = "A100-10";
+
+
+    }
+}
+
+
+@{
+Style.Require("reset");
+Style.Require("font");
+Style.Require("layout");
+Style.Require("modal");
+Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+//Script.Require("jqueryfancybox").AtHead();
+//Script.Require("jqueryfancyboxpack").AtHead();
+}
+
+<script>
+    $(document).ready(function () {
+    
+        CM.hookLink('HT05_editHealthStats', 'popup', 'HT05', 'HP100-10');
+        CM.hookLink('HT05_dailyHealthPlan', 'fade', 'HT05', 'HP300');
+        CM.hookLink('HP300_healthInformation', 'fade', 'HP300', 'HT05');
+        CM.hookLink('HP300_editHealthStats', 'popup', 'HP300', 'HP100-10');
+        CM.hookLink('HP400_editHealthStats', 'popup', 'HP400', 'HP100-10');
+        CM.hookLink('HP300_updateActualIntake', 'slidenext', 'HP300', 'HP300-10');
+        CM.hookLink('HP300_10_cancel', 'slideprev', 'HP300-10', 'HP300');
+        CM.hookLink('HP300_10_enterNewMeal', 'popup', 'HP300-10', 'HP300-20');
+        CM.hookLink('HP300_exercise', 'fade', 'HP300', 'HP400');
+        CM.hookLink('HP400_diet', 'fade', 'HP400', 'HP300');
+        CM.hookLink('HP400_updateActualExercise', 'slidenext', 'HP400', 'HP400-10');
+        CM.hookLink('HP400_10_cancel', 'slideprev', 'HP400-10', 'HP400');
+        CM.hookLink('HP400_10_enterNewExercise', 'popup', 'HP400-10', 'HP400-20');
+        CM.hookLink('HT05_viewProgram', 'fade', 'HT05', 'A100-10');
+        CM.hookLink('A100_10_cancel', 'fade', 'A100-10', 'HT05');
+
+    });
+</script>
+
+<body style="margin: 20px;">
+  
+    @Html.Partial("pvHT05")
+    @Html.Partial("pvHP100-10")
+    @Html.Partial("pvHP300")
+    @Html.Partial("pvHP300-10")
+    @Html.Partial("pvHP300-20")
+    @Html.Partial("pvHP400")
+    @Html.Partial("pvHP400-10")
+    @Html.Partial("pvHP400-20")
+    @Html.Partial("pvA100-10")
+
+
+
+</body>

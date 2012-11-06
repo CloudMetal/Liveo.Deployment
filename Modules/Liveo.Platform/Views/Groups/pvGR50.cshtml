@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "GR50_edit_group";
+}
+
+<div link="GR50" class="panel invisible">
+    <a   link="GR50_link" rel="[link='GR50']" style=""></a>
+    @ViewBag.Title_GR50
+    <div class="wrapper-modal-small whiteback">
+        <div class="title">Add/Edit Group</div>
+        <label class="large-txt">
+            Title:
+            <span>
+                <input type="text" value="Dallas Spin Group" />
+            </span>
+        </label>
+        <label class="large-txt">
+            Description:
+            <span>
+                <textarea>SPIN BIKE SHOP IS PROUD TO BE CONSIDERED THE HOME-BASE FOR MANY CYCLISTS AND TRIATHLETES IN OUR AREA. CLUB SPIN SERVES AS THE FOUNDATION FOR OUR TEAMS AND ANYONE IS WELCOME TO JOIN! MEMBERSHIP INCLUDES ACCESS TO OUR RIDES AND WORKOUTS, SPECIAL EVENTS, RIDER FORUM, AND MORE. TEAM SPIN / RR DONNELLEY IS OUR BICYCLE RACING TEAM THAT WAS CREATED NOT ONLY TO SHOWCASE THE TALENTS OF OUR BEST CLUB SPIN RIDERS, BUT ALSO TO ACT AS A PLACE WHERE ASPIRING JUNIOR RACERS CAN GET THE HELP AND ASSISTANCE THEY NEED TO MOVE UP FROM BEGINNING TO EXPERT RACERS. SSSMST(SPIN/SECOND SOLE MULTI-SPORT TEAM) IS A PARTNERSHIP BETWEEN SPIN BIKE SHOP ANDSECOND SOLE OF ROCKY RIVER. A DEVELOPMENT FROM CLUB SPIN AND THE SECOND SOLE RUNNING GROUP, THIS TEAM CONCENTRATES ON TRIATHLON AND DUATHLON COMPETITION.</textarea>
+            </span>
+        </label>
+        <label>
+            Photo:
+            <span>
+                <input type="file" /></span>
+        </label>
+        <label class="medium-txt">
+            Admin List:
+            <span>
+                <textarea class="left"></textarea>
+                <div class="modal-small-three-col">
+            <button class="small-nav-btn-light">ADD</button>
+            <button class="small-nav-btn-light">REMOVE</button>
+                </div>
+            </span>
+        </label>
+        <div class="right">
+            <button link="modalcancelbutton" class="nav-btn-light">CANCEL</button>
+            <button link="modalokbutton" class="nav-btn-green">SAVE</button>
+        </div>
+    </div>
+</div>
+

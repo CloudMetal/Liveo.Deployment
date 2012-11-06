@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "GR10_landing_page";
+}
+
+<div link="GR10" class="panel notinvisible">
+    <a link="GR10_link" rel="[link='GR10']" style=""></a>
+    @ViewBag.Title_GR10
+    <div class="wrapper-large">
+        <div class="module-header-row col-full">
+            My Subscriptions (5)
+
+         @*   <div class="module-header-media-link">
+               <select width="80px" link="GR10_FindGroup">
+                  <option value=""></option>
+                  <option value="FindGroup">Find Group...</option>
+                  <option value="CreateGroup">Create new group...</option>
+                </select>
+            </div>*@
+
+
+        </div>
+
+        <div class="clear"></div>
+
+        <ul class="media-list col-full">
+            <li><a link="GR10_PeopleFollowing">
+                <img src="@Href("../../Images/plan_pic.jpg")" /></a><div class="font-style-none">Larry North</div>
+            </li>
+            <li><a link="GR10_PeopleFollowing">
+                <img src="@Href("../../Images/Lucy_Liu.jpg")" /></a><div class="font-style-none">Lucy Lu</div>
+            </li>
+            <li><a link="GR10_PeopleFollowing">
+                <img src="@Href("../../Images/clairedanes.jpg")" /></a><div class="font-style-none">Claire Danes</div>
+            </li>
+            <li><a link="GR10_PeopleFollowing">
+                <img src="@Href("../../Images/tonylittle.jpg")" /></a><div class="font-style-none">Tony Little</div>
+            </li>
+            <li><a link="GR10_PeopleFollowing">
+                <img src="@Href("../../Images/witherspoon.jpg")" /></a><div class="font-style-none">Reese Witherspoon</div>
+            </li>
+        </ul>
+
+        <div class="clear"></div>
+        <div class="module-header-row col-full margin-top-twenty">
+            MY GROUPS (5)
+               <div class="right">
+                   <button link="GR10_FindGroup" class="small-nav-btn-green">Find Group</button></div>
+            <div class="right">
+                <button link="GR10_CreateGroup" class="small-nav-btn-green">Create Group</button></div>
+        </div>
+        <div class="clear"></div>
+        <ul class="media-list col-full">
+            <li><a link="GR10_ViewGroup">
+                <div class="group-symbol">
+                    <img src="@Href("../../Images/group_ppl.png")">
+                </div>
+                <img src="@Href("../../Images/spingroup.jpg")" /></a><div class="font-style-none">Dallas Spin Group</div>
+            </li>
+            <li><a link="GR10_ViewGroup">
+                <div class="group-symbol">
+                    <img src="@Href("../../Images/group_ppl.png")">
+                </div>
+                <img src="@Href("../../Images/push.jpg")" /></a><div class="font-style-none">Push</div>
+            </li>
+            <li><a link="GR10_ViewGroup">
+                <div class="group-symbol">
+                    <img src="@Href("../../Images/padlock.png")">
+                </div>
+                <img src="@Href("../../Images/centralcrossfit.jpg")" /></a><div class="font-style-none">Central Crossfit</div>
+            </li>
+            <li><a link="GR10_ViewGroup">
+                <div class="group-symbol">
+                    <img src="@Href("../../Images/group_ppl.png")">
+                </div>
+                <img src="@Href("../../Images/goldsgym.jpg")" /></a><div class="font-style-none">Golds Gym Lifters</div>
+            </li>
+            <li><a link="GR10_ViewGroup">
+                <div class="group-symbol">
+                    <img src="@Href("../../Images/group_ppl.png")">
+                </div>
+                <img src="@Href("../../Images/joesfitness.jpg")" /></a><div class="font-style-none">Joe's Fitness Group</div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "A200-10_addedit_exercise";
+}
+
+
+<div link="A200-10" class="panel invisible">
+    <a   link="A200-10_link" rel="[link='A200-10']" style=""></a>
+    @ViewBag.Title_A200_10
+     <div class="wrapper-large border-1 whiteback">
+        <div class="title">Add/Edit Exercise</div>
+        <div class="col-fifty">
+            <label class="large-txt">
+                Title:
+                <span>
+                    <input type="text" />
+                </span>
+            </label>
+
+            <label class="large-txt">
+                Description:
+                <span>
+                    <textarea>stuff into here</textarea>
+                </span>
+            </label>
+            <div class="col-thirty">
+                <label class="small-txt">
+                    Reps:
+                <span>
+                    <input type="number" />
+                </span>
+                </label>
+            </div>
+            <div class="col-thirty">
+                <label class="small-txt">
+                    Weights:
+                <span>
+                    <input type="number" />
+                </span>
+                </label>
+            </div>
+                        <div class="col-thirty">
+                <label class="small-txt">
+                    Duration:
+                <span>
+                    <input type="number" />
+                </span>
+                </label>
+            </div>
+        </div>
+        <div class="col-fourty">
+            <label class="large-txt">
+                Image For This Exercise:
+                <span>
+                    <input type="file" />
+                </span>
+                <img src="@Href("../../images/profile-pic.jpg")" height="100px" width="100px" />
+            </label>
+                            <label>
+                Apply Selected Exercise For:
+                <span>
+                    <ul class="left">
+                <li><input type="checkbox" /> Sunday</li>
+                <li><input type="checkbox" /> Monday</li>
+                <li><input type="checkbox" /> Tuesday</li>
+                <li><input type="checkbox" /> Wednesday</li>
+                        </ul>
+                    <ul class="left-list">
+                <li><input type="checkbox" /> Thursday</li>
+                <li><input type="checkbox" /> Friday</li>
+                <li><input type="checkbox" /> Saturday</li></ul>
+                        </span>
+                </label>
+            <div class="clear"></div>
+                            <label>
+                Add to Exercise Library:
+                <span>
+                <input type="checkbox" /></span>
+                </label>
+        </div>
+        <div class="clear"></div>
+        <div class="right">
+            <button link="modalcancelbutton" class="nav-btn-light">CANCEL</button>
+            <button link="modalokbutton" class="nav-btn-green">SAVE</button>
+        </div>
+    </div>
+
+</div>
+

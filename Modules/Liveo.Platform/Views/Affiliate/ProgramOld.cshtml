@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Program";
+    //    ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    //    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var partialModel = new { ImagePath = Url.Content("~/Modules/Liveo.Platform/Images/") };
+}
+
+@Style.Include("modal")
+@Style.Include("jqui")
+@Style.Include("styles")
+
+@Script.Require("jQuery").AtHead()
+@Script.Require("jquerytools").AtHead()
+@Script.Require("jqueryuijs").AtHead()
+@Script.Require("ko").AtHead()
+@Script.Require("common").AtHead()
+
+<style type="text/css">
+    .panel
+    {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+</style>
+
+<script type="text/javascript">
+
+    var _program_ViewModel;
+
+    $(document).ready(function () {
+        CM.hookLink('A100-0_exerciselibrary', 'fade', 'A100-0', 'A200-0');
+        CM.hookLink('A100-0_meallibrary', 'fade', 'A100-0', 'A300-0');
+        CM.hookLink('A100-0_addprogram', 'slidenext', 'A100-0', 'A100-10');
+        CM.hookLink('A100-0_editprogram', 'slidenext', 'A100-0', 'A100-10');
+
+        CM.hookLink('A100-10_addcycle', 'slidenext', 'A100-10', 'A100-20');
+        CM.hookLink('A100-10_editcycle', 'slidenext', 'A100-10', 'A100-20');
+        CM.hookLink('A100-10_cancel', 'slideprev', 'A100-10', 'A100-0');
+        CM.hookLink('A100-10_ok', 'slideprev', 'A100-10', 'A100-0');
+
+        CM.hookLink('A100-20_mealsButton', 'fade', 'A100-20', 'A100-30');
+        CM.hookLink('A100-20_cancel', 'slideprev', 'A100-20', 'A100-10');
+        CM.hookLink('A100-20_ok', 'slideprev', 'A100-20', 'A100-10');
+
+        CM.hookLink('A100-30_exerciseButton', 'fade', 'A100-30', 'A100-20');
+        CM.hookLink('A100-30_cancel', 'slideprev', 'A100-30', 'A100-10');
+        CM.hookLink('A100-30_ok', 'slideprev', 'A100-30', 'A100-10');
+
+        CM.hookLink('A200-0_programs', 'fade', 'A200-0', 'A100-0');
+        CM.hookLink('A200-0_meallibrary', 'fade', 'A200-0', 'A300-0');
+
+        CM.hookLink('A300-0_programs', 'fade', 'A300-0', 'A100-0');
+        CM.hookLink('A300-0_exerciselibrary', 'fade', 'A300-0', 'A200-0');
+        CM.hookLink('A300-0_addmeal', 'slidenext', 'A300-0', 'A300-10');
+        CM.hookLink('A300-0_editmeal', 'slidenext', 'A300-0', 'A300-10');
+
+       
+
+        //bindko_exercise();
+        //bindko_program();
+
+    });
+
+    //function bindko_exercise() {
+    //    _exercise_ViewModel = new Exercise_ViewModel();
+    //    ko.applyBindings(_exercise_ViewModel, document.getElementById('id_div_A100_25'));
+    //}
+
+    //function bindko_program() {
+    //    _program_ViewModel = new Program_ViewModel();
+    //    ko.applyBindings(_program_ViewModel);
+    //}
+
+    //function completeSave(){
+
+    //    alert('saved');
+    //}
+
+    //function commitProgramEdit() {
+    //    //commit the model
+    //    _program_ViewModel.commitEditedModel(completeSave);
+    //}
+
+    //function editProgramModel(eModel) {
+    //    _program_ViewModel.editedModel(eModel);
+    //    CM.slideTransition('A100-0', 'A100-10', 'slidenext');
+    //}
+
+</script>
+
+<div style="position: relative; height: 500px; width: 500px">
+    @Html.Partial("pvA100-0", partialModel)
+    @Html.Partial("pvA100-10", partialModel)
+    @Html.Partial("pvA100-20", partialModel)
+    @Html.Partial("pvA100-25", partialModel)
+    @Html.Partial("pvA100-35", partialModel)
+    @Html.Partial("pvA200-0", partialModel)
+    @Html.Partial("pvA200-10", partialModel)
+    @Html.Partial("pvA300", partialModel)
+    @Html.Partial("pvA300-10", partialModel)
+    @Html.Partial("pvA300-20", partialModel)
+    @Html.Partial("pvA300-30", partialModel)
+</div>
+<div style="clear: both;"></div>
+
+@*@section codegen{
+  <script src="~/Scripts/Generated/viewModel_Exercise.js"></script>
+  <script src="~/Scripts/Generated/viewModel_Program.js"></script>
+}
+*@

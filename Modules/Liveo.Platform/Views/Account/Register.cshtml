@@ -1,0 +1,73 @@
+﻿@model Liveo.Platform.ViewModels.RegisterViewModel
+
+@{
+    Style.Include("modal");
+    Style.Include("jqui");
+    Style.Require("reset"); 
+    Script.Require("jQuery").AtHead();
+    Script.Require("kendo").AtHead();
+    Style.Require("jQueryUI_Orchard");
+    Style.Require("kendo.common");
+    Style.Require("kendo.metro");
+    Style.Require("font");
+    Style.Require("layout");
+        
+}
+
+<h1>@Html.TitleForPage(T("Create a New Account").ToString())</h1>
+<p>@T("Use the form below to create a new account.")</p>
+@Html.ValidationSummary(T("Account creation was unsuccessful. Please correct the errors and try again.").ToString()) 
+@using (Html.BeginFormAntiForgeryPost("Register", FormMethod.Post, new {
+    id = "registerForm"
+})) { 
+    <div id="divPlanDetailsOuter">
+    <div id="divPlanDetailsContainer">
+
+    <div id="divPopUpwrap-edit">
+     <div id="divBlockHeader-edit">SIGN UP</div>
+    </div>
+
+    <div id="divPlanDetailsSubContainer">
+     <div id="divPopUpwrap">
+
+		<ul class="signupdisplay">    
+		<li><label>Name:</label><input type="text" /></li>
+		    <li>@Html.LabelFor(m => m.Email)@Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)</li>
+		    <li>@Html.LabelFor(m => m.Password) 
+            @Html.PasswordFor(m =>m.Password)
+            @Html.ValidationMessageFor(m => m.Password)</li>
+		    <li>@Html.LabelFor(m => m.PasswordRepeat) 
+            @Html.PasswordFor(m =>m.PasswordRepeat)
+            @Html.ValidationMessageFor(m => m.PasswordRepeat)</li>		
+		    <li><input type="checkbox" data-bind="checked: agreed" /> I have read the license agreement</li>      
+            <li class="left"><!--<a id="a1" title="CANCEL" href=""
+                                class="primaryButton button" tabindex="0" style="">
+                                 <div class="box">
+                                     <div class="boxContent">
+                                         <div class="padding">CANCEL</div>
+                                     </div>
+                                 </div>
+                             </a>-->
+                <button class="nav-btn-light">CANCEL</button>
+			<!--<a id="a1" title="SUBMIT" href="#" onclick="document.submit();"
+			            class="primaryButtonGreen button" tabindex="0" style="">
+			            <div class="box">
+			                <div class="boxContent">
+			                    <div class="padding">SUBMIT</div>
+			                </div>
+			            </div>
+			        </a>--><button type="submit" class="nav-btn-green">SUBMIT</button></li>
+			<li class="left clearFloat">Already have an account? Sign in @Html.ActionLink("here", "LogOn", new {
+                                                                             Area = "Orchard.Users",
+                                                                             Controller = "Account"
+                                                                         })</li></ul>
+		
+
+    <div class="clearFloat"></div>
+
+        </div>
+        </div>
+    </div></div>
+} 
+

@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "G50_photo_video_edit";
+}
+
+
+<div link="G50" class="panel invisible">
+    <a   link="G50_link" rel="[link='G50']" style=""></a>
+     @ViewBag.Title_G50
+    <div class="wrapper-modal-large whiteback">
+        <div class="modal-large-two-col">
+            <img src="@Href("../../Images/g10albumsgym.png")" width="365px"  />
+        </div>
+        <div class="modal-large-two-col">
+            <div class="title">Edit Media</div>
+                <label>
+                    SARAH JONES
+            <span>8/25/2012
+            </span>
+                </label>
+                <label>
+                    Album Name:
+            <span>Weights
+            </span>
+                </label>
+                <label>
+                    Title:
+            <span class="large-txt">
+                <input type="text" value="Thanksgiving workout." />
+            </span>
+                </label>
+                <label>
+                    Description:
+            <span class="large-txt">
+                <textarea>This was a great thanksgiving workout with the girls from the weightlifting club.</textarea>
+            </span>
+                </label>
+             <input type="checkbox" /> Make profile picture
+        </div>
+       
+        <div class="clear"></div>
+        <div class="right">
+            <button link="modalcancelbutton" class="nav-btn-light">CANCEL</button>
+            <button link="modalcancelbutton" class="nav-btn-green">SAVE</button>
+            <button link="modalokbutton" class="nav-btn-green">DELETE</button>
+        </div>
+
+    </div>
+</div>
+
+

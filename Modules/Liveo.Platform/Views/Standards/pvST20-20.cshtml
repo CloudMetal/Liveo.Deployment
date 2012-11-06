@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "pvST20-20";
+}
+<!--------------------------------------------------------- BEGIN _ST20-20_ -------------------------------------------------------------->
+<script>
+
+
+    $(document).ready(function () {
+        CM.hookLink('ST20-20_back', 'slideprev', 'ST20-20', 'ST20-10');
+        CM.hookLink('ST20-20_next', 'slidenext', 'ST20-20', 'ST20-30');
+    });
+
+
+</script>
+
+<div link="ST20-20" class="panel invisible">
+    <a link="ST20-20_link" rel="[link='ST20-20']" style=""></a>
+    <h2>@ViewBag.Title_ST20_20 - Multistep Process (wizard) - STEP 2</h2>
+    <br />
+    <br />
+    
+    <strong>STEP 2</strong>
+
+    <br />
+    <br />
+    <button link="ST20-20_back" class="small-nav-btn-light">Back</button>
+    <button link="ST20-20_next" class="small-nav-btn-light">Next</button>
+</div>
+<!--------------------------------------------------------- END _ST20-20_ -------------------------------------------------------------->

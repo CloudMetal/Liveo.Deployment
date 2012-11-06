@@ -1,0 +1,273 @@
+﻿@functions {
+    // To support the layout classifaction below. Implementing as a razor function because we can, could otherwise be a Func<string[], string, string> in the code block following.
+    string CalcuClassify(string[] zoneNames, string classNamePrefix)
+    {
+        var zoneCounter = 0;
+        var zoneNumsFilled = string.Join("", zoneNames.Select(zoneName => { ++zoneCounter; return Model[zoneName] != null ? zoneCounter.ToString() : ""; }).ToArray());
+        return HasText(zoneNumsFilled) ? classNamePrefix + zoneNumsFilled : "";
+    }
+}
+
+   
+
+@{
+    /* Global includes for the theme
+    ***************************************************************/
+
+    SetMeta("X-UA-Compatible", "IE=edge,chrome=1");
+    Style.Include("http://fonts.googleapis.com/css?family=Lobster&subset=latin");
+    Style.Include("site.css");
+
+
+    /* Store each page in a variable for conditionals
+    ***************************************************************/
+
+    var isProfilePage = HttpContext.Current.Request.Url.AbsolutePath.StartsWith("/");
+    var currentUrl = Request.Url.AbsoluteUri;
+    var isOrigin = HttpContext.Current.Request.Url.AbsolutePath.EndsWith("/");
+
+    /* Some useful shortcuts or settings
+    ***************************************************************/
+
+    Func<dynamic, dynamic> Zone = x => Display(x); // Zone as an alias for Display to help make it obvious when we're displaying zones
+
+
+    /* Get image path for images
+    ***************************************************************/
+    var ImgPath = Url.Content("~/Themes/Liveoternal/Content/Images/");
+
+    /* Inserting some ad hoc shapes
+    ***************************************************************/
+    WorkContext.Layout.Header.Add(New.Branding(), "5"); // Site name and link to the home page
+    WorkContext.Layout.Footer.Add(New.BadgeOfHonor(), "5"); // Copyright
+
+    /* Last bit of code to prep the layout wrapper
+    ***************************************************************/
+
+    Model.Id = "layout-wrapper";
+    var tag = Tag(Model, "div"); // using Tag so the layout div gets the classes, id and other attributes added to the Model
+}
+@tag.StartElement
+
+<script>
+    //$(function () {
+    //    $(window).resize(function () {
+    //        placeFooter();
+    //    });
+    //    placeFooter();
+    //    // hide it before it's positioned
+    //    $('#sticky-footer').css('display', 'inline');
+    //});
+
+    //function placeFooter() {
+    //    var windHeight = $(window).height();
+    //    var footerHeight = $('#footer').height();
+    //    var offset = parseInt(windHeight) - parseInt(footerHeight);
+    //    $('#sticky-footer').css('top', offset);
+    //}
+
+</script>
+
+
+<div id="background">
+<img src="@(ImgPath + "background.jpg")" class="stretch">
+
+</div>
+
+<div class="wrap">
+
+
+<div id="top-bar">
+<header>
+  <div id="site-branding">
+@if (Model.Header != null)
+{
+
+@Zone(Model.Header)
+				
+}
+  </div>
+  <div id="page-search">
+  		@using (Html.BeginForm("index", "search", new { area = "Orchard.Search" }, FormMethod.Get, new { @class = "search-form" }))
+    {<fieldset><input type="text" value="" name="q" id="search" value="SEARCH FOR PEOPLE, WORKOUTS, CHALLENGES..."></fieldset>}
+  </div>
+  <div id="page-information">
+  		PAGE INFO
+  </div>
+  <div id="user-profile-title">
+      <ul id="profile-top-bar-nav-list">
+      <a href="">
+      <li id="profile-top-bar-nav-element">
+      		USER PROFILE
+      </li>
+      </a>
+      </ul>
+  </div>
+  <a href=""><div id="user-profile-dropdown"></div></a>
+  <div id="profile-notifications-list">
+    <ul id="profile-notification-element">
+      <a href="">
+      <li>
+	  NOTIFICATIONS
+      </li>
+      </a>
+    </ul>
+  </div>
+</header>
+    
+</div> <!-- close top-bar -->
+
+</div>
+
+<div class="profile-page-content">
+<div class="profile-page-wrapper">
+<div class="profile-page-wrapper-left">
+    @if (Model.BeforeMain != null)
+    {
+   <div id="banner-top">
+        @Zone(Model.BeforeMain)
+</div>
+    }
+		@if (Model.Navigation != null) {
+            <section id="feature-menu">
+                <div id="feature-list">
+                    @Zone(Model.Navigation)
+                    <div style="clear: both;"></div>
+                </div>
+
+                @if (Layout.Content != null) {
+                    <div id="feature-window">
+                        @Zone(Model.Content)
+                    </div>
+                }
+            </section>
+            <!-- close feature-menu -->
+        } else {
+      @Zone(Model.Content)
+  } <!-- close widget navigation -->
+
+          @if (Model.AfterContent != null)
+          {
+            @Zone(Model.AfterContent)
+          }
+              
+           			@if (Model.Featured != null)
+           {
+            @Zone(Model.Featured)
+           }  <!-- close content zone -->
+
+    @if (Model.AsideFirst != null)
+    {
+    <aside id="aside-first" class="aside-first group">
+        @Zone(Model.AsideFirst)
+    </aside>
+    }
+    <div id="layout-content" class="group">
+        @if (Model.Messages != null)
+        {
+        <div id="messages">
+            @Zone(Model.Messages)
+        </div>
+        }
+        @if (Model.BeforeContent != null)
+        {
+        <div id="before-content">
+            @Zone(Model.BeforeContent)
+        </div>
+        }
+	    </div>
+
+
+@if (Model.AfterMain != null)
+{
+<div id="layout-after-main" class="group">
+    @Zone(Model.AfterMain)
+</div>
+}
+@if (Model.TripelFirst != null || Model.TripelSecond != null || Model.TripelThird != null)
+{
+<div id="layout-tripel-container">
+<div id="layout-tripel" class="group">
+    @if (Model.TripelFirst != null)
+    {
+    <div id="tripel-first">
+        @Zone(Model.TripelFirst)
+    </div>
+    }
+    @if (Model.TripelSecond != null)
+    {
+    <div id="tripel-second">
+        @Zone(Model.TripelSecond)
+    </div>
+    }
+    @if (Model.TripelThird != null)
+    {
+    <div id="tripel-third">
+        @Zone(Model.TripelThird)
+    </div>
+    }
+</div>
+</div>
+}
+
+
+			@if (Model.FooterQuadFirst != null)
+   {
+            <div id="footer-quad-first">
+                @Zone(Model.FooterQuadFirst)
+            </div>
+   }
+            @if (Model.FooterQuadSecond != null)
+            {
+            <div id="footer-quad-second">
+                @Zone(Model.FooterQuadSecond)
+            </div>
+            }
+
+            @if (Model.FooterQuadThird != null)
+            {
+            <div id="footer-quad-third">
+                @Zone(Model.FooterQuadThird)
+            </div>
+            }
+            @if (Model.FooterQuadFourth != null)
+            {
+            <div id="footer-quad-third">
+                @Zone(Model.FooterQuadFourth)
+			</div>
+            }
+    <div style="clear: both;"></div>
+</div>  <!-- close profile-page-wrapper-left -->
+
+
+    
+
+
+
+<div class="profile-page-wrapper-right">
+
+    @if (Model.AsideSecond != null)
+    {
+        @Zone(Model.AsideSecond)
+    }     
+        <div style="clear: both;"></div>
+</div> <!-- close profile-page-wrapper-right -->
+               <div style="clear:both;"></div>
+</div> <!-- close profile-page-wrapper -->
+        
+
+
+  </div> <!-- close profile-page-content -->
+
+
+<div style="clear:both;"></div>
+<div id="layout-footer">
+<div class="footer">
+ @Zone(Model.Footer)
+ </div>
+  </div>
+
+@tag.EndElement
+
+
+

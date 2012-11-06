@@ -1,0 +1,12 @@
+﻿Name: Liveo.Platform
+AntiForgery: enabled
+Author: CloudMetal, LLC
+Website: http://www.liveo.com
+Version: 0.7
+OrchardVersion: 1.5
+Category: Liveo
+Description: Liveo Platform Module
+Dependencies: Orchard.Users, Orchard.jQuery, Orchard.Knockout, Orchard.KendoUI, Vandelay.ThemePicker
+Features:
+    Liveo.Platform:
+        Description: Features of the Liveo Platform

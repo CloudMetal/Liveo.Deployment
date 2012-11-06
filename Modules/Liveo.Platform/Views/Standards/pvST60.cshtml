@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "pvST60";
+}
+<!--------------------------------------------------------- BEGIN _ST60_ -------------------------------------------------------------->
+<script>
+    // SAMPLE VIEW MODEL
+    CM.sampleModel = function (first, last, address, phone) {
+        var _self = this;
+        this.FirstName = ko.observable(first);
+        this.LastName = ko.observable(last);
+        this.Address = ko.observable(address);
+        this.Phone = ko.observable(phone);
+    }
+
+    CM.sample_ViewModel = function () {
+        var _self = this;
+
+        //fake list of sampleModels:
+        _self.sampleModels = ko.observableArray([]);
+        _self.editedSampleModel = ko.observable(new CM.sampleModel("","","",""));
+
+        //add some models to display:
+        _self.sampleModels.push(new CM.sampleModel("Vincent", "Jackson", "123 Street", "222-333-5555"));
+        _self.sampleModels.push(new CM.sampleModel("Gloria", "Estefan", "Groovy Street", "314-452-9958"));
+
+        _self.beginEditedSampleModel = function (model, formlink) {
+            _self.editedSampleModel(model);
+            if (formlink) {
+                $('[link="' + formlink + '"]').click();
+            }
+        }
+    }
+</script>
+
+<script>
+    var _sampleViewModels = new CM.sample_ViewModel();
+    ko.attach("vmSampleModel", _sampleViewModels);
+
+    function editSampleModel(eModel, formlink) {
+        _sampleViewModels.beginEditedSampleModel(eModel, formlink);
+    }
+</script>
+<div link="ST60" class="panel invisible">
+    <a link="ST60_link" rel="[link='ST60']" style=""></a>
+    <h2>@ViewBag.Title_ST60 - Master/Detail (Popup) </h2>
+    <br />
+    <br />
+
+    - Rows of data will contain truncated models only listing information vital to the user's quick glance:
+    <br />
+    <br />
+
+    <div data-model="vmSampleModel">
+        <table>
+            <thead>
+                <th style="padding:5px">First Name</th>
+                <th style="padding:5px">Last Name</th>
+                
+            </thead>
+            <tbody data-bind="foreach: sampleModels">
+            <tr  >
+                <td data-bind="text:$data.FirstName"></td>
+                <td data-bind="text:$data.LastName"></td>
+                <td><a href="#" data-bind="click: function(){ editSampleModel($data, 'ST60-10_link') }">Details</a> </td>
+                @*<td><a href="#" data-bind="click: function(){ $root.beginRemoveUserQuestionModel($data, 'yesNo_link'); }">Remove</a> </td>*@
+            </tr>
+
+        </tbody>
+        </table>
+    </div>
+
+</div>
+<!--------------------------------------------------------- END _ST60_ -------------------------------------------------------------->
+

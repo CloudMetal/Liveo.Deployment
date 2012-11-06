@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "pvHT23";
+}
+
+    <div class="modal" id="edititemProgram" >
+        @ViewBag.Title_HT23
+        <button onclick="javascript:void(0);" class="modalDetails_Program" style="display: none;" id="editItProgram" rel="#edititemProgram"></button>
+        <form id="frmEditProgram">
+
+            <div id="divPlanDetailsOuter">
+                <div id="divPlanDetailsContainer">
+
+                    <div id="divPopUpwrap-edit">
+                        <div id="divBlockHeader-edit">
+                            <div style="" id="div_edit_program_name"></div>
+                        </div>
+                    </div>
+
+                    <div id="divPlanDetailsSubContainer">
+                        <div id="divPopUpwrap">
+
+                            @*<input data-bind="value:$root.editedModel().GeneralDescription()" />*@
+
+                            <div id="enter-plan-edit">
+                                <div id="add-plan">
+                                    <div id="div_edit_program_pictureUrl" data-bind="text:$root.editedModel().PictureUrl()" width="75px" height="75px"></div>
+                                    Larry North
+                                </div>
+                                <div id="plan-recommendation">
+                                    <div style="" data-bind="text:$root.editedModel().RecommendedCount()" id="div_edit_program_recommendedCount"></div>
+                                    other Liveo users recommended this.</div>
+                                <div id="plan-info">
+                                    <div data-bind="text:$root.editedModel().GeneralDescription()" id="div_edit_program_generalDescription"></div>
+                                    <br />
+                                    <br />
+                                    <label>Duration:</label>
+                                    <span>
+                                        <div data-bind="text:$root.editedModel().DurationDays()" id="div_edit_program_durationDays"></div>
+                                        Days</span><br />
+                                    <label>Potential Weight Loss:</label>
+                                    <span>
+                                        <div data-bind="text:$root.editedModel().EstimatedWeightLoss()" id="div_edit_program_estimatedWeightLoss"></div>
+                                        lbs</span>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="clearFloat"></div>
+                        <br />
+                        <br />
+                        <br />
+                        <div id="divPopUpwrap">
+                            <div id="edit-goals-day-edit">
+
+                                <div id="day-exercise">
+                                    Exercise
+
+                                </div>
+
+
+
+                                <div id="entry-list-edit">
+                                    <div id="day-entries-edit">
+                                        <div id="entry-list-details-edit">
+                                            [PUSH UPS (400CAL) 45PTS]<br />
+                                            <div id="entry-list-info">
+                                                <div data-bind="text:$root.editedModel().ExerciseDescription()" id="div_edit_program_exerciseDescription"></div>
+                                            </div>
+                                        </div>
+                                        <input type="submit" value="Edit" /><input type="submit" value="Delete" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div id="edit-goals-day-edit">
+
+                                <div id="day-exercise">
+                                    Nutrition
+
+                                </div>
+
+
+
+                                <div id="entry-list-edit">
+                                    <div id="day-entries-edit">
+                                        <div id="entry-list-details-edit">
+                                            [BREAKFAST (200CAL)]<br />
+                                            <div id="entry-list-info">
+                                                <div data-bind="text:$root.editedModel().NutritionDescription()" id="div_edit_program_nutritionDescription"></div>
+                                            </div>
+                                        </div>
+                                        <input type="submit" value="Edit" /><input type="submit" value="Delete" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <a id="a2" title="Cancel" href="javascript:void(0);"
+                                class="primaryButton button close" tabindex="0" style="">
+                                <div class="box">
+                                    <div class="boxContent">
+                                        <div class="padding">CANCEL</div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a id="a1" title="Cancel" href="javascript:void(0);"
+                                class="primaryButtonDark button" tabindex="0" style="">
+                                <div class="box">
+
+                                    <div class="boxContent">
+                                        <div class="padding">USE THIS PROGRAM</div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="clear"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>

@@ -1,0 +1,20 @@
+﻿@using Kendo.Mvc.UI
+@{
+    Script.Require("jQuery").AtHead();
+    Script.Require("kendo").AtHead();
+    Style.Require("jQueryUI_Orchard");
+    Style.Require("kendo.common");
+    Style.Require("kendo.metro");
+    Style.Require("font");
+    Style.Require("layout");
+    Style.Require("reset");  
+}
+<div>User Account View</div>
+@(Html.Kendo().Calendar().Name("calendar").Value(DateTime.Now).HtmlAttributes(new { style = "width: 330px" }))
+@(Html.Kendo().Window().Name("account").Width(630).Height(315).Title("Account").Content(@<text>
+                                                                                             some content
+                                                                                         </text>).Draggable().Resizable())
+
+<script type="text/javascript" >
+    
+    </script>

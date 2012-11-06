@@ -1,0 +1,10 @@
+﻿@model Liveo.Platform.Models.LiveoUserPart
+@{
+    var user = Model.User;
+}
+           
+<fieldset>
+    @Html.LabelFor(m => user.Name, T("Name"))
+    @Html.TextBoxFor(m=>user.Name, new { @class = "textMedium" })
+    @Html.ValidationMessageFor(m=>user.Name, "*")
+</fieldset>

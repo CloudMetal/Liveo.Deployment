@@ -1,0 +1,123 @@
+﻿@{
+    //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    ViewBag.EnableViewTitles = true;
+}
+
+@{
+    if (ViewBag.EnableViewTitles)
+    {
+        ViewBag.Title_HT10 = "HT10";
+        ViewBag.Title_HT20 = "HT20";
+        ViewBag.Title_HT22 = "HT22";
+        ViewBag.Title_HT23 = "HT23";
+        ViewBag.Title_A100_10 = "A100-10";
+        ViewBag.Title_A100_30 = "A100-30";
+        ViewBag.Title_A100_20 = "A100-20";
+        ViewBag.Title_A200_10 = "A200-10";
+        ViewBag.Title_A200_25 = "A200-25";
+        ViewBag.Title_A200_25 = "A100-35";
+        ViewBag.Title_A300_10 = "A300-10";
+    }
+}
+
+
+@{
+Style.Require("reset");
+Style.Require("font");
+Style.Require("layout");
+Style.Require("modal");
+Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+Script.Require("viewModel_Program");
+Script.Require("viewModel_Goal");
+}
+
+<script>
+
+    //function successInitModels(count) {
+    //    alert(count + ' models present');
+    //}
+    //function failInitModels(msg) {
+    //    alert(msg);
+    //}
+
+    $(document).ready(function () {
+      
+       // var _goal_ViewModel = new Goal_ViewModel();
+       // var _program_ViewModel = new Program_ViewModel();
+
+       // ko.attach("vmGoal", _goal_ViewModel);
+       // ko.attach("vmProgram", _program_ViewModel);
+
+       // _goal_ViewModel.initAllGoalModels(successInitModels, failInitModels);
+       // _program_ViewModel.initAllProgramModels(successInitModels, failInitModels);
+
+
+        CM.hookLink('HT10_continue', 'slidenext', 'HT10', 'HT20');
+        CM.hookLink('HT20_viewDetail', 'popup', 'HT20', 'HT23');
+        CM.hookLink('HT22_viewDetail', 'popup', 'HT22', 'HT23');
+        CM.hookLink('HT23_cancel', 'slideprev', 'HT23', 'HT20');
+        CM.hookLink('HT20_cancel', 'slideprev', 'HT20', 'HT10');
+        CM.hookLink('HT20_continue', 'fade', 'HT20', 'A100-10');
+        //CM.hookLink('A100_10_cancel', 'fade', 'A100-10', 'HT20');
+        CM.hookLink('HT20_fromSurvey', 'fade', 'HT20', 'HT22');
+        CM.hookLink('HT22_fromCreateGoal', 'fade', 'HT22', 'HT20');
+        CM.hookLink('HT10_createOwnProgram', 'fade', 'HT10', 'A100-10');
+        CM.hookLink('A100-20_mealsButton', 'slidenext', 'A100-20', 'A100-30');
+        CM.hookLink('A100_10_addCycle', 'fade', 'A100-10', 'A100-20');
+        CM.hookLink('A100-30_exerciseButton', 'slideprev', 'A100-30', 'A100-20');
+        CM.hookLink('A100-20_addNewExercise', 'popup', 'A100-20', 'A200-10');
+        CM.hookLink('A100-20_chooseFromLibrary', 'popup', 'A100-20', 'A200-25'); //Needs to be popup to keep consistancy
+        CM.hookLink('A100-30_addNewMeal', 'popup', 'A100-30', 'A300-10');
+        CM.hookLink('A100-30_chooseFromLibrary', 'popup', 'A100-30', 'A100-35');
+
+        CM.hookLink('A100-30_addNewMeal', 'popup', 'A100-30', 'A300-10');
+
+        CM.hookLink('A100-10_cancel', 'fade', 'A100-10', 'HT10');
+        CM.hookLink('A100-20_cancel', 'fade', 'A100-20', 'A100-10');
+
+        CM.hookLink('A100-30_cancel', 'fade', 'A100-30', 'A100-10');
+
+        $('[link="HT10_cancel"]').click(function () { backToFitness(); });
+    });
+
+    function backToFitness() {
+        location = '/Fitness';
+    }
+
+</script>
+
+
+<body style="margin: 20px;">
+  @*  <div data-model="vmGoal">
+        <strong data-bind="text:testVariable_Goal" ></strong>
+    </div>
+
+    <div data-model="vmProgram">
+        <strong data-bind="text:testVariable_Program" ></strong>
+    </div>*@
+
+   
+    @Html.Partial("pvHT10")
+    @Html.Partial("pvHT20")
+    @Html.Partial("pvHT22")
+    @Html.Partial("pvHT23")
+    @Html.Partial("pvA100-10")
+    @Html.Partial("pvA100-11")
+    @Html.Partial("pvA100-20")
+    @Html.Partial("pvA100-30")
+    @Html.Partial("pvA100-35")
+    @Html.Partial("pvA200-10")
+    @Html.Partial("pvA200-25")
+    @Html.Partial("pvA300-10")
+
+</body>

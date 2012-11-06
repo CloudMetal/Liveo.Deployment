@@ -1,0 +1,6 @@
+Name: Onestop Custom Admin
+Author: Bertrand Le Roy / Onestop Internet
+Website: http://onestopcustomadmin.codeplex.com
+Description: This admin theme provides no front-end UI but enables the customization of the admin UI. Do not set as the current theme, but just enable it.
+Version: 1.0
+Tags: Admin, Customizable

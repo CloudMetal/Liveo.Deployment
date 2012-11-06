@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Index_HT05";
+}
+  
+<div link="HT05" class="panel invisible">
+    <a   link="HT05-0_link" rel="[link='HT05']" style=""></a>
+    @ViewBag.Title_HT05
+   
+    <div class="wrapper-large">
+
+
+        
+
+       @* <div class="col-full">
+            <button class="segment-small-status-dark col-half">Health Information</button>
+            <button link="HT05_dailyHealthPlan" class="segment-small-status-light col-half">Daily Health Plan</button>
+        </div>*@
+
+        <h3>MY HEALTH PROGRAM
+        </h3>
+        <div class="clear"></div>
+
+        <div class="left col-fifteen">
+            <img src="@Href("../../images/profile-pic.jpg")" width="100px" height="100px" />
+        </div>
+        <div class="left col-eighty">
+            <span>Gary Anderson</span>
+            <label>LAST UPDATE: 10/8/2012</label>
+           @* <button link="HT05_editHealthStats" class="right small-nav-btn-green">Edit Health Stats</button>*@
+        </div>
+        <div class="clear"></div>
+
+        <div class="modal-normal-row col-full border-top">
+            <div class="col-twenty bg-dark highlight-font-bld modal-normal-row">
+                <label>CURRENT CALORIES</label>
+                <hr>
+                <span>
+                    <label>Consumed:</label>1525</span><br>
+                <br>
+                <span>
+                    <label>Burned:</label>1800</span>
+            </div>
+            <div class="col-seventy-five right">
+                <div class="col-thirty">
+                    <ul>
+                        <li><span>Age:</span> 40</li>
+                        <li><span>Birth Date:</span> 12/15/1972</li>
+                        <li><span>Height:</span> 6'1"</li>
+                        <li><span>Weight:</span> 210lbs</li>
+                        <li><span>Sex:</span> Male</li>
+                    </ul>
+                </div>
+                <div class="col-thirty">
+                    <ul>
+                        <li><span>Body Mass Index:</span> 25</li>
+                        <li><span>Blood Glucose:</span> 40</li>
+                        <li><span>Blood Pressure:</span> 120/80</li>
+                        <li><span>Pulse:</span> 80</li>
+                        <li><span>BMR:</span> 20.5</li>
+                    </ul>
+                </div>
+                <div class="col-thirty">
+                    <ul>
+                        <li><span>Total Cholesterol:</span> 170</li>
+                        <li><span>Hip Circumference:</span> 38</li>
+                        <li><span>Waist Circumference:</span> 32</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <div class="title margin-top-ten">Progress Chart  
+           @* <button  style="float:right;" link="HT20_viewDetail" class="small-nav-btn-dark">Create Goal</button>*@</div>
+                <img src="@Href("../../Images/blood-pressure-chart.jpg")" />
+        <label class="left">
+          
+        </label>
+        <label class="right">
+           
+        </label>
+
+        <div class="clear"></div>
+
+
+        <table class="col-full" summary="">
+            <caption></caption>
+            <thead>
+                <tr>
+                    <th>Goal</th>
+                    <th>Goal Type</th>
+                    <th>Program</th>
+                    <th>
+                        
+                        <a  >
+                        <div link="btn_HT05_addGoal_click" class="module-header-media-link">
+                            CREATE GOAL
+                        </div>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr1">
+                    <td>Lose 20lbs in 2 months</td>
+                    <td>Weight Loss</td>
+                    <td><a   link="HT05_viewProgram"> Billy Blanks Fat Burners </a></td>
+                    <td><a  >Remove</a></td>
+                </tr>
+                <tr class="tr2">
+                    <td>Lower Blood Pressure</td>
+                    <td>Diet</td>
+                    <td><a   link="HT05_viewProgram">Jenny Craig's Foodovation </a></td>
+                    <td><a  >Remove</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

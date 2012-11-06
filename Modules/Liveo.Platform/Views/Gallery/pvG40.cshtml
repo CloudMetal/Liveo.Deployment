@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "G40_photo_video_view";
+}
+
+
+<div link="G40" class="panel invisible">
+    <a   link="G40_link" rel="[link='G40']" style=""></a>
+     @ViewBag.Title_G40
+    <div class="wrapper-modal-large">
+        <div class="modal-large-two-col">
+            <img src="@Href("../../Images/profile-pic.jpg")" width="375px" />
+        </div>
+        <div class="modal-large-two-col">
+            <label>
+                SARAH JONES
+            <span>8/25/2012
+            </span>
+            </label>
+            <label class="med-font">
+                Untitled Album
+            </label>
+            <label class="med-font-bld">
+                Amazing Picture
+            </label>
+            <label>
+                Went out to the mountains and climbed as far as the eye could see.
+            </label>
+        </div>
+        <div class="clear"></div>
+         <div class="right">
+            <button clink="modalclosebutton" link="G40_editPhoto" class="nav-btn-light">EDIT</button>
+            <button link="modalokbutton" class="nav-btn-green">DELETE</button>
+            <button link="modalcancelbutton" class="nav-btn-green">CANCEL</button>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "pvHT22";
+}
+
+<div id="HT22" link="HT22" class="invisible panel">
+    @ViewBag.Title_HT22
+    <a   link="HT22_fromCreateGoal">From Create Goal</a>
+    <div class="wrapper-large">
+        <div class="left">
+            <header>
+                <h2>Choose Program</h2>
+            </header>
+        </div>
+      
+        <div class="clear"></div>
+        <div class="modal-min-tiny-row">
+            <p>
+                Great so you want to achieve a goal. We have some great programs available to help you do just that! You can create your own program to accomplish your goal or you can start with your own plan..
+            </p>
+        </div>
+        <div class="clear"></div>
+        <div class="bg-light">
+            
+            <div class="row-main-margin-btm">
+                <div class="modal-max-huge-row scroll-window">
+                    <div class="border-1">
+                        <div class="col-fifteen">
+                            <img src="@Href("../../images/profile-pic.jpg")" height="100px" width="100px" />
+                        </div>
+                        <div class="col-sixty">
+                            <span class="med-font-bld">Fat Loss Program</span><br />
+                            Larry North's Ultimate Eating Adventure is designed to delight your culinary senses while watching your pounds melt away. This is here to offer you the ultimate fat burning program.
+                        </div>
+                        <div class="col-twenty txt-right">
+                            <button link="HT20_viewDetail" class="small-nav-btn-dark">View Details</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="border-1">
+                        <div class="col-fifteen">
+                            <img src="@Href("../../images/profile-pic.jpg")" height="100px" width="100px" />
+                        </div>
+                        <div class="col-sixty">
+                            <span class="med-font-bld">Strength Training Program</span><br />
+                            Larry North's Ultimate Strength Training is designed to make you stronger while watching your pounds melt away. This is here to offer you the ultimate fat burning program.
+                        </div>
+                        <div class="col-twenty txt-right">
+                            <button link="HT20_viewDetail" class="small-nav-btn-dark">View Details</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="right">
+            <button link="HT20_cancel" class="nav-btn-light">CANCEL</button>
+            <button link="HT20_continue" class="nav-btn-green">CONTINUE</button>
+        </div>
+    </div>
+</div>

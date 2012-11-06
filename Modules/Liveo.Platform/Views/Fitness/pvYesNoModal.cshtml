@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "pvYesNoModal";
+}
+
+
+<div data-model="vmGoal">
+ <!-- YES/NO MODAL -->
+      <div link="removeGoalYesNo" class="panel invisible">
+        @ViewBag.Title_A100_10
+       <a   link="removeGoalYesNo_link" rel="[link='removeGoalYesNo']" style=""></a>
+        <form id="frmYesNo">
+            Are you sure you wish to remove the following item:
+        <br />
+            <strong data-bind="text: $root.removedGoalModel().Name()"></strong>
+            <br />
+            <br />
+
+
+            <button type="submit" class="cmButton1" id="yesButton" data-bind="click:commitRemovedGoalModel" onclick="javascript:noButton.click();">Yes</button>
+            <button type="button" class="cmButton1 close" id="noButton">No</button>
+
+        </form>
+    </div>
+</div>

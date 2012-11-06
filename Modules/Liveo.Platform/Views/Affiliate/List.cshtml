@@ -1,0 +1,44 @@
+﻿@{
+    Style.Include("modal");
+    Style.Include("jqui");
+    Style.Include("styles");
+
+    Script.Require("jQuery").AtHead();
+    Script.Require("jquerytools").AtHead();
+    Script.Require("jqueryuijs").AtHead();
+    Script.Require("ko").AtHead();
+    Script.Require("common").AtHead();
+    Script.Require("viewModel_Affiliate");
+}
+
+<script>
+    var _affiliate_ViewModel;
+    
+    function bindko_affiliate() {
+        _affiliate_ViewModel = new Affiliate_ViewModel();
+        ko.applyBindings(_affiliate_ViewModel);
+    }
+    $(document).ready(function () {
+        initialize();
+    });
+    
+    function initialize() {
+        bindko_affiliate();
+    }
+    
+</script>
+
+<strong data-bind="text:testVariable_Affiliate"></strong>
+
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+    </thead>
+    <tbody data-bind="foreach: $root.affiliateModels">
+        <tr id="tableAffiliate">
+            <td data-bind="text: $data.Id"></td>
+            <td data-bind="text: $data.Name"></td>
+        </tr>
+    </tbody>
+</table>

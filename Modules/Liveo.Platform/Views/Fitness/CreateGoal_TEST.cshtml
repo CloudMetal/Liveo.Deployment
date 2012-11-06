@@ -1,0 +1,141 @@
+﻿@{
+    ViewBag.Title = "CreateGoal_TEST";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateGoal_TEST</h2>
+@section codegen{
+    <script src="~/Scripts/Generated/viewModel_Goal.js"></script>
+    <script src="~/Scripts/Generated/viewModel_Program.js"></script>
+}
+
+@section scripts{
+    <script>
+
+        var data;
+        var typeData;
+        var option_goalTypes = 'option_goalTypes';
+
+        function bindko_Goal() {
+            _goal_ViewModel = new Goal_ViewModel();
+            ko.applyBindings(_goal_ViewModel, $("#_20")[0]);
+        }
+
+        function bindko_Program() {
+            _program_ViewModel = new Program_ViewModel();
+            ko.applyBindings(_program_ViewModel, $("#_20")[0]);
+        }
+
+        function getTypeValue(goalTypeId) {
+            //loop through typedata and select 
+            //return goalTypeId;
+            for (var i = 0; i < typeData.length; i++) {
+                if (typeData[i].Goal_Types) {
+                    for (var j = 0; j < typeData[i].Goal_Types.length; j++) {
+                        if (typeData[i].Goal_Types[j].Key == goalTypeId) {
+                            return typeData[i].Goal_Types[j].Value;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        function updateDD(optionId, selectedValue) {
+            //input_field_goalTypeId = inputField;
+            for (var t = 0; t < typeData.length; t++) {
+
+                //For each type that is returned, you will need to fill the individual dropdown.
+                if (typeData[t].Goal_Types) {
+                    //Fill GoalTypes
+                    CM.fillDropdown(optionId, $("#ddDiv_GoalTypes"), typeData[t].Goal_Types, selectedValue);
+                    break;
+                }
+
+            }
+        }
+
+        function pickProgram(divClose, divOpen) {
+            _programId = $("#input_edit_program_id").val();
+            selectModelExt_Program(_programId);
+            modalProgramDetails_trigger.eq(0).overlay().close();
+            CM.cont(divClose, divOpen);
+        }
+
+
+        $(document).ready(function () {
+
+            $.ajax({
+                url: '/api/HealthTrackerType',
+                dataType: 'json',
+                success: function (data) {
+                    typeData = data;
+                    updateDD(option_goalTypes, '2');
+                },
+                error: function () {
+                    alert('Failed to get data ');
+                }
+            });
+
+        });
+
+
+        bindko_Program();
+        bindko_Goal();
+      
+    </script>
+}
+<body>
+
+   
+
+    <div id="_10" class="invisible">
+        <div class="divident scroll" id="goalNode">
+            <strong data-bind="text:testVariable_Goal"></strong>
+
+           
+        </div>
+    </div>
+
+    <div id="_20" class="notinvisible" >
+         <div id="ddDiv_GoalTypes"></div>
+         <table rules="all" cellpadding="20px" cellspacing="0" width="600" style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: programModels">
+                <tr class="trFade">
+                    <!-- xxxko foreach: plans -->
+                    <td id="program">
+
+                        <table class="ctlDataGrid">
+                            <tr>
+                                <td>
+                                    <img src="~/Images/plan_pic.jpg" height="75px" width="75px" /><br />
+                                    Larry North
+                                </td>
+                                <td style="text-align: left" data-bind="text:$data.GeneralDescription" />
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right">12 other Liveo users recommended this.<br />
+                                <a   data-bind="click: $root.selectProgramModel" onclick="CM.cont('_20','_30')">Select</a> &nbsp | &nbsp
+                                <a   data-bind="click: $root.editProgramModel">Details</a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <!--xxx /ko -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="_30" class="invisible" >
+        Hello I'm _30
+       
+    </div>
+
+</body>

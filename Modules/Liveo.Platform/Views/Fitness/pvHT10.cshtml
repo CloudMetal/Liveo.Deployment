@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "pvHT10";
+}
+
+
+
+<div data-model="vmGoal">
+    <div id="HT10" link="HT10" class="notinvisible panel">
+        @ViewBag.Title_HT10
+
+        <div class="wrapper-large">
+            <div class="left">
+                <header>
+                    <h2>Create a Goal</h2>
+                </header>
+            </div>
+            <div class="right">
+                <button class="segment-status-dark segment-medium">STEP 1 - CREATE</button>
+                <button class="segment-status-light segment-medium">STEP 2 - CHOOSE</button>
+                <button class="segment-status-light segment-medium">STEP 3 - FINALIZE</button>
+            </div>
+            <div class="clear"></div>
+            <div class="modal-min-tiny-row">
+                <p>
+                    Success begins with defining a goal. Once you have defined a goal, you will have the opporunity to plan how you will accomplish it.
+            <br />
+                    Give us a date for when you want to have your goal achieved and we will customize a plan for you!
+                </p>
+            </div>
+            <div class="clear"></div>
+            <div class="bg-light">
+                <label>
+                    By this date:
+            <span>
+                <input type="text" link="goaldate_goal" />
+            </span>
+                </label>
+                <label>
+                    I want to:
+                    <span class="large-txt">
+                        <input size="60" link="txtGoalName" value="" />
+                    </span>
+                </label>
+                <label class="auto-txt">
+                    Type of goal 
+                    <br />
+                    <div id="ddDiv_GoalTypes"></div>
+                    <select>
+                        <option>Choose Goal...</option>
+                        <option>Lose Weight</option>
+                        <option>Lower Bloodpressure</option>
+                        <option>Endurance Training</option>
+                        <option>Weight Training</option>
+                    </select>
+                </label>
+                <div class="clear"></div>
+            </div>
+            <div class="right">
+                <button link="HT10_cancel" class="nav-btn-light">CANCEL</button>
+                <button link="HT10_continue" class="nav-btn-green">CONTINUE - Choose Liveo Program</button>
+                <button link="HT10_createOwnProgram" class="nav-btn-green">CONTINUE - Create My Own Program</button>
+            </div>
+        </div>
+    </div>
+</div>

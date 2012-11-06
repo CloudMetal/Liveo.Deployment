@@ -1,0 +1,58 @@
+﻿@{
+    //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    ViewBag.EnableViewTitles = true;
+}
+
+@{
+    if (ViewBag.EnableViewTitles)
+    {
+        ViewBag.Title_U01 = "U01";
+        ViewBag.Title_U10 = "U10";
+        ViewBag.Title_U10_10 = "U10-10";
+        ViewBag.Title_U20 = "U20";
+        ViewBag.Title_U20_10 = "U20-10";
+    }
+}
+
+
+@{
+Style.Require("reset");
+Style.Require("font");
+Style.Require("layout_ext");
+
+Style.Require("modal");
+Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+Script.Require("viewModel_User").AtHead();
+Script.Require("viewModel_Goal").AtHead();
+Script.Require("viewModel_Program").AtHead();
+}
+
+
+<script>
+
+
+    $(document).ready(function () {
+     
+    });
+
+ 
+</script>
+<body style="text-transform: none;">
+    @Html.Partial("pvU01")
+    @Html.Partial("pvU10")
+    @*@Html.Partial("pvU10") // Lives in pvU10*@
+    @Html.Partial("pvU20")
+    @Html.Partial("pvU20-10")
+</body>
+
+    

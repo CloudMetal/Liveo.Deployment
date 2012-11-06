@@ -1,0 +1,266 @@
+﻿@{
+    //ViewBag.Title = "CreateGoal";
+    //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+   // if (ViewBag.EnableViewTitles)
+    //{
+        //ViewBag.Title_HT10 = "HT10";
+        //ViewBag.Title_HT20 = "HT20";
+        //ViewBag.Title_HT23 = "HT23";
+    //}
+}
+
+@{
+Style.Require("font");
+Style.Require("layout");
+Style.Require("reset");
+Style.Require("modal");
+Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+Script.Require("viewModel_Program");
+Script.Require("viewModel_Goal");
+}
+
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+
+        
+
+            $('[link="modalokbutton"]').click(function () { CM.log('ok'); overlayElem.overlay().close(); });
+            $('[link="modalcancelbutton"]').click(function () { CM.log('cancel'); overlayElem.overlay().close(); });
+            //CM.hookLink('HT10_Continue', 'slidenext', 'HT10', 'HT20');
+            $('[link="HT10_Continue"]').click(function () { alert('yo'); });
+           // $('[link="HT10_Continue"]').click(function () { addGoal('', '', ''); });
+            $('[link="HT10_Cancel"]').click(function () { goBack(); });
+            CM.hookLink('HT20_Cancel', 'slideprev', 'HT20', 'HT10');
+            $('[link="HT20_Continue"]').click(function () { processRadios(); });
+
+            initWidgets('spinner_page');
+
+            initModalTriggers();
+        });
+
+
+        var data;
+        var typeData;
+        var option_goalTypes = 'option_goalTypes';
+
+        var _dummyUserId = 1;
+        var modalProgramDetails_trigger;
+        var _selectedDate;
+
+        var _program_ViewModel;
+        var _goal_ViewModel;
+
+        var _selectedProgram;
+        var _newProgramId;
+
+
+        _goal_ViewModel = new Goal_ViewModel();
+        ko.attach("vmGoal", _goal_ViewModel);
+
+        _program_ViewModel = new Program_ViewModel();
+        ko.attach("vmProgram", _program_ViewModel);
+
+        function addGoal(divClose, divOpen, spinner) {
+
+            //document.getElementById(spinner).className = "notinvisible";
+            var goalTypeId = $('#' + option_goalTypes).val();
+            var goalName = $('[link="txtGoalName"').val();
+
+            var day1 = $('[link="goaldate_goal"]').datepicker('getDate').getDate();
+            var month1 = $('[link="goaldate_goal"]').datepicker('getDate').getMonth() + 1;
+            var year1 = $('[link="goaldate_goal"]').datepicker('getDate').getFullYear();
+            _selectedDate = month1 + "/" + day1 + "/" + year1;
+            _goal_ViewModel.candidateGoalModel(new GoalModel(0, goalName, '', _selectedDate, _dummyUserId, goalTypeId, null));
+
+        }
+
+        function commitGoal(divOpen, divClose, spinner, createProgramFunction) {
+            _goal_ViewModel.commitCandidateGoalModel(createProgramFunction, null)
+        }
+
+        function getTypeValue(goalTypeId) {
+            //loop through typedata and select 
+            //return goalTypeId;
+            for (var i = 0; i < typeData.length; i++) {
+                if (typeData[i].GoalTypes) {
+                    for (var j = 0; j < typeData[i].GoalTypes.length; j++) {
+                        if (typeData[i].GoalTypes[j].Key == goalTypeId) {
+                            return typeData[i].GoalTypes[j].Value;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        function goBack() {
+            location = '/Fitness/';
+        }
+
+        function handleRadios(divDefine, divUse) {
+            def = $('#radDefineProgram').is(':checked');
+            use = $('#radUseProgram').is(':checked');
+
+            if (def) {
+                CM.handleViews(divUse, divDefine);
+            }
+
+            if (use) {
+                CM.handleViews(divDefine, divUse);
+            }
+        }
+
+        function initWidgets(spinner) {
+            $('[link="goaldate_goal"]').datepicker();
+
+            $.ajax({
+                url: '/api/Fitness/GetTypes',
+                dataType: 'json',
+                success: function (data) {
+                    typeData = data;
+                    updateDD(option_goalTypes, 1);
+                    CM.handleSpinner(spinner);
+                },
+                error: function () {
+                    alert('Failed to get data ');
+                }
+            });
+        }
+
+        function initModalTriggers() {
+            modalProgramDetails_trigger = $(".modalDetails_Program").overlay({
+                // some mask tweaks suitable for modal dialogs
+                mask: {
+                    color: '#ebecff',
+                    loadSpeed: 200,
+                    opacity: 0.9
+                },
+                closeOnClick: false
+            });
+        }
+
+
+        function saveGoalDuplicateProgram(eModel, spinner) {
+            _program_ViewModel.candidateProgramModel(eModel);
+            commitGoal('_20', '', spinner, duplicateProgram_callback);
+        }
+
+        function radioChoice(spinner) {
+            var radChoice = $('input:radio[name=grp_program]:checked').val();
+            if (radChoice == 'definePlan') {
+                commitGoal('_20', '', spinner, saveProgram_callback);
+            }
+        }
+
+        function pauseMe() {
+            CM.hideDiv('_20');
+            CM.showDiv('_HT_Caesar_CreatingProgram');
+
+            setTimeout(function () {
+                document.location = '/affiliate/program/' + _newProgramId;
+            }, 3000);
+        }
+
+        function redirect(newProgramId) {
+            _newProgramId = newProgramId;
+            pauseMe()
+        }
+
+        function updateDD(optionId, selectedValue) {
+            //input_field_goalTypeId = inputField;
+            for (var t = 0; t < typeData.length; t++) {
+
+                //For each type that is returned, you will need to fill the individual dropdown.
+                if (typeData[t].GoalTypes) {
+                    //Fill GoalTypes
+                    CM.fillDropdown(optionId, $("#ddDiv_GoalTypes"), typeData[t].GoalTypes, selectedValue);
+                    break;
+                }
+            }
+        }
+
+        function duplicateProgram_callback(newGoalId) {
+            if (newGoalId) {
+                _program_ViewModel.candidateProgramModel().GoalId(newGoalId);
+                var affiliateid = _program_ViewModel.candidateProgramModel().AffiliateId();
+                _program_ViewModel.candidateProgramModel().AffiliateId = null;
+                _program_ViewModel.candidateProgramModel().OriginatingAffiliateId(affiliateid);
+                _program_ViewModel.commitCandidateProgramModel(redirect, null);
+            }
+        }
+
+        function processRadios() {
+            var spinner = 'spinner_page';
+            CM.showSpinner(spinner);
+            def = $('#radDefineProgram').is(':checked');
+            use = $('#radUseProgram').is(':checked');
+
+            if (def) {
+                radioChoice(spinner)
+            }
+
+            if (use) {
+                saveGoalDuplicateProgram(_selectedProgram, spinner);
+            }
+        }
+
+        function saveProgram_callback(newGoalId, duplicate) {
+            if (newGoalId) {
+                _program_ViewModel.candidateProgramModel().GoalId(newGoalId);
+                _program_ViewModel.commitCandidateProgramModel(redirect);
+            }
+        }
+
+        function useThisProgram(eModel) {
+            _selectedProgram = eModel;
+        }
+
+        function viewProgramDetails(eModel) {
+            _program_ViewModel.editedProgramModel(eModel);
+            _program_ViewModel.beginEditedProgramModel(eModel, 'editProgramForm_link');
+
+        }
+
+    </script>
+}
+
+<body style="margin: 20px;">
+   
+    @Html.Partial("pvHT10")
+    @Html.Partial("pvHT20")
+    @Html.Partial("pvHT23")
+
+    <!-- _HT_Caesar_CreatingProgram -->
+    <div link="_HT_Caesar_CreatingProgram" class="invisible">
+         <div >Please wait while we create your Program...</div>
+         <div  id="spinner_creating_program" class="notinvisible inl">
+        <img id="img-spinner" src="~/Images/waiting.gif" alt="Loading" />
+       
+    </div>
+    </div>
+
+    @section codegen{
+    <script src="~/Scripts/Resources/jquery.livequery.js"></script>
+    <script src="~/Scripts/Resources/knockout.multimodels-0.1.min.js"></script>
+    <script src="~/Scripts/Generated/viewModel_Goal.js"></script>
+    <script src="~/Scripts/Generated/viewModel_Program.js"></script>
+    }
+   
+</body>

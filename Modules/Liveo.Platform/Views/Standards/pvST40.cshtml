@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "pvST40";
+}
+<!--------------------------------------------------------- BEGIN _ST40_ -------------------------------------------------------------->
+<script>
+    $(document).ready(function () {
+        $('a[link="ST40_startWaitProcess"]').click(function () { startProcess(); });
+    });
+
+    startProcess = function () {
+        CM.showSpinner('spinner_page');
+        setInterval(dostuff, 500);
+    }
+
+    var countdown = 9;
+    dostuff = function () {
+        if (countdown != 0) {
+            $('[link="ST40_countdown"]').html(countdown--);
+        } else {
+            processSucess();
+        }
+    }
+    processSucess = function () {
+        CM.hideSpinner('spinner_page');
+    }
+</script>
+
+<div link="ST40" class="panel invisible">
+    <a link="ST40_link" rel="[link='ST40']" style=""></a>
+    <h2>@ViewBag.Title_ST40 - Wait Spinner</h2>
+    <br />
+    <br />
+
+    - Use the CM.showSpinner and CM.hideSpinner to show or display a spinner with the following structure:<br />
+    <br />
+    <b>&lt;div id=&quot;spinner_page&quot; class=&quot;invisible&quot;&gt;<br />
+        &nbsp&nbsp  please wait...<br />
+        &nbsp&nbsp  &lt;img id=&quot;img-spinner&quot; src=&quot;[spinner gif path]&quot; alt=&quot;Loading&quot; /&gt;
+        <br />
+        &lt;/div&gt;<br />
+    </b>
+    <br />
+    <br />
+    - CM.showSpinner('spinner_page');
+    <br />
+    <br />
+    - CM.hideSpinner('spinner_page');
+    <br />
+    <br />
+    <b><em>EXAMPLE:</em></b> &nbsp
+        <a link="ST40_startWaitProcess">Start a wait process</a> &nbsp
+
+        <div id="spinner_page" class="invisible">
+            please wait...
+            <img id="img-spinner" src="@Href("../../Images/waiting.gif")" alt="Loading" />
+            <div link="ST40_countdown">10</div>
+        </div>
+
+    <br />
+    <br />
+
+</div>
+
+<!--------------------------------------------------------- END _ST40_ -------------------------------------------------------------->
+

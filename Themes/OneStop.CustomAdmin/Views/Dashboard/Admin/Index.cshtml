@@ -1,0 +1,19 @@
+﻿@using Onestop.CustomAdmin.Services
+@using Orchard
+@{
+    var adminThemeSettings = WorkContext.Resolve<IAdminThemeSettingsService>().GetServiceSettings();
+    var welcome = String.IsNullOrWhiteSpace(adminThemeSettings.Welcome) ?
+        T("Welcome to Orchard").ToString() : adminThemeSettings.Welcome;
+    Layout.Title = welcome;
+ }
+<section class="dashboard group">
+    <div class="help-item">
+        <h2 class="start">@T("Welcome")</h2>
+        <p>@T(@"Here you'll find the CMS Operations Dashboard.")</p>
+    </div>
+    <div class="help-item">
+        <h2 class="gallery">@T("E-Commerce")</h2>
+        <p>@T(@"For the E-Commerce Dashboard, click <a href=""/admin/os/default.aspx"">here</a>.")</p>
+    </div>
+</section>
+<a href="http://www.onestop.com" target="_blank"><img src="http://www.onestop.com/images/managed_by_onestop.gif" alt="onestop"/></a>

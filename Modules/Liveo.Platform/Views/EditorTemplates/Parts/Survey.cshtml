@@ -1,0 +1,23 @@
+﻿@model Liveo.Platform.Models.SurveyPart
+@{
+    var survey = Model.Survey;
+}
+
+<fieldset>
+    <legend>Survey Information</legend>
+    <div>
+        @Html.LabelFor(m => Model.Description, T("Description"))
+        @Html.TextBoxFor(m=>Model.Description, new { @class = "textMedium" })
+        @Html.ValidationMessageFor(m=>Model.Description, "*")
+    </div>
+    <div>
+        @Html.LabelFor(m => Model.MajorVersion, T("Major Version"))
+        @Html.TextBoxFor(m=>Model.MajorVersion, new { @class = "textMedium" })
+        @Html.ValidationMessageFor(m=>Model.MajorVersion, "*")
+    </div>
+    <div>
+        @Html.LabelFor(m => Model.MinorVersion, T("Minor Version"))
+        @Html.TextBoxFor(m=>Model.MinorVersion, new { @class = "textMedium" })
+        @Html.ValidationMessageFor(m=>Model.MinorVersion, "*")
+    </div>
+</fieldset>

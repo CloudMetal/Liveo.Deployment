@@ -1,0 +1,69 @@
+﻿@{
+	/* Get image path for images
+    ***************************************************************/
+    var ImgPath = Url.Content("~/Themes/Liveoternal/Content/Images/");
+
+}
+<div class="profile-page-wrapper-left">
+
+
+<div id="banner-top">
+<img src="@(ImgPath + "topbanner.jpg")">
+</div>
+
+
+
+<section id="feature-menu">
+
+  <div id="feature-list">
+		@if (Model.Navigation != null) {
+		@Zone(Model.Navigation)
+		}
+  </div>
+
+
+@if (Layout.Featured != null) {
+<div id="feature-window">
+    @Zone(Model.Featured)
+</div>
+} else {
+  <div id="feature-window">
+<img src="@(ImgPath + "myliveo.jpg")">
+</div>
+}
+
+
+</section> <!-- close feature-menu -->
+
+
+<div id="feed">
+  <div id="feed-status">
+  	<label id="status">STATUS:</label> <input type="text" id="status">
+  </div>
+<div id="history-container">
+<article id="history-content">
+  <section id="history-item">
+ <div id="lftfloat"><img src="@(ImgPath + "profile_pic.jpg")" width="35px" height="35px"></div><div id="history-txt">
+ When it comes to losing weight fast, the Dukan diet can really hit the spot. The Dukan Diet was first published by Dr. Pierre Dukan, who is from France. As we know it most.
+  	When it comes to losing weight fast, the Dukan diet can really hit the spot. The Dukan Diet was first published by Dr. Pierre Dukan, who is from France. As we know it most.
+  </div></section>
+  <hr>
+  <section id="history-item">
+   <div id="lftfloat"><img src="@(ImgPath + "profile_pic.jpg")" width="35px" height="35px"></div><div id="history-txt">
+  	From time in memorial, garlic is and continues to be of great health and medicinal value. Garlic has been used as an antibiotic as well as a cooking ingredient by many around the globe and has recorded great success in all that it has been put to do.
+    </div></section>
+	<hr>
+  <section id="history-item">
+ <div id="lftfloat"><img src="@(ImgPath + "profile_pic.jpg")" width="35px" height="35px"></div><div id="history-txt">
+  	When it comes to losing weight fast, the Dukan diet can really hit the spot. The Dukan Diet was first published by Dr. Pierre Dukan, who is from France. As we know it most.
+  	When it comes to losing weight fast, the Dukan diet can really hit the spot. The Dukan Diet was first published by Dr. Pierre Dukan, who is from France. As we know it most.
+  	When it comes to losing weight fast, the Dukan diet can really hit the spot. The Dukan Diet was first published by Dr. Pierre Dukan, who is from France. As we know it most.
+    When it comes to losing weight fast, the Dukan diet can really hit the spot. The Dukan Diet was first published by Dr. Pierre Dukan, who is from France. As we know it most.
+    
+	</div></section>
+
+</article> 
+</div>
+</div> <!-- close feed -->
+
+</div>  <!-- close profile-page-wrapper-left -->

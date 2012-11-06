@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "HP400-20";
+}
+
+<div link="HP400-20" class="panel invisible">
+    <a   link="HP400-20_link" rel="[link='HP400-20']" style=""></a>
+    @ViewBag.Title_HP400_20
+     <div class="wrapper-small border-1 height-medium whiteback">
+        <div class="title">Add Exercise</div>
+            <label class="large-txt">
+                Title:
+                <span>
+                    <input type="text" />
+                </span>
+            </label>
+            <label class="large-txt">
+                Description:
+                <span>
+                    <textarea></textarea>
+                </span>
+            </label>
+                <label class="small-txt">
+                    Duration:
+                <span>
+                    <input type="number" />
+                </span>
+                </label>
+                    <label class="small-txt">
+                Calories Burned:
+                <span>
+                    <input type="text" />
+                </span>
+                <br />
+                <label class="large-txt">
+                     Type:
+                <span>
+                     <select width="100px">
+                        <option>select...</option>
+                        <option>Cardio</option>
+                        <option>Core</option>
+                        <option>Strength Training</option>
+                        <option>Warmup</option>
+                    </select>
+                </span>
+            </label>
+        
+        <div class="btm-rt">
+            <button link="modalcancelbutton" class="nav-btn-light">CANCEL</button>
+            <button link="modalokbutton" class="nav-btn-green">SAVE</button>
+        </div>
+                <div class="clear"></div>
+    </div>
+</div>

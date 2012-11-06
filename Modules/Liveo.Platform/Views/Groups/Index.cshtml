@@ -1,0 +1,94 @@
+﻿@{
+    //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    ViewBag.EnableViewTitles = true;
+}
+
+
+@{
+    if (ViewBag.EnableViewTitles)
+    {
+        ViewBag.Title_GR10 = "GR10";
+        ViewBag.Title_GR20_10 = "GR20-10";
+        ViewBag.Title_GR20_20 = "GR20-20";
+        ViewBag.Title_GR40_10 = "GR40-10";
+        ViewBag.Title_GR40_20 = "GR40-20";
+        ViewBag.Title_GR40_30 = "GR40-30";
+        ViewBag.Title_GR50 = "GR50";
+        ViewBag.Title_GR60 = "GR60";
+        ViewBag.Title_GR70 = "GR70";
+        ViewBag.Title_GR80 = "GR80";
+        ViewBag.Title_ACH10_10 = "ACH10-10";
+
+    }
+}
+
+
+@{
+Style.Require("reset");
+Style.Require("font");
+Style.Require("layout");
+Style.Require("modal");
+Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+Script.Require("viewModel_Group");
+}
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        CM.hookLink('GR10_CreateGroup', 'popup', 'GR10', 'GR50');
+        CM.hookLink('GR10_FindGroup', 'slidenext', 'GR10', 'GR20-10');
+        CM.hookLink('GR20_10_Cancel', 'slideprev', 'GR20-10', 'GR10');
+        CM.hookLink('GR20-10_AddGroup', 'popup', 'GR20-10', 'GR20-20');
+        CM.hookLink('GR10_PeopleFollowing', 'fade', 'GR10', 'GR80');
+        CM.hookLink('GR10_ViewGroup', 'fade', 'GR10', 'GR40-10');
+        CM.hookLink('GR40-10_BackToMyGroups', 'fade', 'GR40-10', 'GR10');
+        CM.hookLink('GR40-10_Pictures', 'fade', 'GR40-10', 'GR40-20');
+        CM.hookLink('GR40-20_Announcements', 'fade', 'GR40-20', 'GR40-10');
+        CM.hookLink('GR40-10_Members', 'fade', 'GR40-10', 'GR40-30');
+        CM.hookLink('GR40-20_Members', 'fade', 'GR40-20', 'GR40-30');
+
+        CM.hookLink('GR40-30_Announcements', 'fade', 'GR40-30', 'GR40-10');
+        CM.hookLink('GR40-30_Pictures', 'fade', 'GR40-30', 'GR40-20');
+        CM.hookLink('GR40-30_InviteMembers', 'popup', 'GR40-30', 'GR70');
+
+        CM.hookLink('GR40-10_EditGroup', 'popup', 'GR40-10', 'GR50');
+        CM.hookLink('GR40-10_CreateGroup', 'popup', 'GR40-10', 'GR50');
+        CM.hookLink('GR80_BackToMyGroups', 'fade', 'GR80', 'GR10');
+        CM.hookLink('GR40-30_BackToMyGroups', 'fade', 'GR40-30', 'GR10');
+        CM.hookLink('GR40-30_EditGroup', 'popup', 'GR40-30', 'GR50');
+        CM.hookLink('GR40-30_CreateGroup', 'popup', 'GR40-30', 'GR50');
+        CM.hookLink('GR40-10_addChallenges', 'popup', 'GR40-10', 'ACH10-10');
+
+        //$('[link="GR20-10_AddGroup"]').click(function () { CM.closeDialog(); });
+
+    });
+</script>
+
+<body>
+
+    @Html.Partial("pvGR10")
+    @Html.Partial("pvGR20-10")
+    @Html.Partial("pvGR20-20")
+    @Html.Partial("pvGR40-10")
+    @Html.Partial("pvGR40-20")
+    @Html.Partial("pvGR40-30")
+    @Html.Partial("pvGR50")
+    @Html.Partial("pvGR60")
+    @Html.Partial("pvGR70")
+    @Html.Partial("pvGR80")
+    @Html.Partial("pvACH10-10")
+
+</body>

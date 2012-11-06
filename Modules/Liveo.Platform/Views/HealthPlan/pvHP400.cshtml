@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewBag.Title = "HP400";
+}
+
+
+
+<div link="HP400" class="panel invisible">
+    <a   link="HP400_link" rel="[link='HP400']" style=""></a>
+    @ViewBag.Title_HP400
+    <div class="wrapper-large">
+
+        <div class="col-full">
+            <button class="segment-small-status-dark col-half">Health Information</button>
+            <button class="segment-small-status-light col-half">Daily Health Plan</button>
+        </div>
+
+        <h3>MY HEALTH PLAN</h3>
+        <div class="clear"></div>
+
+        <div class="left col-fifteen">
+            <img src="@Href("../../images/profile-pic.jpg")" width="100px" height="100px" />
+        </div>
+        <div class="left col-eighty">
+            <span>Gary Anderson</span>
+            <label>LAST UPDATE: 10/8/2012</label>
+            <button link="HP400_editHealthStats" class="right small-nav-btn-green">Edit Health Stats</button>
+        </div>
+        <div class="clear"></div>
+
+        <div class="modal-normal-row col-full border-top">
+            <div class="col-twenty bg-dark highlight-font-bld modal-normal-row">
+                <label>CURRENT CALORIES</label>
+                <hr>
+                <span>
+                    <label>Consumed:</label>1525</span><br>
+                <br>
+                <span>
+                    <label>Burned:</label>1800</span>
+            </div>
+            <div class="col-seventy-five right">
+                <div class="col-thirty">
+                    <ul>
+                        <li><span>Age:</span> 40</li>
+                        <li><span>Birth Date:</span> 12/15/1972</li>
+                        <li><span>Height:</span> 6'1"</li>
+                        <li><span>Weight:</span> 210lbs</li>
+                        <li><span>Sex:</span> Male</li>
+                    </ul>
+                </div>
+                <div class="col-thirty">
+                    <ul>
+                        <li><span>Body Mass Index:</span> 25</li>
+                        <li><span>Blood Glucose:</span> 40</li>
+                        <li><span>Blood Pressure:</span> 120/80</li>
+                        <li><span>Pulse:</span> 80</li>
+                        <li><span>BMR:</span> 20.5</li>
+                    </ul>
+                </div>
+                <div class="col-thirty">
+                    <ul>
+                        <li><span>Total Cholesterol:</span> 170</li>
+                        <li><span>Hip Circumference:</span> 38</li>
+                        <li><span>Waist Circumference:</span> 32</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+
+        <div class="col-full">
+            <div class="nav-segment-header">
+                <span><a id="nav-segment-prev">PREVIOUS DAY</a></span>
+                <div class="nav-segmentedcontrol">
+                    <button link="HP400_diet" class="right small-nav-btn-light">Diet</button>
+                    <button class="right small-nav-btn-dark">Exercise</button>
+                </div>
+                <span><a id="nav-segment-next">NEXT DAY</a></span>
+            </div>
+            <div class="clear"></div>
+
+
+            <div class="col-full margin-top-ten">
+                <div class="clear"></div>
+                <div class="left">
+                    <div class="left">OCTOBER 10, 2012 HEALTH PLAN</div>
+                </div>
+                <button link="HP400_updateActualExercise" class="right small-nav-btn-green">Update Actual Exercise</button>
+                <div class="clear"></div>
+
+            </div>
+
+
+            <div class="clear"></div>
+            <h8 class="margin-top-ten">Actual Exercises Completed</h8>
+            <table class="col-full" summary="">
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Total Calories Burned</th>
+                        <th>Duration</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tr1">
+                        <td>Warmup</td>
+                        <td>100</td>
+                        <td>20min</td>
+                        <td><a>Remove</a></td>
+                    </tr>
+                    <tr class="tr2">
+                        <td>Strength Training</td>
+                        <td>100</td>
+                        <td>20min</td>
+                        <td><a>Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h8 class="margin-top-ten">Exercise Plan Overview</h8>
+            <table class="col-full" summary="">
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Total Calories Burned</th>
+                        <th>Duration</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tr1">
+                        <td>Warmup</td>
+                        <td>100</td>
+                        <td>20min</td>
+                        <td><a>Remove</a></td>
+                    </tr>
+                    <tr class="tr2">
+                        <td>Strength Training</td>
+                        <td>100</td>
+                        <td>20min</td>
+                        <td><a>Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+
+            <div class="clear"></div>
+            <div class="col-full margin-top-ten">
+                <div class="col-fifteen margin-top-10-mid">
+                    <span class="header-font-bold">EXERCISE 1</span>
+                    <label>Warmup</label>
+                </div>
+                <div class="modal-min-tiny-row col-eighty bg-shadow">
+                    <div class="left">
+                        <img src="@Href("../../Images/plan_pic.jpg")" height="50px" width="50px" />
+                        <label>WALKING</label>
+                    </div>
+                    <div class="right">
+                        <label>CALORIES: 100</label><label>DURATION: 45min</label>
+                    </div>
+                    <div class="clear"></div>
+                    <hr />
+                    <div class="modal-min-tiny-row">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. 
+		<ol>
+            <li>Make sure to walk at a brisk pace</li>
+            <li>Swing your arms</li>
+        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-full margin-top-ten">
+                <div class="col-fifteen margin-top-10-mid">
+                    <span class="header-font-bold">EXERCISE 1</span>
+                    <label>Warmup</label>
+                </div>
+                <div class="modal-min-tiny-row col-eighty bg-shadow">
+                    <div class="left">
+                        <img src="@Href("../../Images/plan_pic.jpg")" height="50px" width="50px" />
+                        <label>WALKING</label>
+                    </div>
+                    <div class="right">
+                        <label>CALORIES: 100</label><label>DURATION: 45min</label>
+                    </div>
+                    <div class="clear"></div>
+                    <hr />
+                    <div class="modal-min-tiny-row">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. 
+		<ol>
+            <li>Make sure to walk at a brisk pace</li>
+            <li>Swing your arms</li>
+        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

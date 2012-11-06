@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Index_HP400-10";
+}
+
+<!-- HP400-10 Update Exercise -->
+<div link="HP400-10" class="invisible panel">
+    @ViewBag.Title_HP400_10
+    <div class="wrapper-medium">
+        <div class="title">UPDATE EXERCISE</div>
+
+
+
+        <label>
+            Search:
+            <br />
+            <input id="someinput"><br>
+            <select id="optlist" multiple="multiple" width="300px">
+                <option value="1">Run</option>
+                <option value="2">Running</option>
+                <option value="3">Distance Running</option>
+
+            </select>​
+
+            
+        </label>
+
+
+
+        <label class="large-txt">
+            Title:
+                <span>
+                    <input type="text" />
+                </span>
+        </label>
+        <label class="large-txt">
+            Description:
+                <span>
+                    <textarea></textarea>
+                </span>
+        </label>
+
+
+        <label class="large-txt">
+            Type:
+
+           <span>
+               <select>
+                   <option>select....</option>
+               </select>
+           </span>
+        </label>
+        <br />
+
+        <label class="small-txt">
+            Duration:
+                <span>
+                    <input type="number" />
+                </span>
+        </label>
+
+        @*  <br />
+        <label class="small-txt">
+            Calories Burned:
+               
+        </label>*@
+
+        <div class="clear"></div>
+
+
+
+        <div class="right">
+            <button link="HP400-10_cancel" class="nav-btn-light">CANCEL</button>
+            <button link="HP400-10_cancel" class="nav-btn-green">COMPLETED EXERCISE</button>
+
+
+        </div>
+    </div>
+</div>

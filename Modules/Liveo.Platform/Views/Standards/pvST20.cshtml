@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "pvST20";
+}
+<!--------------------------------------------------------- BEGIN _ST20_ -------------------------------------------------------------->
+<script>
+    $(document).ready(function () {
+        CM.hookLink('ST20_start', 'slidenext', 'ST20', 'ST20-10');
+    });
+</script>
+
+<div link="ST20" class="panel invisible">
+    <a link="ST20_link" rel="[link='ST20']" style=""></a>
+    <h2>@ViewBag.Title_ST20 - Multistep Process (wizard)</h2>
+    <br />
+    <br />
+    - A multistep process will operate like a standard "wizard" with forward and back buttons
+    <br />
+    <br />
+    - Navigate between screens using the CM.hookLink method:
+    <br /><br />
+    &nbsp&nbsp <b>CM.hookLink = function (id, effect, from, to)</b>
+    <br /><br />
+
+    &nbsp&nbsp <em>id = </em> The name of the link that you are clicking to cause the transition.
+    &nbsp&nbsp <em>effect = </em> The type of transition. Choices are: "slidenext", "slideprev", "fade" and "popup".
+    &nbsp&nbsp <em>from = </em> The link attr where you are transitioning from.
+    &nbsp&nbsp <em>to = </em> The link attr where you are transitioning to.
+    <br />
+    <br />
+    - For example, if wish to transition from view ST20-10 to ST20-20, use the following:
+    <br />
+    <br />
+    &nbsp&nbsp <b>CM.hookLink('ST20-10_next', 'slidenext', 'ST20-10', 'ST20-20');</b>
+    <br />
+    <br />
+    <p>
+        <b><em>EXAMPLE:</em></b> &nbsp <button link="ST20_start" class="small-nav-btn-light">START!</button>
+    </p>
+</div>
+<!--------------------------------------------------------- END _ST20_ -------------------------------------------------------------->

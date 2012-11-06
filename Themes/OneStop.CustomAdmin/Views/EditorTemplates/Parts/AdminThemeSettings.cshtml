@@ -1,0 +1,23 @@
+﻿@using System.Web.Mvc.Html
+@using Orchard.Mvc.Html
+@model Onestop.CustomAdmin.Models.AdminThemeSettingsPart
+
+<fieldset>
+    <legend>@T("Admin Branding Settings")</legend>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.LogoUrl)">@T("Logo URL")</label>
+        @Html.TextBoxFor(m => m.LogoUrl)
+        @Html.ValidationMessage("LogoUrl", "*")
+        <span class="hint">@T("The logo should be an image 40x60 or smaller.")</span>
+    </div>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.Brand)">@T("Branding text")</label>
+        @Html.TextBoxFor(m => m.Brand)
+        @Html.ValidationMessage("Brand", "*") 
+    </div>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.Welcome)">@T("Welcome message")</label>
+        @Html.TextBoxFor(m => m.Welcome)
+        @Html.ValidationMessage("Welcome", "*") 
+    </div>
+</fieldset>

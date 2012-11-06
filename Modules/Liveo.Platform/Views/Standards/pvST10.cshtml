@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "pvST10";
+}
+<!--------------------------------------------------------- BEGIN _ST10_ -------------------------------------------------------------->
+<script>
+    $(document).ready(function () {
+        CM.hookLink('ST10_popupView', 'popup', 'ST10', 'ST10-10');
+
+        $('[link="ST10_popupDirect"]').click(function () { $('[link="ST10-10_link"]').click(); });
+    });
+
+</script>
+
+<div link="ST10" class="panel invisible">
+    <a link="ST10_link" rel="[link='ST10']" style=""></a>
+    <h2>@ViewBag.Title_ST10 - Popups</h2>
+    <br />
+    <br />
+
+    <p>
+        - Give the element that is triggering the popup a "link=[this view]_[function]" attribute where [this view] is the name of the view that is calling the popup ("ST10") and [action] is the display text in camelCasing (NOT Pascal - do not use upper-case for first letter) of the element that is triggering the popup ("popupView"):
+        
+        <br />
+        <br />
+
+        &nbsp&nbsp <b>&lt;a link=&quot;ST10_popupView&quot;&gt;Popup a view&lt;/a&gt;</b>
+
+        <br />
+        <br />
+
+        - In $(document).ready(), use the CM.hookLink CloudMetal library function to wire up the element to trigger the popup:
+        <br />
+        <br />
+        &nbsp&nbsp CM.hookLink('[link]', '[action]', '[from view]', '[to view]'); 
+        
+        <br />
+        <br />
+
+        &nbsp&nbsp In this context:
+        <br />
+        &nbsp&nbsp <b>CM.hookLink('ST10_popupView', 'popup', 'ST10', 'ST10-10');</b>
+
+        <br />
+        <br />
+
+        - The cancel button should have "link='modalcancelbutton'". This provides the mechansim to simply close the window:<br />
+        <br />
+        &nbsp&nbsp <b>&lt;a link=&quot;modalcancelbutton&quot;&gt;Cancel&lt;/a&gt;</b>
+
+        <br />
+        <br />
+
+        <b><em>EXAMPLE:</em></b>&nbsp
+        <a link="ST10_popupView">Popup a view</a>
+        <br />
+        <b><em>EXAMPLE:</em></b>&nbsp
+        <a link="ST10_popupDirect">Popup direct</a>
+
+
+    </p>
+</div>
+<!--------------------------------------------------------- END _ST10_ -------------------------------------------------------------->

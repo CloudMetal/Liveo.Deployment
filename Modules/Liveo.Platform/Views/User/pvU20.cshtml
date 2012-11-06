@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "pvU20";
+}
+<!--------------------------------------------------------- BEGIN _U20_ -------------------------------------------------------------->
+<script>
+    var _program_ViewModel;
+
+    $(document).ready(function () {
+
+        _program_ViewModel = new Program_ViewModel();
+        _program_ViewModel.initAllProgramModels(U20_initCallbackSuccess, null);
+
+        ko.attach("vmProgram", _program_ViewModel);
+
+        $('[link="U20_step2"]').click(function () { U20_step2(); });
+        $('[link="U20_finish"]').click(function () { U20_finish(); });
+    });
+
+
+    function U20_initCallbackSuccess(count) {
+       // alert(count);
+    }
+
+    function U20_beginViewDetails(eModel) {      
+        _program_ViewModel.beginEditedProgramModel(eModel, 'U20-10_link');
+    }
+
+    function U20_step2() {
+        CM.fadeTransition('U20', 'U10', 200);
+    }
+
+    function U20_finish() {
+        //Save User
+        CM.showSpinner('U20_spinner_page');
+        _user_ViewModel.commitCandidateUserModel(U20_createUserSuccess, U20_createUserFail);
+    }
+
+    function U20_createUserSuccess(newId) {
+        //upon create user success, create the goal:
+        _goal_ViewModel.candidateGoalModel().UserId(newId);
+        _goal_ViewModel.commitCandidateGoalModel(U20_createGoalSuccess, U20_createGoalFail);
+    }
+
+    function U20_createUserFail(msg) {
+        alert("failed to create user: " + msg);
+    }
+
+    function U20_createGoalSuccess(newGoalId) {
+        if (newGoalId) {
+            _program_ViewModel.candidateProgramModel().GoalId(newGoalId);
+            var affiliateid = _program_ViewModel.candidateProgramModel().AffiliateId();
+            _program_ViewModel.candidateProgramModel().AffiliateId = null;
+            _program_ViewModel.candidateProgramModel().OriginatingAffiliateId(affiliateid);
+            _program_ViewModel.commitCandidateProgramModel(U20_redirect, null);
+        }
+    }
+
+    function U20_createGoalFail(msg) {
+        alert("failed to create new goal: " + msg);
+    }
+
+    function U20_useThisProgram(eModel) {
+        _program_ViewModel.candidateProgramModel(eModel);
+    }
+
+    function U20_redirect() {
+        CM.hideSpinner('U20_spinner_page');
+        document.location = "Users/Profile";
+    }
+
+
+</script>
+<div data-model="vmProgram">
+    <div link="U20" class="panel invisible">
+        <a link="U20_link" rel="[link='U20']" style=""></a>
+        @ViewBag.Title_U20
+        <h2>Step 3 - Select a Program</h2><br /><br />
+
+
+
+        <div class="modal-max-huge-row scroll-window">
+
+            <!-- ko foreach:programModels -->
+
+            <div class="border-1">
+                <div class="col-thirty">
+                    <img width="100px" height="100px" data-bind="attr:{src: PictureUrl}" /> 
+                  @*  <img src="images/g10albumsvacation2.png" height="100px" width="100px" />*@
+                </div>
+                <div class="col-sixty">
+                    <span data-bind="html:Name" class="med-font-bld"></span><span class="med-font"></span>
+                    <br />
+                    <hr />
+                    <div data-bind="html:GeneralDescription"></div>
+
+                </div>
+                <div class="right modal-max-tiny-row margin-top-ten">
+                    <a class='readyForPicking'   onclick="CM.markSelection($(this),'Select','');"  data-bind="click: function(){ U20_useThisProgram($data); }"  >Select</a>
+                    | <a data-bind="click:function(){ U20_beginViewDetails($data); }">Details</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <!-- /ko -->
+
+            <div>
+                <button class="segment-small-status-light" link="U20_step2" class="primaryAction"><- Back to Step 2 - Survey</button>
+                <button class="segment-small-status-green" link="U20_finish" class="primaryAction">Finish!</button> 
+                <div id="U20_spinner_page" class="invisible">
+                    please wait...
+                    <img id="img-spinner" src="@Href("../../Images/waiting.gif")" alt="Loading" />
+                </div>
+
+            </div>
+        </div>
+
+        <p>
+            <label>
+                <div link="U20_message"></div>
+            </label>
+        </p>
+
+    </div>
+</div>
+
+<!--------------------------------------------------------- END _U20_ -------------------------------------------------------------->

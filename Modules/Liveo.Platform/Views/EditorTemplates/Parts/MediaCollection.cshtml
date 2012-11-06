@@ -1,0 +1,13 @@
+﻿@model Liveo.Platform.Models.MediaCollectionPart
+@{
+    
+}
+
+<fieldset>
+    <legend>Media Collection</legend>
+    <div>
+        @Html.LabelFor(m => m.MediaCollectionId)
+        @Html.TextBoxFor(m => m.MediaCollectionId)
+        @Html.ValidationMessageFor(m => m.MediaCollectionId)
+    </div>
+</fieldset>

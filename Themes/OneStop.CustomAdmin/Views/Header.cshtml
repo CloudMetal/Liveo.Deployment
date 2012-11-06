@@ -1,0 +1,16 @@
+﻿@using Onestop.CustomAdmin.Services
+@using Orchard
+@{
+    var adminThemeSettings = WorkContext.Resolve<IAdminThemeSettingsService>().GetServiceSettings();
+    var logoUrl = adminThemeSettings.LogoUrl;
+    var brand = String.IsNullOrWhiteSpace(adminThemeSettings.Brand) ? T("Your Site").ToString() : adminThemeSettings.Brand;
+    var homeLink = Url.Action("Index", new {Area = "", Controller = "Home"});
+}
+<div id="branding">
+<div id="app">
+    <a href="@homeLink" style="@(String.IsNullOrWhiteSpace(logoUrl) ? "" : "background:url(" + logoUrl + ") no-repeat;");background-position:center center;">@brand</a>
+</div>
+<div id="site">
+    <a href="@homeLink">@brand</a>
+</div>
+</div>

@@ -1,0 +1,191 @@
+﻿@{
+    ViewBag.Title = "pvU01";
+}
+<!--------------------------------------------------------- BEGIN _U01_ -------------------------------------------------------------->
+<script>
+    var _user_ViewModel;
+
+
+    function U01_createUserSuccess(newId){
+        //_user_ViewModel.addedUserModel() now contains the newly added model
+        alert("user created. Navigating to Survey.");
+
+        CM.fadeTransition('U01','U10',200);
+    }
+    function U01_createUserFail(msg) {
+        alert("Failed to add user. " + msg);
+    }
+
+
+    $(document).ready(function () {
+
+        $('[link="U01_step2"]').click(function () { U01_step2(); });
+
+        _user_ViewModel = new User_ViewModel();
+
+
+        _user_ViewModel.beginCandidateUserModel();
+        _user_ViewModel.candidateUserModel().UserName('');
+        _user_ViewModel.candidateUserModel().Email('');
+        _user_ViewModel.candidateUserModel().Password('');
+        _user_ViewModel.candidateUserModel().Name('');
+
+        _user_ViewModel.candidateUserModel().DateOfBirth('1/1/1800');
+        _user_ViewModel.candidateUserModel().GenderTypeId("1");
+        _user_ViewModel.candidateUserModel().IsInitialSurveyComplete(true);
+        _user_ViewModel.candidateUserModel().CreateDate("@DateTime.Now.ToString("MM/dd/yyyy")");
+        _user_ViewModel.candidateUserModel().LastUpdateDate("@DateTime.Now.ToString("MM/dd/yyyy")");
+        _user_ViewModel.candidateUserModel().LastLoginDate("@DateTime.Now.ToString("MM/dd/yyyy")");
+        _user_ViewModel.candidateUserModel().LastLockoutDate("@DateTime.Now.ToString("MM/dd/yyyy")");
+        _user_ViewModel.candidateUserModel().LastActivityDate("@DateTime.Now.ToString("MM/dd/yyyy")");
+        _user_ViewModel.candidateUserModel().LastPasswordChangeDate("@DateTime.Now.ToString("MM/dd/yyyy")");
+        _user_ViewModel.candidateUserModel().FailedPasswordAttemptCount(0);
+        _user_ViewModel.candidateUserModel().FailedPasswordAttemptWindowStart("@DateTime.Now.ToString("MM/dd/yyyy")");
+        _user_ViewModel.candidateUserModel().FailedPasswordAnswerAttemptCount(0);
+        _user_ViewModel.candidateUserModel().FailedPasswordAnswerAttemptWindowStart("@DateTime.Now.ToString("MM/dd/yyyy")");
+        _user_ViewModel.candidateUserModel().Comment("");
+        _user_ViewModel.candidateUserModel().PasswordSalt("");
+        _user_ViewModel.candidateUserModel().LoweredEmail("");
+        _user_ViewModel.candidateUserModel().PasswordFormat(0);
+        _user_ViewModel.candidateUserModel().IsOnline(false);
+        _user_ViewModel.candidateUserModel().IsLockedOut(false);
+        _user_ViewModel.candidateUserModel().IsApproved(false);
+        _user_ViewModel.candidateUserModel().PasswordAnswer("");
+        _user_ViewModel.candidateUserModel().PasswordQuestion("");
+
+        ko.attach("vmUser", _user_ViewModel);
+    });
+
+    function U01_step2() {
+       
+        //MOVE TO NEXT SCREEN. COMMIT USER WITH EVERYTHING ELSE IN ONE TRANSACTION
+        if (U01_validated()) {
+            CM.fadeTransition('U01', 'U10', 200);
+        } else {
+           
+        }
+    }
+
+    function U01_validated() {
+
+
+        var divFirstName = $('[link="U01_firstName"]');
+        var firstName = $('[link="U01_txtFirstName"]');
+
+        var divLastName = $('[link="U01_lastName"]');
+        var lastName = $('[link="U01_txtLastName"]');
+
+        var divEmail = $('[link="U01_email"]');
+        var email = $('[link="U01_txtEmail"]');
+
+        var divPassword = $('[link="U01_password"]');
+        var password = $('[link="U01_txtPassword"]');
+
+        var divRPassword = $('[link="U01_repeatPassword"]');
+        var rpassword = $('[link="U01_txtRepeatPassword"]');
+
+        var passwordsMatch = validPasswordsMatch(password, rpassword);
+
+        var validFirstName = validNotBlank(firstName, divFirstName);
+        var validLastName = validNotBlank(lastName, divLastName);
+        var validEmail = validNotBlank(email, divEmail);
+        var validPassword = validNotBlank(password, divPassword);
+        var validRepeatPassword = validNotBlank(rpassword, divRPassword);
+
+        if (validFirstName && validLastName && validEmail && validPassword && validRepeatPassword && passwordsMatch) {
+            return true;
+        } else {
+            if (!passwordsMatch) {
+                $('[link="U01_invalidPasswordMatch"]').html("<label class='invalid'>Passwords do not match</label>");
+            } else {
+                $('[link="U01_invalidPasswordMatch"]').html("");
+            }
+            return false;
+        }
+    }
+
+    function invalid($element) {
+        $element.addClass("invalid");
+    }
+
+    function valid($element) {
+        $element.removeClass("invalid");
+    }
+
+    function validNotBlank($txt, $outerDiv) {
+        if (!$txt.val()) {
+            invalid($outerDiv)
+            return false;
+        } else {
+            valid($outerDiv)
+            return true;
+        }
+    }
+
+    function validPasswordsMatch($p1, $p2) {
+        if ($p1.val() != $p2.val()) {
+            invalid($p1);
+            invalid($p2);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+</script>
+<div data-model="vmUser">
+    <div link="U01" class="panel notinvisible">
+        <div class="wrapper-large">
+            <div class="title">Step 1 - Registration</div>
+            <div class="col-sixty">
+                <a link="U01_link" rel="[link='U01']" style=""></a>
+                @ViewBag.Title_U01
+
+                <label link="U01_FirstName" class="large-txt">First Name:
+                    <input data-bind="value:candidateUserModel().Name" link="U01_txtFirstName" type="text" />
+                </label>
+                <br/>
+                <label link="U01_lastName" class="large-txt">Last Name:
+                    <input data-bind="value:candidateUserModel().UserName" link="U01_txtLastName" type="text" />
+                </label>
+                <br/>
+                <label link="U01_email" class="large-txt">Email (Username):
+                    <input data-bind="value:candidateUserModel().Email"  link="U01_txtEmail" type="text" />
+                </label>
+                <br/>
+                Your password must be at least 8 characters and contain at least 1 numeric digit.
+                <label link="U01_password" class="large-txt">Password:
+                    <input data-bind="value:candidateUserModel().Password"  link="U01_txtPassword" type="password" /><div link="U01_invalidPasswordMatch"></div>
+                </label>    
+                <br/>
+                <label  link="U01_repeatPassword"  class="large-txt">Password Confirmation:
+                    <input link="U01_txtRepeatPassword" type="password" />
+                </label>
+                <br/>                <label class="large-txt">Promotional Code:
+                    <input type="text" />
+                </label>
+                <br/>
+		
+                <input type="checkbox"/> I agree to the Liveo <a>User Agreement</a> and <a>Privacy Policy</a>.
+
+                <div>
+                    <button class="segment-small-status-light" link="U01_cancel" class="primaryAction">Cancel</button>
+                    <button class="segment-small-status-green" link="U01_step2" class="primaryAction">Step 2 - Take Survey</button>
+                </div>
+
+                Already have an account? Sign in <a>here</a>.
+                <br/><br/><br/>
+                <img src="@Href("../../Images/sign_facebook.jpg")" /><br/>
+                <img src="@Href("../../Images/sign_twitter.jpg")" />
+                <p>
+                    <label><div link="U01_message"></div></label>
+          
+                </p>
+            </div>
+            <div col="col-thirty">
+                      <img src="@Href("../../Images/U01_signup_banner2.jpg")" />
+                  </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------------------------------- END _U01_ -------------------------------------------------------------->

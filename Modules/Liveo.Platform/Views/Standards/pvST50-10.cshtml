@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "pvST50-10";
+}
+<!--------------------------------------------------------- BEGIN _ST50_10 -------------------------------------------------------------->
+<div link="ST50-10" class="panel invisible">
+    <a link="ST50-10_link" rel="[link='ST50-10']" style=""></a>
+    <h2>@ViewBag.Title_ST50_10 - Yes/No Verification</h2>
+    <br />
+    <br />
+
+    <div  class="wrapper-small popupwindow">
+      
+        <div link="ST50-10_modalText"></div>
+
+        <br /><br />
+        <div data-model="vmYesNo">
+        <p>
+            <button link="modalokbutton" 
+                    data-bind="click:function(){ Answer('YES'); }" 
+                    class="small-nav-btn-light">
+                Yes
+            </button>
+
+            <button link="modalcancelbutton" data-bind="click:function(){ Answer('NO'); }" class="small-nav-btn-light">No</button>
+        </p>
+        </div>
+    </div>
+</div>
+<!--------------------------------------------------------- END _ST50_10 -------------------------------------------------------------->

@@ -1,0 +1,939 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1B6B8D3-BE94-4AA7-BE35-F12BC5EBB38B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Liveo.Platform</RootNamespace>
+    <AssemblyName>Liveo.Platform</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\autofac\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Configuration, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\autofac\Autofac.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CloudMetal.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\cloudmetal\CloudMetal.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Kendo.Mvc, Version=2012.2.913.340, Culture=neutral, PublicKeyToken=29ac1a93ec063d92, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\cloudmetal\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Liveo.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\cloudmetal\Liveo.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Liveo.WebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\cloudmetal\Liveo.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Orchard.Core, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Orchard.Users\bin\Orchard.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard.Framework, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Orchard.Users\bin\Orchard.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard.Users, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Orchard.Users\bin\Orchard.Users.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\aspnetwebapi\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\aspnetwebapi\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\aspnetmvc\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\aspnetmvc\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Vandelay.Industries, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\App_Data\Dependencies\Vandelay.Industries.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\accent.png" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\add_photo.png" />
+    <Content Include="Images\album.png" />
+    <Content Include="Images\billbixby.jpg" />
+    <Content Include="Images\blood-pressure-chart.jpg" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\centralcrossfit.JPG" />
+    <Content Include="Images\clairedanes.jpg" />
+    <Content Include="Images\g10albumsfunrun.png" />
+    <Content Include="Images\g10albumsfunrun1.png" />
+    <Content Include="Images\g10albumsfunrun2.png" />
+    <Content Include="Images\g10albumsfunrun3.png" />
+    <Content Include="Images\g10albumsfunrun4.png" />
+    <Content Include="Images\g10albumsgym.png" />
+    <Content Include="Images\g10albumsgym1.png" />
+    <Content Include="Images\g10albumsgym2.png" />
+    <Content Include="Images\g10albumsgym3.png" />
+    <Content Include="Images\g10albumsgym4.png" />
+    <Content Include="Images\g10albumsvacation.png" />
+    <Content Include="Images\g10albumsvacation1.png" />
+    <Content Include="Images\g10albumsvacation2.png" />
+    <Content Include="Images\g10albumsvacation3.png" />
+    <Content Include="Images\g10albumsvacation4.png" />
+    <Content Include="Images\g10photos1.png" />
+    <Content Include="Images\g10photos2.png" />
+    <Content Include="Images\g10photos3.png" />
+    <Content Include="Images\g10photos4.png" />
+    <Content Include="Images\galleryphotos1.png" />
+    <Content Include="Images\galleryphotos2.png" />
+    <Content Include="Images\galleryphotos3.png" />
+    <Content Include="Images\galleryphotos4.png" />
+    <Content Include="Images\goldsgym.jpg" />
+    <Content Include="Images\groupsphotos1.png" />
+    <Content Include="Images\groupsphotos2.png" />
+    <Content Include="Images\groupspilatesgroup.png" />
+    <Content Include="Images\groupspumpgroup.png" />
+    <Content Include="Images\groupsspingroup.png" />
+    <Content Include="Images\groupsstepgroup.png" />
+    <Content Include="Images\groupsyogagroup.png" />
+    <Content Include="Images\group_ppl.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\jerry-springer.jpg" />
+    <Content Include="Images\joesfitness.jpg" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_01.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_02.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_03.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_04.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_05.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_06.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_07.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_08.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_09.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_10.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_11.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_12.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_13.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_14.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealthE_15.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_01.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_02.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_03.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_04.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_05.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_06.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_07.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_08.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_09.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_10.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_11.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_12.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_13.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_14.png" />
+    <Content Include="Images\Liveo_Profile_LiveoHealth_15.png" />
+    <Content Include="Images\Lucy_Liu.jpg" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\padlock.png" />
+    <Content Include="Images\plan_pic.jpg" />
+    <Content Include="Images\profile-pic.jpg" />
+    <Content Include="Images\push.jpg" />
+    <Content Include="Images\Screen-Shot-2012-10-23-at-11.48.07-AM_01.png" />
+    <Content Include="Images\Screen-Shot-2012-10-23-at-11.48.07-AM_02.png" />
+    <Content Include="Images\Screen-Shot-2012-10-23-at-11.48.07-AM_03.png" />
+    <Content Include="Images\Screen-Shot-2012-10-23-at-11.48.07-AM_04.png" />
+    <Content Include="Images\Screen-Shot-2012-10-23-at-11.48.07-AM_05.png" />
+    <Content Include="Images\spacer.gif" />
+    <Content Include="Images\spingroup.jpg" />
+    <Content Include="Images\surveyimage.jpeg" />
+    <Content Include="Images\survey_banner.jpg" />
+    <Content Include="Images\tag.png" />
+    <Content Include="Images\tonylittle.jpg" />
+    <Content Include="Images\waiting.gif" />
+    <Content Include="Images\witherspoon.jpg" />
+    <Content Include="Scripts\Resources\jquery.cookie.js" />
+    <Content Include="Scripts\Resources\jquery.fancybox.js" />
+    <Content Include="Scripts\Resources\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\Resources\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="Scripts\Resources\knockout.validation.js" />
+    <Content Include="Scripts\Resources\knockout.validation.min.js" />
+    <Content Include="Styles\jquery.fancybox.css" />
+    <Content Include="Styles\Liveo\Images\add_photo.png" />
+    <Content Include="Styles\Liveo\Images\album.png" />
+    <Content Include="Content\Images\bullet.png" />
+    <Content Include="Content\Images\chartex.png" />
+    <Content Include="Content\Images\group_ppl.png" />
+    <Content Include="Content\Images\heroAccent.png" />
+    <Content Include="Content\Images\orderedList0.png" />
+    <Content Include="Content\Images\orderedList1.png" />
+    <Content Include="Content\Images\orderedList2.png" />
+    <Content Include="Content\Images\orderedList3.png" />
+    <Content Include="Content\Images\orderedList4.png" />
+    <Content Include="Content\Images\orderedList5.png" />
+    <Content Include="Content\Images\orderedList6.png" />
+    <Content Include="Content\Images\orderedList7.png" />
+    <Content Include="Content\Images\orderedList8.png" />
+    <Content Include="Content\Images\orderedList9.png" />
+    <Content Include="Content\Images\padlock.png" />
+    <Content Include="Content\Images\plan_pic.jpg" />
+    <Content Include="Content\Images\profile-pic.jpg" />
+    <Content Include="Content\Images\tag.png" />
+    <Content Include="Content\Images\Trend_Graph_1.png" />
+    <Content Include="Content\Images\waiting.gif" />
+    <Content Include="Scripts\Fitness\common.js" />
+    <Content Include="Scripts\Generated\viewModel_Affiliate.js" />
+    <Content Include="Scripts\Generated\viewModel_Album.js" />
+    <Content Include="Scripts\Generated\viewModel_AnswerSelection.js" />
+    <Content Include="Scripts\Generated\viewModel_ChartType.js" />
+    <Content Include="Scripts\Generated\viewModel_Exercise.js" />
+    <Content Include="Scripts\Generated\viewModel_ExerciseType.js" />
+    <Content Include="Scripts\Generated\viewModel_Feature.js" />
+    <Content Include="Scripts\Generated\viewModel_Goal.js" />
+    <Content Include="Scripts\Generated\viewModel_GoalType.js" />
+    <Content Include="Scripts\Generated\viewModel_Goal_WIP.js" />
+    <Content Include="Scripts\Generated\viewModel_Group.js" />
+    <Content Include="Scripts\Generated\viewModel_GroupMembership.js" />
+    <Content Include="Scripts\Generated\viewModel_Ingredient.js" />
+    <Content Include="Scripts\Generated\viewModel_Meal.js" />
+    <Content Include="Scripts\Generated\viewModel_Measurement.js" />
+    <Content Include="Scripts\Generated\viewModel_MeasurementType.js" />
+    <Content Include="Scripts\Generated\viewModel_MediaItem.js" />
+    <Content Include="Scripts\Generated\viewModel_Organization.js" />
+    <Content Include="Scripts\Generated\viewModel_Persona.js" />
+    <Content Include="Scripts\Generated\viewModel_Program.js" />
+    <Content Include="Scripts\Generated\viewModel_ProgramCycle.js" />
+    <Content Include="Scripts\Generated\viewModel_QuestionType.js" />
+    <Content Include="Scripts\Generated\viewModel_Reading.js" />
+    <Content Include="Scripts\Generated\viewModel_ReadingSource.js" />
+    <Content Include="Scripts\Generated\viewModel_ReadingSourceType.js" />
+    <Content Include="Scripts\Generated\viewModel_ReadingType.js" />
+    <Content Include="Scripts\Generated\viewModel_ReadingTypeUnitTypeX.js" />
+    <Content Include="Scripts\Generated\viewModel_Role.js" />
+    <Content Include="Scripts\Generated\viewModel_Survey.js" />
+    <Content Include="Scripts\Generated\viewModel_SurveyQuestion.js" />
+    <Content Include="Scripts\Generated\viewModel_SystemInstallation.js" />
+    <Content Include="Scripts\Generated\viewModel_UnitType.js" />
+    <Content Include="Scripts\Generated\viewModel_User.js" />
+    <Content Include="Scripts\Generated\viewModel_UserAffiliateX.js" />
+    <Content Include="Scripts\Generated\viewModel_UserAnswer.js" />
+    <Content Include="Scripts\Generated\viewModel_UserPersona.js" />
+    <Content Include="Scripts\Generated\viewModel_UserQuestion.js" />
+    <Content Include="Scripts\Generated\viewModel_UserSurvey.js" />
+    <Content Include="Scripts\Depricated\Awesome.js" />
+    <Content Include="Scripts\Resources\jquery-1.8.2-min.js" />
+    <Content Include="Scripts\Resources\jquery-ui-1.8.24-min.js" />
+    <Content Include="Scripts\Depricated\jquery.colorbox.js" />
+    <Content Include="Scripts\Depricated\jquery.form.js" />
+    <Content Include="Scripts\Depricated\jquery.form.min.js" />
+    <Content Include="Scripts\Depricated\jquery.jstepper.min.js" />
+    <Content Include="Scripts\Resources\jquery.livequery.js" />
+    <Content Include="Scripts\Resources\jquery.tools.1.2.7-min.js" />
+    <Content Include="Scripts\Resources\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\Resources\knockout-2.1.0.js" />
+    <Content Include="Scripts\Resources\knockout.multimodels-0.1.min.js" />
+    <Content Include="Scripts\Resources\MicrosoftMvcJQueryValidation.js" />
+    <Content Include="Scripts\Depricated\mvcvalidationfix.js" />
+    <Content Include="Scripts\Depricated\style.js" />
+    <Content Include="Styles\jqui.css" />
+    <Content Include="Styles\Liveo\font.css" />
+    <Content Include="Styles\Liveo\layout.css" />
+    <Content Include="Styles\Liveo\reset.css" />
+    <Content Include="Styles\menu.liveo-admin.css" />
+    <Content Include="Styles\modal.css" />
+    <Content Include="Views\Affiliate\Item.cshtml" />
+    <Content Include="Views\Affiliate\List.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Styles\Web.config" />
+    <Content Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Module.txt" />
+    <Content Include="Views\Affiliate\Index.cshtml" />
+    <Content Include="Views\Affiliate\ProgramOld.cshtml" />
+    <Content Include="Views\Affiliate\pvA100-0.cshtml" />
+    <Content Include="Views\Affiliate\pvA100-10.cshtml" />
+    <Content Include="Views\Affiliate\pvA100-20.cshtml" />
+    <Content Include="Views\Affiliate\pvA100-25.cshtml" />
+    <Content Include="Views\Affiliate\pvA100-30.cshtml" />
+    <Content Include="Views\Affiliate\pvA100-35.cshtml" />
+    <Content Include="Views\Affiliate\pvA200-0.cshtml" />
+    <Content Include="Views\Affiliate\pvA200-10.cshtml" />
+    <Content Include="Views\Affiliate\pvA300-10.cshtml" />
+    <Content Include="Views\Affiliate\pvA300-20.cshtml" />
+    <Content Include="Views\Affiliate\pvA300-30.cshtml" />
+    <Content Include="Views\Fitness\CreateGoal.cshtml" />
+    <Content Include="Views\Fitness\CreateGoal_TEST.cshtml" />
+    <Content Include="Views\Fitness\index.cshtml" />
+    <Content Include="Views\Fitness\pvA100-10.cshtml" />
+    <Content Include="Views\Fitness\pvHP100-10.cshtml" />
+    <Content Include="Views\Fitness\pvHP300-10.cshtml" />
+    <Content Include="Views\Fitness\pvHP300-20.cshtml" />
+    <Content Include="Views\Fitness\pvHP300-0.cshtml" />
+    <Content Include="Views\Fitness\pvHP400-10.cshtml" />
+    <Content Include="Views\Fitness\pvHP400-20.cshtml" />
+    <Content Include="Views\Fitness\pvHP400.cshtml" />
+    <Content Include="Views\Fitness\pvHT03.cshtml" />
+    <Content Include="Views\Fitness\pvHT05.cshtml" />
+    <Content Include="Views\Fitness\pvHT10.cshtml" />
+    <Content Include="Views\Fitness\pvHT20.cshtml" />
+    <Content Include="Views\Fitness\SAFE_pvHT23.cshtml" />
+    <Content Include="Views\Fitness\pvYesNoModal.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\Groups\depricated_GroupAddAnouncement.cshtml" />
+    <Content Include="Views\Groups\depreicated_GroupEdit.cshtml" />
+    <Content Include="Views\Groups\depreicated_GroupInviteMembers.cshtml" />
+    <Content Include="Views\Groups\depricated_GroupMySubscriptions.cshtml" />
+    <Content Include="Views\Groups\depricated_GroupPrivateNotification.cshtml" />
+    <Content Include="Views\Groups\depricated_GroupSearchAdd.cshtml" />
+    <Content Include="Views\Groups\depricated_GroupViewMain.cshtml" />
+    <Content Include="Views\Groups\depricated_GroupViewMembers.cshtml" />
+    <Content Include="Views\Groups\depricated_GroupViewPictures.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminMenu.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AffiliateAdminController.cs" />
+    <Compile Include="Controllers\AffiliateApiController.cs" />
+    <Compile Include="Controllers\AffiliateController.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\AnswerSelectionApiController.cs" />
+    <Compile Include="Controllers\ProgramApiController.cs" />
+    <Compile Include="Controllers\StandardsController.cs" />
+    <Compile Include="Controllers\FeatureAdminController.cs" />
+    <Compile Include="Controllers\FitnessApiController.cs" />
+    <Compile Include="Controllers\FitnessController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Controllers\GoalApiController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
+    <Compile Include="Controllers\HealthPlanController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MemberSearchController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SurveyAdminController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserApiController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ValidateAntiForgeryTokenAttribute.cs" />
+    <Compile Include="Data\ILiveoAffiliateRepository.cs" />
+    <Compile Include="Data\ILiveoAnswerSelectionRepository.cs" />
+    <Compile Include="Data\ILiveoChartTypeRepository.cs" />
+    <Compile Include="Data\ILiveoConnectionStringService.cs" />
+    <Compile Include="Data\ILiveoDataContext.cs" />
+    <Compile Include="Data\ILiveoFeatureRepository.cs" />
+    <Compile Include="Data\ILiveoGoalRepository.cs" />
+    <Compile Include="Data\ILiveoGoalTypeRepository.cs" />
+    <Compile Include="Data\ILiveoPersonaRepository.cs" />
+    <Compile Include="Data\ILiveoProgramRepository.cs" />
+    <Compile Include="Data\ILiveoRoleRepository.cs" />
+    <Compile Include="Data\ILiveoSurveyQuestionRepository.cs" />
+    <Compile Include="Data\ILiveoSurveyRepository.cs" />
+    <Compile Include="Data\ILiveoSystemInstallationRepository.cs" />
+    <Compile Include="Data\ILiveoUnitTypeRepository.cs" />
+    <Compile Include="Data\ILiveoUserPersonaRepository.cs" />
+    <Compile Include="Data\ILiveoUserRepository.cs" />
+    <Compile Include="Data\LiveoAffiliateRepository.cs" />
+    <Compile Include="Data\LiveoAnswerSelectionRepository.cs" />
+    <Compile Include="Data\LiveoChartTypeRepository.cs" />
+    <Compile Include="Data\LiveoConnectionStringService.cs" />
+    <Compile Include="Data\LiveoDataContext.cs" />
+    <Compile Include="Data\LiveoFeatureRepository.cs" />
+    <Compile Include="Data\LiveoGoalRepository.cs" />
+    <Compile Include="Data\LiveoGoalTypeRepository.cs" />
+    <Compile Include="Data\LiveoPersonaRepository.cs" />
+    <Compile Include="Data\LiveoProgramRepository.cs" />
+    <Compile Include="Data\LiveoRoleRepository.cs" />
+    <Compile Include="Data\LiveoSurveyQuestionRepository.cs" />
+    <Compile Include="Data\LiveoSurveyRepository.cs" />
+    <Compile Include="Data\LiveoSystemInstallationRepository.cs" />
+    <Compile Include="Data\LiveoUnitTypeRepository.cs" />
+    <Compile Include="Data\LiveoUserPersonaRepository.cs" />
+    <Compile Include="Data\LiveoUserRepository.cs" />
+    <Compile Include="Drivers\AffiliatePartDriver.cs" />
+    <Compile Include="Drivers\GoalListPartDriver.cs" />
+    <Compile Include="Drivers\LiveoUserPartDriver.cs" />
+    <Compile Include="Drivers\MediaCollectionPartDriver.cs" />
+    <Compile Include="Drivers\SurveyPartDriver.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Handlers\AffiliateHandler.cs" />
+    <Compile Include="Handlers\GoalListPartHandler.cs" />
+    <Compile Include="Handlers\LiveoUserHandler.cs" />
+    <Compile Include="Handlers\MediaCollectionPartHandler.cs" />
+    <Compile Include="Handlers\SurveyHandler.cs" />
+    <Compile Include="Migrations.cs" />
+    <Compile Include="Models\AffiliatePart.cs" />
+    <Compile Include="Models\AffiliateRecord.cs" />
+    <Compile Include="Models\GalleryIndexViewModel.cs" />
+    <Compile Include="Models\GoalListPart.cs" />
+    <Compile Include="Models\GoalListRecord.cs" />
+    <Compile Include="Models\LiveoUserPart.cs" />
+    <Compile Include="Models\LiveoUserRecord.cs" />
+    <Compile Include="Models\MediaCollectionPart.cs" />
+    <Compile Include="Models\MediaCollectionPartRecord.cs" />
+    <Compile Include="Models\SurveyPart.cs" />
+    <Compile Include="Models\SurveyRecord.cs" />
+    <Compile Include="Navigation\LiveoMenuProvider.cs" />
+    <Compile Include="Permissions.cs" />
+    <Compile Include="ResourceManifest.cs" />
+    <Compile Include="Routes.cs" />
+    <Compile Include="Rules\LoginThemeSelectionRule.cs" />
+    <Compile Include="Security\ValidateAntiForgeryTokenAttribute.cs" />
+    <Compile Include="Services\ILiveoAnswerSelectionService.cs" />
+    <Compile Include="Services\ILiveoChartTypeService.cs" />
+    <Compile Include="Services\ILiveoGoalTypeService.cs" />
+    <Compile Include="Services\ILiveoAffiliateService.cs" />
+    <Compile Include="Services\ILiveoFeatureService.cs" />
+    <Compile Include="Services\ILiveoPersonaService.cs" />
+    <Compile Include="Services\ILiveoPersonaUserService.cs" />
+    <Compile Include="Services\ILiveoProgramService.cs" />
+    <Compile Include="Services\ILiveoRoleService.cs" />
+    <Compile Include="Services\ILiveoSurveyQuestionService.cs" />
+    <Compile Include="Services\ILiveoSurveyService.cs" />
+    <Compile Include="Services\ILiveoSystemInstallationService.cs" />
+    <Compile Include="Services\ILiveoUnitTypeService.cs" />
+    <Compile Include="Services\ILiveoUserService.cs" />
+    <Compile Include="Services\LiveoAffiliateService.cs" />
+    <Compile Include="Services\LiveoAnswerSelectionService.cs" />
+    <Compile Include="Services\LiveoChartTypeService.cs" />
+    <Compile Include="Services\LiveoFeatureService.cs" />
+    <Compile Include="Services\LiveoGoalService.cs" />
+    <Compile Include="Services\LiveoGoalTypeService.cs" />
+    <Compile Include="Services\LiveoPersonaService.cs" />
+    <Compile Include="Services\LiveoPersonaUserService.cs" />
+    <Compile Include="Services\LiveoProgramService.cs" />
+    <Compile Include="Services\LiveoRoleService.cs" />
+    <Compile Include="Services\LiveoSurveyQuestionService.cs" />
+    <Compile Include="Services\LiveoSurveyService.cs" />
+    <Compile Include="Services\LiveoSystemInstallationService.cs" />
+    <Compile Include="Services\LiveoUnitTypeService.cs" />
+    <Compile Include="Services\LiveoUserService.cs" />
+    <Compile Include="ViewModels\AffiliateListViewModel.cs" />
+    <Compile Include="ViewModels\AlbumIndexViewModel.cs" />
+    <Compile Include="ViewModels\AlbumItemViewModel.cs" />
+    <Compile Include="ViewModels\FeatureListViewModel.cs" />
+    <Compile Include="ViewModels\GoalListViewModel.cs" />
+    <Compile Include="ViewModels\HealthPlanIndexViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\SurveyListViewModel.cs" />
+    <Compile Include="ViewModels\SurveyQuestionCreateViewModel.cs" />
+    <Compile Include="ViewModels\SurveyQuestionEditViewModel.cs" />
+    <Compile Include="ViewModels\SurveyQuestionListViewModel.cs" />
+    <Compile Include="ViewModels\SurveyQuestionSearchViewModel.cs" />
+    <Compile Include="ViewModels\SurveyStartViewModel.cs" />
+    <Compile Include="WebApi\HttpRouteProvider.cs" />
+    <Compile Include="WebApi\LiveoWebApiModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\Survey.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\LiveoUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\LiveoUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Placement.info" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\FeatureAdmin\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\Survey.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Survey\Start.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SurveyAdmin\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Survey\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\RegisterComplete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Notifications.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\Affiliate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\Affiliate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AffiliateAdmin\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AffiliateAdmin\Item.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AffiliateAdmin\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AffiliateAdmin\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content-Affiliate.SummaryAdmin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content-Affiliate.Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Goals.GoalList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts.Goals.GoalList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\GoalList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SurveyAdmin\ListQuestions.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SurveyAdmin\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SurveyAdmin\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\SurveyQuestion.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SurveyAdmin\CreateQuestion.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SurveyAdmin\EditQuestion.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\MediaCollection.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\MediaCollection.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\web.config" />
+    <Content Include="Views\Affiliate\Program.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Affiliate\pvA200-25.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Affiliate\pvA300-0.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HealthPlan\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Album\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Album\pvG10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Album\pvG20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Album\pvG30-20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Album\pvG30-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Album\Item.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MemberSearch\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR20-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR20-20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR40-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvGR40-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR50.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR80.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR40-20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR60.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR40-30.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvGR70.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\pvG10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\pvG20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\pvG60.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\pvG30.cshtml" />
+    <Content Include="Views\Gallery\pvG40.cshtml" />
+    <Content Include="Views\Gallery\pvG50.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\Album.cshtml" />
+    <Content Include="Views\Gallery\AlbumName.cshtml" />
+    <Content Include="Views\Gallery\OldIndex.cshtml" />
+    <Content Include="Views\Gallery\MediaBrowse.cshtml" />
+    <Content Include="Views\Gallery\MediaEdit.cshtml" />
+    <Content Include="Views\Gallery\MediaUpload.cshtml" />
+    <Content Include="Views\Gallery\MediaView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\NEW_pvHT03.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\NEW_pvHP300.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\NEW_pvHT05.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\SAFE_Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HealthPlan\pvHP100-10.cshtml" />
+    <Content Include="Views\HealthPlan\pvHP300.cshtml" />
+    <Content Include="Views\HealthPlan\pvHP400.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\SAFE_CreateGoal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvHT23.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vandelay.Industries\Vandelay.Industries.csproj">
+      <Project>{8ad14ca5-56cd-4b94-89fd-3330aa758131}</Project>
+      <Name>Vandelay.Industries</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\Liveo.WebAPI\Liveo.WebApi.Orchard.csproj">
+      <Project>{a795cd2e-29f1-43f2-920f-ab972d674e8b}</Project>
+      <Name>Liveo.WebApi.Orchard</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HealthPlan\pvHT05.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HealthPlan\pvHP300-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HealthPlan\pvHP300-20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HealthPlan\pvHP400-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HealthPlan\pvHP400-20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HealthPlan\pvA100-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvHT22.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA100-11.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA100-20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA100-0.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA100-25.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA100-30.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA100-35.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA200-0.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA200-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA200-25.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA300-0.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA300-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA300-20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvA300-30.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\pvHP100.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Survey\SurveyPrograms.cshtml" />
+    <Content Include="Views\Survey\SP100-10_view_program.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Groups\pvACH10-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST10-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST01.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST30.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST40.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST50.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST50-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST60.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST60-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST20-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST20-20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Standards\pvST20-30.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\pvU01.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\pvU10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\pvU20.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\pvU20-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\pvU10-10.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\Profile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\pvUP01.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\Settings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\pvUS01.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\pvU01-1.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
+    <PropertyGroup>
+      <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
+    </PropertyGroup>
+    <!-- If this is an area child project, uncomment the following line:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    -->
+    <!-- If this is an area parent project, uncomment the following lines:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />
+    -->
+  </Target>
+  <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45979</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://orchard.codeplex.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

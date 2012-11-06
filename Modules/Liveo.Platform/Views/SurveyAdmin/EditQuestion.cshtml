@@ -1,0 +1,228 @@
+﻿@model Liveo.Platform.ViewModels.SurveyQuestionEditViewModel
+@{
+    Script.Require("jQuery").AtHead();
+    Script.Require("ko").AtHead();
+    Script.Require("common").AtHead();
+    Script.Require("jquerytools").AtHead();
+    Script.Require("jqueryuijs").AtHead();
+    Script.Require("jquerycookie").AtHead();
+    Script.Require("viewModel_AnswerSelection").AtHead();
+
+    Style.Require("reset");
+    Style.Require("layout");
+    Style.Require("font");
+    Style.Require("modal");
+    
+    Layout.Title = T("Edit Question").ToString();
+    var items = new SelectList(Model.QuestionTypes, "Id", "Name");
+}
+
+@using (Html.BeginFormAntiForgeryPost())
+{
+    <input type="hidden" name="SurveyId" value="@Model.Question.SurveyId"/>
+
+    <fieldset>
+        <legend>Survey Information</legend>
+        <div>
+            @Html.LabelFor(m => Model.Question.QuestionTypeId, T("Question Type"))
+            @Html.DropDownListFor(m => Model.Question.QuestionTypeId, @items)
+            @Html.ValidationMessageFor(m => Model.Question.QuestionTypeId, "*")
+        </div>
+        <div>
+            @Html.LabelFor(m => Model.Question.QuestionText, T("Text"))
+            @Html.TextAreaFor(m => Model.Question.QuestionText, new {@class = "textMedium"})
+            @Html.ValidationMessageFor(m => Model.Question.QuestionText, "*")
+        </div>
+        <div style="margin-top: 1em;">
+            <button type="submit">@T("Save")</button>
+        </div>
+    </fieldset>
+}
+
+<script>
+    $(document).ready(function () {
+        
+        initialize();
+
+        $('[link="selectionAddOpen"]').click(function () { beginNewModel(); });
+    });
+
+    function beginNewModel() {
+        viewModel.beginCandidateAnswerSelectionModel("insertForm_link");
+        viewModel.candidateAnswerSelectionModel().Name('');
+        viewModel.candidateAnswerSelectionModel().Description('');
+        viewModel.candidateAnswerSelectionModel().SurveyQuestionId(@Model.Question.Id);
+    }
+    
+    var viewModel = null;
+    function initialize() {
+        
+        viewModel = new AnswerSelection_ViewModel();
+        
+        var obsModels = new Array();
+
+        
+        viewModel.initAllAnswerSelectionModels = function (callbackSuccess, callbackFail) {
+            
+            $.ajax({
+                url: '/api/AnswerSelection/@Model.Question.Id',
+                dataType: 'json',
+                success: function(data) {
+                    
+                    for (var i = 0; i < data.length; i++) {
+                        obsModels.push(new AnswerSelectionModel(data[i].Id, data[i].Name, data[i].Description, data[i].Index, data[i].SurveyQuestionId));
+                    }
+                    viewModel.answerSelectionModels(obsModels);
+
+                    if (callbackSuccess) {
+                        callbackSuccess(obsModels.length);
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    
+                    if (callbackFail) {
+                        callbackFail('Failed to get AnswerSelection items ');
+                    }
+                }
+            });
+        };
+
+        
+        
+        viewModel.removeSelection = function (selection) {
+            
+            var result = $.ajax('/api/AnswerSelection/' + selection.Id(), {
+                data: ko.toJSON(selection),
+                type: 'delete',
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function () {
+
+                    viewModel.answerSelectionModels.remove(selection);
+
+                },
+                error: function (xhr, textStatus, errorThrown) {
+
+                    alert("Unable to delete!");
+                }
+            });
+        };
+
+        
+
+        viewModel.commitCandidateAnswerSelectionModel = function(callbackSuccess, callbackFail) {
+            var addedModel;
+            var token = '@Html.AntiForgeryTokenValueOrchard()';
+            var model = viewModel.candidateAnswerSelectionModel();
+            model['__RequestVerificationToken'] = token;
+            var jsonData = ko.toJSON(model);
+            
+            var result = $.ajax('/api/AnswerSelection', {
+                data: jsonData,
+                type: 'post',
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function() {
+                    console.log('success add new AnswerSelection model');
+                    addedModel = JSON.parse(result.responseText);
+                    viewModel.addedAnswerSelectionModel().Id(addedModel.Id);
+                    viewModel.addedAnswerSelectionModel().Name(addedModel.Name);
+                    viewModel.addedAnswerSelectionModel().Description(addedModel.Description);
+                    viewModel.addedAnswerSelectionModel().Index(addedModel.Index);
+                    viewModel.addedAnswerSelectionModel().SurveyQuestionId(addedModel.SurveyQuestionId);
+
+                    if (callbackSuccess) {
+                        callbackSuccess(addedModel.Id);
+                    }
+
+                    viewModel.answerSelectionModels.push(addedModel);
+
+                    console.log('Success added AnswerSelection item ' + addedModel.Id + '.');
+		    //
+                },
+                error: function(xhr, textStatus, errorThrown) {
+
+                    if (callbackFail) {
+                        callbackFail(errorThrown);
+                    }
+
+                    console.log('Failed to add new AnswerSelection model.');
+                }
+            });
+        };
+
+        
+        viewModel.initAllAnswerSelectionModels();
+        ko.applyBindings(viewModel);
+    }
+    
+    function commitInsert(useCallback) {
+        ///Dropdown info if needed
+        //var goalTypeId = $('#' + _option_goalTypes).val();
+        //_goal_ViewModel.candidateGoalModel().GoalTypeId(goalTypeId);
+        if (useCallback) {
+            viewModel.commitCandidateAnswerSelectionModel(function () {
+                
+            }, function () {
+                
+            });
+        } else {
+            viewModel.commitCandidateAnswerSelectionModel();
+        }
+    }
+    
+</script>
+
+<p>You have <span data-bind='text: $root.answerSelectionModels().length'>&nbsp;</span> selection(s)</p>
+
+<table class="items" summary="@T("Answer Selections")">
+    <colgroup>
+        <col id="Col1" />
+        <col id="Col2" />
+        <col id="Col3" />
+        <col id="Col4" />
+    </colgroup>
+    <thead>
+        <tr style="color: green;">
+            <th scope="col">@T("ID")</th>
+            <th scope="col">@T("Name")</th>
+            <th scope="col">@T("Description")</th>
+            <th scope="col">@T("Actions")</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: $root.answerSelectionModels">
+        <tr>
+            <td data-bind="text: $data.Id"></td>
+            <td data-bind="text: $data.Name"></td>
+            <td data-bind="text: $data.Description"></td>
+            <td><a href='#' data-bind='click: $root.beginEditedAnswerSelectionModel'>Edit</a>&nbsp;<a href='#' data-bind='click: $root.removeSelection'>Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<button link="selectionAddOpen">Add Answer Selection</button>
+
+<!-- the popup to add -->
+<div link="insertForm" class="panel invisible" style="width:300px;border:2px solid green;padding: 5px;">
+    <a href="#" link="insertForm_link" rel="[link='insertForm']"></a>
+    <fieldset>
+        <legend>Add Selection</legend>
+        <div>
+            <label>Name</label>
+            <input class="required" id="input_new_name"  data-bind="value:$root.candidateAnswerSelectionModel().Name" />
+        </div>
+        <div>
+            <label>Description</label>
+            <input id="input_new_description"  data-bind="value:$root.candidateAnswerSelectionModel().Description" />
+        </div>
+        <div>
+            <label>Index</label>
+            <input id="input_new_index"  data-bind="value:$root.candidateAnswerSelectionModel().Index" />
+        </div>
+        <br/>
+        <button link="modalokbutton" onclick="commitInsert(false)">Add</button>
+        <button link="modalcancelbutton">Cancel</button>
+        <input id="input_new_question_id" type="hidden"  data-bind="value:$root.candidateAnswerSelectionModel().SurveyQuestionId" />
+        
+    </fieldset>
+</div>

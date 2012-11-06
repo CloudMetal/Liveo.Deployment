@@ -1,0 +1,139 @@
+﻿@{
+   // TODO: WHY ISN'T THIS WORKING?
+  //  ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    ViewBag.EnableViewTitles = true;
+}
+
+
+@{
+    if (ViewBag.EnableViewTitles)
+    {
+        ViewBag.Title_A100_0 = "A100-0";
+        ViewBag.Title_A100_10 = "A100-10";
+        ViewBag.Title_A100_20 = "A100-20";
+        ViewBag.Title_A100_25 = "A100-25";
+        ViewBag.Title_A100_30 = "A100-30";
+        ViewBag.Title_A100_35 = "A100-35";
+        ViewBag.Title_A200_0 = "A200-0";
+        ViewBag.Title_A200_10 = "A200-10";
+        ViewBag.Title_A200_25 = "A200-25";
+        ViewBag.Title_A300_0 = "A300-0";
+        ViewBag.Title_A300_10 = "A300-10";
+        ViewBag.Title_A300_20 = "A300-20";
+        ViewBag.Title_A300_30 = "A300-30";
+        
+    }
+}
+
+
+@{
+Style.Require("reset");
+Style.Require("font");
+Style.Require("layout");
+Style.Require("modal");
+Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        CM.hookLink('A100-0_addprogram', 'fade', 'A100-0', 'A100-10');
+        CM.hookLink('A100-0_editprogram', 'fade', 'A100-0', 'A100-10');
+        CM.hookLink('A100-10_cancel', 'fade', 'A100-10', 'A100-0');
+        CM.hookLink('A100-10_ok', 'fade', 'A100-10', 'A100-0');
+        CM.hookLink('A100-10_addcycle', 'fade', 'A100-10', 'A100-20');
+        CM.hookLink('A100-10_editcycle', 'fade', 'A100-10', 'A100-20');
+        CM.hookLink('A100-20_cancel', 'fade', 'A100-20', 'A100-10');
+        CM.hookLink('A100-20_ok', 'fade', 'A100-20', 'A100-10');
+        CM.hookLink('A100-20_addNewExercise', 'popup', 'A100-20', 'A200-10');  //Needs to be popup because the form is shared
+        CM.hookLink('A100-20_chooseFromLibrary', 'popup', 'A100-20', 'A200-25'); //Needs to be popup to keep consistancy
+        CM.hookLink('A200-10_ok', 'fade', 'A200-10', 'A100-20');
+        CM.hookLink('A200-10_cancel', 'fade', 'A200-10', 'A100-20');
+        CM.hookLink('A200-25_ok', 'fade', 'A200-25', 'A100-20');
+        CM.hookLink('A200-25_cancel', 'fade', 'A200-25', 'A100-20');
+        CM.hookLink('A100-20_mealsButton', 'fade', 'A100-20', 'A100-30');
+        CM.hookLink('A100-30_exerciseButton', 'fade', 'A100-30', 'A100-20');
+        CM.hookLink('A100-30_addNewMeal', 'popup', 'A100-30', 'A300-10');
+        CM.hookLink('A100-30_chooseFromLibrary', 'popup', 'A100-30', 'A100-35');
+        CM.hookLink('A100-30_cancel', 'fade', 'A100-30', 'A100-10');
+        CM.hookLink('A100-30_ok', 'fade', 'A100-30', 'A100-10');
+        CM.hookLink('A100-0_exerciselibrary', 'fade', 'A100-0', 'A200-0');
+        CM.hookLink('A100-0_meallibrary', 'fade', 'A100-0', 'A300-0');
+        CM.hookLink('A200-0_programs', 'fade', 'A200-0', 'A100-0');
+        CM.hookLink('A200-0_meallibrary', 'fade', 'A200-0', 'A300-0');
+        CM.hookLink('A300-0_programs', 'fade', 'A300-0', 'A100-0');
+        CM.hookLink('A300-0_exerciselibrary', 'fade', 'A300-0', 'A200-0');
+        CM.hookLink('A300-0_addmeal', 'popup', 'A300-0', 'A300-10'); //Needs to be popup because the form is shared
+        CM.hookLink('A300-0_editmeal', 'popup', 'A300-0', 'A300-10'); //Needs to be popup to keep consistancy
+        CM.hookLink('A300-10_findFood', 'popup', 'A300-10', 'A300-30');
+        CM.hookLink('A300-10_addFood', 'popup', 'A300-10', 'A300-20');
+        CM.hookLink('A200-0_addExercise', 'popup', 'A200-0', 'A200-10');  //Needs to be popup because the form is shared
+        CM.hookLink('A200-0_editExercise', 'popup', 'A200-0', 'A200-10');  //Needs to be popup to keep consistancy
+
+
+
+
+
+        //CM.hookLink('A100-0_addprogram', 'slidenext', 'A100-0', 'A100-10');
+        //CM.hookLink('A100-0_editprogram', 'slidenext', 'A100-0', 'A100-10');
+        //CM.hookLink('A100-10_cancel', 'slideprev', 'A100-10', 'A100-0');
+        //CM.hookLink('A100-10_ok', 'slideprev', 'A100-10', 'A100-0');
+        //CM.hookLink('A100-10_addcycle', 'slidenext', 'A100-10', 'A100-20');
+        //CM.hookLink('A100-10_editcycle', 'slidenext', 'A100-10', 'A100-20');
+        //CM.hookLink('A100-20_cancel', 'slideprev', 'A100-20', 'A100-10');
+        //CM.hookLink('A100-20_ok', 'slideprev', 'A100-20', 'A100-10');
+        //CM.hookLink('A100-20_addNewExercise', 'slidenext', 'A100-20', 'A200-10');
+        //CM.hookLink('A100-20_chooseFromLibrary', 'slidenext', 'A100-20', 'A200-25');
+        //CM.hookLink('A200-10_ok', 'slidenext', 'A200-10', 'A100-20');
+        //CM.hookLink('A200-10_cancel', 'slidenext', 'A200-10', 'A100-20');
+        //CM.hookLink('A200-25_ok', 'slidenext', 'A200-25', 'A100-20');
+        //CM.hookLink('A200-25_cancel', 'slidenext', 'A200-25', 'A100-20');
+        //CM.hookLink('A100-20_mealsButton', 'fade', 'A100-20', 'A100-30');
+        //CM.hookLink('A100-30_exerciseButton', 'fade', 'A100-30', 'A100-20');
+        //CM.hookLink('A100-30_addNewMeal', 'popup', 'A100-30', 'A300-10');
+        //CM.hookLink('A100-30_chooseFromLibrary', 'popup', 'A100-30', 'A100-35');
+        //CM.hookLink('A100-30_cancel', 'slideprev', 'A100-30', 'A100-10');
+        //CM.hookLink('A100-30_ok', 'slideprev', 'A100-30', 'A100-10');
+        //CM.hookLink('A100-0_exerciselibrary', 'fade', 'A100-0', 'A200-0');
+        //CM.hookLink('A100-0_meallibrary', 'fade', 'A100-0', 'A300-0');
+        //CM.hookLink('A200-0_programs', 'fade', 'A200-0', 'A100-0');
+        //CM.hookLink('A200-0_meallibrary', 'fade', 'A200-0', 'A300-0');
+        //CM.hookLink('A300-0_programs', 'fade', 'A300-0', 'A100-0');
+        //CM.hookLink('A300-0_exerciselibrary', 'fade', 'A300-0', 'A200-0');
+        //CM.hookLink('A300-0_addmeal', 'popup', 'A300-0', 'A300-10');
+        //CM.hookLink('A300-0_editmeal', 'popup', 'A300-0', 'A300-10');
+        //CM.hookLink('A300-10_findFood', 'popup', 'A300-10', 'A300-30');
+        //CM.hookLink('A300-10_addFood', 'popup', 'A300-10', 'A300-20');
+        //CM.hookLink('A200-0_addExercise', 'popup', 'A200-0', 'A200-10');
+        //CM.hookLink('A200-0_editExercise', 'popup', 'A200-0', 'A200-10');
+
+     
+    });
+</script>
+
+@Html.Partial("pvA100-0")
+@Html.Partial("pvA100-10")
+@Html.Partial("pvA100-20")
+@Html.Partial("pvA100-25")
+@Html.Partial("pvA100-30")
+@Html.Partial("pvA100-35")
+@Html.Partial("pvA200-0")
+@Html.Partial("pvA200-10")
+@Html.Partial("pvA200-25")
+@Html.Partial("pvA300-0")
+@Html.Partial("pvA300-10")
+@Html.Partial("pvA300-20")
+@Html.Partial("pvA300-30")
+
+

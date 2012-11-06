@@ -1,0 +1,70 @@
+﻿@{
+    //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    ViewBag.EnableViewTitles = true;
+}
+
+@{
+    if (ViewBag.EnableViewTitles)
+    {
+        ViewBag.Title_G10 = "G10";
+        ViewBag.Title_G20 = "G20";
+        ViewBag.Title_G30 = "G30";
+        ViewBag.Title_G40 = "G40";
+        ViewBag.Title_G50 = "G50";
+        ViewBag.Title_G60 = "G60";
+    }
+}
+
+
+@{
+Style.Require("reset");
+Style.Require("font");
+Style.Require("layout");
+Style.Require("modal");
+Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+}
+
+<script>
+    $(document).ready(function () {
+      
+        CM.hookLink('G10_newAlbum', 'popup', 'G10', 'G20');
+        CM.hookLink('G10_newMedia', 'popup', 'G10', 'G30');
+        CM.hookLink('G10_mediaPhoto', 'popup', 'G10', 'G50');
+        CM.hookLink('G40_editPhoto', 'popup', 'G40', 'G50');
+        CM.hookLink('G60_editAlbum', 'popup', 'G60', 'G20');
+        CM.hookLink('G60_albumPhoto', 'slidenext', 'G60', 'G40');
+        CM.hookLink('G40_editPhoto', 'slidenext', 'G40', 'G50');
+        CM.hookLink('G10_viewAlbum', 'fade', 'G10', 'G60');
+        CM.hookLink('G60_back', 'slideprev', 'G60', 'G10');
+        CM.hookLink('G60_viewDetail', 'popup', 'G60', 'G50');
+        CM.hookLink('G60_newMedia', 'popup', 'G60', 'G30');
+        
+        //$('[link="btn_HT05_addGoal_click"]').click(function () { addGoal(); });
+        //$('[link="btn_HT03_StartNow_click"]').click(function () { createGoal(); });
+
+ 
+       // $('[clink="modalclosebutton"]').click(function () { CM.log('closing calling modal'); overlayElem.overlay().close(); });
+
+    });
+</script>
+
+<body>
+
+    @Html.Partial("pvG10")
+    @Html.Partial("pvG20")
+    @Html.Partial("pvG30")
+    @Html.Partial("pvG40")
+    @Html.Partial("pvG50")
+    @Html.Partial("pvG60")
+
+</body>

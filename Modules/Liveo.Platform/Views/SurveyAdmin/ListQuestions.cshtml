@@ -1,0 +1,45 @@
+﻿@using Liveo.Platform.Extensions
+@model Liveo.Platform.ViewModels.SurveyQuestionListViewModel 
+@{
+    Script.Require("ShapesBase");
+    Layout.Title = T("Survey Questions").ToString();
+}
+
+@using(Html.BeginForm("ListQuestions", "SurveyAdmin", FormMethod.Get)) {
+    <fieldset class="bulk-actions">
+        <label for="search">@T("Search:")</label>
+        @Html.TextBoxFor(m => m.Search.Expression)
+        <button type="submit">@T("Search")</button>
+        <a href="@Url.Action("List")">@T("Clear")</a>
+    </fieldset>
+}
+<div class="actions"><a class="add button primaryAction" href="@Url.SurveyQuestionCreate(Model.SurveyId)">@T("New Question")</a></div>
+<fieldset>
+    <table class="items" summary="@T("All surveys")">
+        <colgroup>
+            <col id="Col1" />
+            <col id="Col2" />
+            <col id="Col3" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">&nbsp;&darr;</th>
+                <th scope="col">@T("Question")</th>
+                <th scope="col">@T("Actions")</th>
+            </tr>
+        </thead>
+        @foreach (var q in Model.Questions) {
+        <tr>
+            <td>@q.Id</td>
+            <td>@q.QuestionText</td>
+            <td>
+                <div>
+                    <a href="@Url.Action("EditQuestion", new {questionId = q.Id})" title="@T("Edit")">@T("Edit")</a>@T(" | ")
+                    <a href="@Url.Action("DeleteQuestion", new {questionId = q.Id, returnUrl = Request.Url.PathAndQuery})">@T("Delete")</a>
+                </div>
+            </td>
+        </tr>
+        } 
+    </table>
+    @Display(Model.Pager)
+</fieldset>

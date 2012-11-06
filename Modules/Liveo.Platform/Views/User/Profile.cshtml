@@ -1,0 +1,51 @@
+﻿@{
+    //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    ViewBag.EnableViewTitles = true;
+}
+
+@{
+    if (ViewBag.EnableViewTitles)
+    {
+        ViewBag.Title_UP01 = "UP01";
+    }
+}
+
+
+@{
+//Style.Require("reset");
+//Style.Require("font");
+//Style.Require("layout");
+Style.Require("modal");
+//Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+Script.Require("viewModel_User").AtHead();
+Script.Require("viewModel_Goal").AtHead();
+Script.Require("viewModel_Program").AtHead();
+}
+
+
+<script>
+
+
+    $(document).ready(function () {
+     
+    });
+
+ 
+</script>
+<body style="text-transform: none;">
+    
+    @Html.Partial("pvUP01")
+   
+</body>
+
+    

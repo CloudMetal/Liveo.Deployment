@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "pvST01";
+}
+<!--------------------------------------------------------- BEGIN _ST01_ -------------------------------------------------------------->
+<script>
+    $(document).ready(function () {
+        
+    });
+
+</script>
+
+<div link="ST01" class="panel invisible">
+    <a link="ST01_link" rel="[link='ST01']" style=""></a>
+    <h2>@ViewBag.Title_ST01 - General</h2>
+    <br />
+    <br />
+
+    <p>
+        - All CloudMetal views will be wrapped with a master DIV with the classes "panel" and "invisible".
+        <br />
+        <br />
+        - The "link" attribute will be used for all identification and jquery selection. Avoid using "id" or "class" for jquery selection as these could change frequently.
+        
+        <br />
+        <br />
+
+        - The first element inside of the wrapper will a blank anchor tag that will enable all views to act as a popup if desired:
+
+        <br />
+        <br />
+
+        <b>
+            <p>&lt;div link=&quot;ST10-10&quot; class=&quot;panel invisible&quot;&gt;</p>
+            <p>&nbsp&nbsp &lt;a link=&quot;ST10-10_link&quot; rel=&quot;[link='ST10-10']&quot;&gt;&lt;/a&gt;</p>
+        </b>
+        - "ST10-10" is the name of the view according to the .bmml wireframe. 
+        
+        <br />
+        <br />
+
+        - Append "_link" to the view's "link" attr in the anchor used for the popup mechanism. 
+    </p>
+</div>
+<!--------------------------------------------------------- END _ST01_ -------------------------------------------------------------->

@@ -1,0 +1,28 @@
+﻿@model Liveo.Platform.ViewModels.SurveyQuestionCreateViewModel
+@{
+    Layout.Title = T("Create Question").ToString();
+    var items = new SelectList(Model.QuestionTypes, "Id", "Name");
+}
+
+@using (Html.BeginFormAntiForgeryPost())
+{
+    <input type="hidden" name="SurveyId" value="@Model.SurveyId"/>
+
+    <fieldset>
+        <legend>Survey Information</legend>
+        <div>
+            @Html.LabelFor(m => Model.QuestionTypeId, T("Question Type"))
+            @Html.DropDownListFor(m => Model.QuestionTypeId, @items)
+            @Html.ValidationMessageFor(m => Model.QuestionTypeId, "*")
+        </div>
+        <div>
+            @Html.LabelFor(m => Model.QuestionText, T("Text"))
+            @Html.TextAreaFor(m => Model.QuestionText, new {@class = "textMedium"})
+            @Html.ValidationMessageFor(m => Model.QuestionText, "*")
+        </div>
+        <br/>
+        <div>
+            <button type="submit">@T("Save")</button>
+        </div>
+    </fieldset>
+}

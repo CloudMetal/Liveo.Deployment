@@ -1,0 +1,270 @@
+﻿@{
+    //ViewBag.Title = "Index";
+    //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+Style.Require("font");
+Style.Require("layout");
+Style.Require("reset");
+Style.Require("modal");
+Style.Require("jqui");
+}
+
+@{
+Script.Require("jQuery").AtHead();
+Script.Require("jquerytools").AtHead();
+Script.Require("jqueryuijs").AtHead();
+Script.Require("ko").AtHead();
+Script.Require("livequery").AtHead();
+Script.Require("komulti").AtHead();
+Script.Require("common").AtHead();
+Script.Require("viewModel_Program");
+Script.Require("viewModel_Goal");
+}
+
+
+<script>
+
+    var _goal_ViewModel;
+    var _program_ViewModel;
+
+
+    goalModelInitSuccess = function (goalCount) {
+        console.log('goalModels bound ' + goalCount);
+        CM.hideSpinner('spinner_page');
+    }
+
+    goalModelInitFail = function (err) {
+        console.log(err);
+        //CM.hideSpinner('spinner_page');
+    }
+
+    $(document).ready(function () {
+      
+
+        CM.hookLink('HT05_dailyHealthPlan', 'slideprev', 'HT05', 'HP300');
+        CM.hookLink('HP300_healthInformation', 'slidenext', 'HP300', 'HT05');
+        CM.hookLink('HP300_exercise', 'slidenext', 'HP300', 'HP400');
+        CM.hookLink('HP300_updateActualIntake', 'slidenext', 'HP300', 'HP300-10');
+        CM.hookLink('HP400_diet', 'slideprev', 'HP400', 'HP300');
+        CM.hookLink('HP400_updateActualExercise', 'slidenext', 'HP400', 'HP400-10');
+        CM.hookLink('HP300-10_addSelected', 'slidenext', 'HP300-10', 'HP300-20');
+        CM.hookLink('HP300-10_cancel', 'slideprev', 'HP300-10', 'HP300');
+        CM.hookLink('HP300-10_addSelectedMeal', 'slideprev', 'HP300-10', 'HP300');
+        CM.hookLink('HP300-20_cancel', 'slideprev', 'HP300-20', 'HP300-10');
+        CM.hookLink('HP300-20_addMeal', 'slideprev', 'HP300-20', 'HP300-10');
+        //CM.hookLink('HP400_healthInformation', 'slidenext', 'HP300', 'HT05');
+        CM.hookLink('HP400-10_addSelected', 'slidenext', 'HP400-10', 'HP400-20');
+        CM.hookLink('HP400-10_cancel', 'slideprev', 'HP400-10', 'HP400');
+        CM.hookLink('HP400-20_cancel', 'slideprev', 'HP400-20', 'HP400-10');
+
+        //A100-10_choose
+
+
+        $('[link="btn_HT05_addGoal_click"]').click(function () { addGoal(); });
+        $('[link="btn_HT03_StartNow_click"]').click(function () { createGoal(); });
+
+        initWidgets(handleInitialView, handlePageSpinner);
+
+    });
+
+
+    var data;
+    var typeData;
+    var option_chartTypes = 'option_chartTypes';
+    var _goal_ViewModel;
+    var _program_ViewModel;
+
+    function initViewModels() {
+        _goal_ViewModel = new Goal_ViewModel();
+        ko.attach("vmGoal", _goal_ViewModel);
+
+        _program_ViewModel = new Program_ViewModel();
+        ko.attach("vmProgram", _program_ViewModel);
+
+        addGoalExtensions();
+
+        _goal_ViewModel.initAllGoalModels(goalModelInitSuccess, goalModelInitFail);
+    }
+
+    function addGoal() {
+        location = '/Fitness/CreateGoal/';
+    }
+
+    function addGoalExtensions() {
+        _program_ViewModel.editProgram = function (goalId, formlink) {
+            var data;
+            //get the program associated with this goalID
+            //CM.showSpinner(spinnerId);
+
+            $.ajax({
+                url: '/api/Program/GetByGoal/' + goalId,
+                dataType: 'json',
+                success: function (data) {
+
+                    //CM.hideSpinner(spinnerId);
+
+                    var editedProgram = new ProgramModel(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                    editedProgram.Id = ko.observable(data.Id);
+                    editedProgram.Name = ko.observable(data.Name);
+                    editedProgram.GeneralDescription = ko.observable(data.GeneralDescription);
+                    editedProgram.ExerciseDescription = ko.observable(data.ExerciseDescription);
+                    editedProgram.NutritionDescription = ko.observable(data.NutritionDescription);
+                    editedProgram.DurationDays = ko.observable(data.DurationDays);
+                    editedProgram.EstimatedWeightLoss = ko.observable(data.EstimatedWeightLoss);
+                    editedProgram.FollowingCount = ko.observable(data.FollowingCount);
+                    editedProgram.RecommendedCount = ko.observable(data.RecommendedCount);
+                    editedProgram.AffiliateId = ko.observable(data.AffiliateId);
+                    editedProgram.OriginatingAffiliateId = ko.observable(data.OriginatingAffiliateId);
+                    editedProgram.GoalId = ko.observable(data.GoalId);
+                    editedProgram.PictureUrl = ko.observable(data.PictureUrl);
+                    editedProgram.IsDeleted = ko.observable(data.IsDeleted);
+
+                    _program_ViewModel.beginEditedProgramModel(editedProgram, formlink);
+
+                },
+                error: function () {
+                    alert('Failed to get associated program by goalID.');
+                }
+            });
+        }
+    }
+
+    function commitProgramEdit() {
+        _program_ViewModel.commitEditedProgramModel(null, null);
+    }
+
+    function bindko_goal() {
+        _goal_ViewModel = new Goal_ViewModel();
+        ko.applyBindings(_goal_ViewModel);
+    }
+
+    function bindko_program() {
+        _program_ViewModel = new Program_ViewModel();
+        ko.applyBindings(_program_ViewModel, $('#divEditProgram')[0]);
+        //ko.applyBindings(_program_ViewModel);
+    }
+
+    function createGoal() {
+        document.location = "fitness/creategoal";
+    }
+
+    function getTypeValue(goalTypeId) {
+
+        //loop through typedata and select 
+        //return goalTypeId;
+        for (var i = 0; i < typeData.length; i++) {
+            if (typeData[i].GoalTypes) {
+                for (var j = 0; j < typeData[i].GoalTypes.length; j++) {
+                    if (typeData[i].GoalTypes[j].Key == goalTypeId) {
+                        return typeData[i].GoalTypes[j].Value;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    function handleInitialView() {
+        $.ajax({
+            url: '/api/user/HasCompletedInitialScreen/1',
+            dataType: 'json',
+            success: function (data) {
+                var view;
+                var notview;
+
+                if (data == false) {
+                    view = "[link='HT03']";
+                    notview = "[link='HP300']";
+                } else {
+                    view = "[link='HT300']";
+                    notview = "[link='HT03']";
+                }
+
+                $(view).attr("class", "notinvisible panel");
+                $(notview).attr("class", "invisible panel");
+            },
+            error: function () {
+                console.log('Failed to handle initial view');
+            }
+        });
+
+    }
+
+    function handlePageSpinner() {
+        CM.handleSpinner('spinner_page');
+    }
+
+    function initWidgets(handleInitialView, handlePageSpinner) {
+        $('#goaldate_goal').datepicker();
+
+        $.ajax({
+            url: '/api/Fitness/GetTypes',
+            dataType: 'json',
+            success: function (data) {
+                typeData = data;
+                updateDD(option_chartTypes, 1);
+                // Must bind after initWidgets.
+
+                handleInitialView();
+
+                handlePageSpinner();
+
+                initViewModels();
+
+            },
+            error: function () {
+                alert('Failed to get data ');
+            }
+        });
+    }
+
+    function removeGoalModel(eModel) {
+        _goal_ViewModel.beginRemoveGoalModel(eModel, 'removeGoalYesNo_link');
+    }
+
+    function newmeas() {
+        alert('new measurement here');
+    }
+
+    function updateDD(optionId, selectedValue) {
+        //input_field_goalTypeId = inputField;
+        for (var t = 0; t < typeData.length; t++) {
+            //For each type that is returned, you will need to fill the individual dropdown.
+            if (typeData[t].ChartTypes) {
+                //Fill GoalTypes
+                CM.fillDropdown(optionId, $("#ddDiv_ChartTypes"), typeData[t].ChartTypes, selectedValue);
+                break;
+            }
+        }
+    }
+
+</script>
+
+
+<body style="margin: 20px;">
+
+   @* <div id="spinner_page" class="invisible">
+        <img id="img-spinner" src="~/Images/waiting.gif" alt="Loading" />
+    </div>*@
+
+
+    @Html.Partial("pvHT03")
+    @Html.Partial("pvHT05")
+    
+
+  @*  @Html.Partial("pvYesNoModal")
+    @Html.Partial("pvHT03")
+    @Html.Partial("pvHT05")
+    @Html.Partial("pvA100-10")
+    @Html.Partial("pvHP100-10")
+    @Html.Partial("pvHP300")
+    @Html.Partial("pvHP400")
+    @Html.Partial("pvHP300-10")
+    @Html.Partial("pvHP300-20")
+    @Html.Partial("pvHP400-20")*@
+
+</body>
