@@ -85,6 +85,20 @@ namespace Liveo.Platform
                 },
                 new RouteDescriptor {
                     Route = new Route(
+                        "Users/Survey",
+                        new RouteValueDictionary {
+                            {"area", "Liveo.Platform"},
+                            {"controller", "User"},
+                            {"action", "Survey"}
+                        },
+                        new RouteValueDictionary(),
+                        new RouteValueDictionary {
+                            {"area", "Liveo.Platform"}
+                        },
+                        new MvcRouteHandler())
+                },
+                new RouteDescriptor {
+                    Route = new Route(
                         "Survey",
                         new RouteValueDictionary {
                             {"area", "Liveo.Platform"},

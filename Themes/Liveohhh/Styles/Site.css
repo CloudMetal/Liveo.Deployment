@@ -297,7 +297,7 @@ textarea {
     }
 
 .wrap-main {
-min-width:1080px;
+min-width:1200px;
 }
 
 .page-row-wrap {
@@ -1144,4 +1144,10 @@ a {
     font-family: TradeGothicBoldNo20Obl;
     color: #fff;
 	font-size:14px;
+}
+
+article header h1 {
+visibility:hidden;
+display:none;
+position:absolute;
 }

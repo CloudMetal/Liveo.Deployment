@@ -23,6 +23,11 @@ namespace Liveo.Platform.Controllers
             return View();
         }
 
+        public ActionResult Survey()
+        {
+            return View();
+        }
+
         public ActionResult Settings()
         {
             return View();

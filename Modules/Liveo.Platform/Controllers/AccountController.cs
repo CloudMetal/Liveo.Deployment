@@ -61,8 +61,6 @@ namespace Liveo.Platform.Controllers
         [HttpPost, ActionName("Register")]
         [AlwaysAccessible]
         public ActionResult PostRegister(RegisterViewModel model) {
-			return Redirect(Url.Action("RegisterComplete", "Account"));
-			
 			if (!ModelState.IsValid)
 			{
                 return View(model);

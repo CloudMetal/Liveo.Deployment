@@ -25,7 +25,7 @@
                     @if (AuthorizedFor(Orchard.Security.StandardPermissions.AccessAdminPanel))
                     {
                         <li class="divider"></li>
-                        <li><a href="/User/Settings">User Profile</a></li>
+                        <li><a href="/users/settings">User Profile</a></li>
                         <li>@Html.ActionLink(T("Dashboard").ToString(), "Index", new { Area = "Dashboard", Controller = "Admin" })</li>
                     }
                 </ul>

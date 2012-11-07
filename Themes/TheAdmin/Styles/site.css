@@ -366,6 +366,7 @@ ul.menuItems {margin:6px 0 0 0;}
 .localmenu li.middle, .localmenu li.first, .localmenu li.last {
     border:1px solid #E4E5E6;
     border-bottom:none;
+    background: #d8e056;
 }
 .localmenu li.first {
     margin-left:16px;

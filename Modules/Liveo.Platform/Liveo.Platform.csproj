@@ -317,6 +317,7 @@
     <Content Include="Styles\jqui.css" />
     <Content Include="Styles\Liveo\font.css" />
     <Content Include="Styles\Liveo\layout.css" />
+    <Content Include="Styles\Liveo\layout_ext.css" />
     <Content Include="Styles\Liveo\reset.css" />
     <Content Include="Styles\menu.liveo-admin.css" />
     <Content Include="Styles\modal.css" />
@@ -533,9 +534,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Register.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Survey\Start.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\SurveyAdmin\List.cshtml" />
@@ -807,10 +805,6 @@
     <Content Include="Views\Fitness\pvHP100.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Survey\SurveyPrograms.cshtml" />
-    <Content Include="Views\Survey\SP100-10_view_program.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Groups\pvACH10-10.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -888,6 +882,9 @@
   <ItemGroup>
     <Content Include="Views\User\pvU01-1.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\Survey.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -933,7 +930,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>copy $(SolutionDir)..\..\Liveo.Web\Scripts\Generated\*.js $(ProjectDir)scripts\generated</PreBuildEvent>
   </PropertyGroup>
 </Project>
