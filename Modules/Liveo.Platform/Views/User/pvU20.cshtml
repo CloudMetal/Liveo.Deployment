@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "pvU20";
 }
-<!--------------------------------------------------------- BEGIN _U20_ -------------------------------------------------------------->
+<!--------------------------------------------------------- BEGIN _U20_ Select Program ------------------------------------------>
 <script>
     var _program_ViewModel;
 
@@ -18,10 +18,10 @@
 
 
     function U20_initCallbackSuccess(count) {
-       // alert(count);
+        // alert(count);
     }
 
-    function U20_beginViewDetails(eModel) {      
+    function U20_beginViewDetails(eModel) {
         _program_ViewModel.beginEditedProgramModel(eModel, 'U20-10_link');
     }
 
@@ -32,7 +32,11 @@
     function U20_finish() {
         //Save User
         CM.showSpinner('U20_spinner_page');
-        _user_ViewModel.commitCandidateUserModel(U20_createUserSuccess, U20_createUserFail);
+
+        //TODO: /*TODO: Need the logged-in userId*/
+        var currentUserId = 0;
+        U20_createUserSuccess(currentUserId);
+
     }
 
     function U20_createUserSuccess(newId) {

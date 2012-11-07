@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "pvU01";
 }
-<!--------------------------------------------------------- BEGIN _U01_ -------------------------------------------------------------->
+<!--------------------------------------------------------- BEGIN _U01_ Trial SignUp --------------------------------------------->
 <script>
     var _user_ViewModel;
 
@@ -19,7 +19,7 @@
 
     $(document).ready(function () {
 
-        $('[link="U01_step2"]').click(function () { U01_step2(); });
+        $('[link="U01_join"]').click(function () { U01_join(); });
 
         _user_ViewModel = new User_ViewModel();
 
@@ -56,14 +56,20 @@
         ko.attach("vmUser", _user_ViewModel);
     });
 
-    function U01_step2() {
-       
-        //MOVE TO NEXT SCREEN. COMMIT USER WITH EVERYTHING ELSE IN ONE TRANSACTION
+    function U01_commitSuccess(newid) {
+        CM.hideSpinner('spinner_join');
+        location = "Users/Survey";
+
+    }
+    function U01_commitFail(msg) {
+        alert('There was a problem creating this user: ' + msg);
+    }
+
+    function U01_join() {
         if (U01_validated()) {
-            CM.fadeTransition('U01', 'U10', 200);
-        } else {
-           
-        }
+            CM.showSpinner('spinner_join');
+            _user_ViewModel.commitCandidateUserModel(U01_commitSuccess, U01_commitFail);
+        } 
     }
 
     function U01_validated() {
@@ -162,7 +168,7 @@
                     <input link="U01_txtRepeatPassword" type="password" />
                 </label>
                 <br/>                <label class="large-txt">Promotional Code:
-                    <input type="text" />
+                    <input  data-bind="value:candidateUserModel().PromotionCode"   type="text" />
                 </label>
                 <br/>
 		
@@ -170,7 +176,13 @@
 
                 <div>
                     <button class="segment-small-status-light" link="U01_cancel" class="primaryAction">Cancel</button>
-                    <button class="segment-small-status-green" link="U01_step2" class="primaryAction">Step 2 - Take Survey</button>
+                    <button class="segment-small-status-green" link="U01_join" class="primaryAction">Join</button>
+
+                    <div id="spinner_join" class="invisible inl">
+                        please wait...
+                        <img id="img-spinner" src="@Href("../../Images/waiting.gif")" alt="Loading" />
+                    </div>
+
                 </div>
 
                 Already have an account? Sign in <a>here</a>.

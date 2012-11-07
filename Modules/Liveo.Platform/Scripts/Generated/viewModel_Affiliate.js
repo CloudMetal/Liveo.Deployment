@@ -2,12 +2,14 @@
 function AffiliateModel(
             id,
             name,
-            pictureUrl) {
+            pictureUrl,
+            promotionCode) {
 
     var _self = this;
 	_self.Id = ko.observable(id);
 	_self.Name = ko.observable(name);
 	_self.PictureUrl = ko.observable(pictureUrl);
+	_self.PromotionCode = ko.observable(promotionCode);
 
 }
 
@@ -17,7 +19,7 @@ function Affiliate_ViewModel() {
 
     var _self = this;
 
-    var dummyAffiliateModel = new AffiliateModel(0,0,0);
+    var dummyAffiliateModel = new AffiliateModel(0,0,0,0);
     var obsModels = new Array();
     var data;
     _self.addedAffiliateModel = new ko.observable(dummyAffiliateModel);
@@ -39,7 +41,7 @@ function Affiliate_ViewModel() {
 			success: function (data) {
 
 				for (var i = 0; i < data.length; i++) {
-					obsModels.push(new AffiliateModel(data[i].Id, data[i].Name, data[i].PictureUrl));
+					obsModels.push(new AffiliateModel(data[i].Id, data[i].Name, data[i].PictureUrl, data[i].PromotionCode));
 				}
 				_self.affiliateModels(obsModels);
 
@@ -116,6 +118,7 @@ function Affiliate_ViewModel() {
 				_self.addedAffiliateModel().Id(addedModel.Id);
 				_self.addedAffiliateModel().Name(addedModel.Name);
 				_self.addedAffiliateModel().PictureUrl(addedModel.PictureUrl);
+				_self.addedAffiliateModel().PromotionCode(addedModel.PromotionCode);
 	
                 if (callbackSuccess) {
                     callbackSuccess(addedModel.Id);

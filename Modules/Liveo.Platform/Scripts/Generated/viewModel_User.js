@@ -26,7 +26,8 @@ function UserModel(
             isLockedOut,
             isApproved,
             passwordAnswer,
-            passwordQuestion) {
+            passwordQuestion,
+            promotionCode) {
 
     var _self = this;
 	_self.Id = ko.observable(id);
@@ -56,6 +57,7 @@ function UserModel(
 	_self.IsApproved = ko.observable(isApproved);
 	_self.PasswordAnswer = ko.observable(passwordAnswer);
 	_self.PasswordQuestion = ko.observable(passwordQuestion);
+	_self.PromotionCode = ko.observable(promotionCode);
 
 }
 
@@ -65,7 +67,7 @@ function User_ViewModel() {
 
     var _self = this;
 
-    var dummyUserModel = new UserModel(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+    var dummyUserModel = new UserModel(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
     var obsModels = new Array();
     var data;
     _self.addedUserModel = new ko.observable(dummyUserModel);
@@ -87,7 +89,7 @@ function User_ViewModel() {
 			success: function (data) {
 
 				for (var i = 0; i < data.length; i++) {
-					obsModels.push(new UserModel(data[i].Id, data[i].Name, data[i].DateOfBirth, data[i].GenderTypeId, data[i].IsInitialSurveyComplete, data[i].UserName, data[i].CreateDate, data[i].LastUpdateDate, data[i].LastLoginDate, data[i].LastLockoutDate, data[i].LastActivityDate, data[i].LastPasswordChangeDate, data[i].FailedPasswordAttemptCount, data[i].FailedPasswordAttemptWindowStart, data[i].FailedPasswordAnswerAttemptCount, data[i].FailedPasswordAnswerAttemptWindowStart, data[i].Comment, data[i].PasswordSalt, data[i].Password, data[i].LoweredEmail, data[i].Email, data[i].PasswordFormat, data[i].IsOnline, data[i].IsLockedOut, data[i].IsApproved, data[i].PasswordAnswer, data[i].PasswordQuestion));
+					obsModels.push(new UserModel(data[i].Id, data[i].Name, data[i].DateOfBirth, data[i].GenderTypeId, data[i].IsInitialSurveyComplete, data[i].UserName, data[i].CreateDate, data[i].LastUpdateDate, data[i].LastLoginDate, data[i].LastLockoutDate, data[i].LastActivityDate, data[i].LastPasswordChangeDate, data[i].FailedPasswordAttemptCount, data[i].FailedPasswordAttemptWindowStart, data[i].FailedPasswordAnswerAttemptCount, data[i].FailedPasswordAnswerAttemptWindowStart, data[i].Comment, data[i].PasswordSalt, data[i].Password, data[i].LoweredEmail, data[i].Email, data[i].PasswordFormat, data[i].IsOnline, data[i].IsLockedOut, data[i].IsApproved, data[i].PasswordAnswer, data[i].PasswordQuestion, data[i].PromotionCode));
 				}
 				_self.userModels(obsModels);
 
@@ -109,7 +111,7 @@ function User_ViewModel() {
             $('[link="' + formlink + '"]').click();
         }
     }
-	 _self.beginCandidateUserModel = function (formlink) {
+    _self.beginCandidateUserModel = function (formlink) {
         _self.candidateUserModel(dummyUserModel);
         if (formlink) {
             $('[link="' + formlink + '"]').click();
@@ -188,6 +190,7 @@ function User_ViewModel() {
 				_self.addedUserModel().IsApproved(addedModel.IsApproved);
 				_self.addedUserModel().PasswordAnswer(addedModel.PasswordAnswer);
 				_self.addedUserModel().PasswordQuestion(addedModel.PasswordQuestion);
+				_self.addedUserModel().PromotionCode(addedModel.PromotionCode);
 	
                 if (callbackSuccess) {
                     callbackSuccess(addedModel.Id);

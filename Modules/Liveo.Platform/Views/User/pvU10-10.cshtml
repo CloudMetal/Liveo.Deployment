@@ -1,47 +1,36 @@
 ﻿@{
     ViewBag.Title = "pvU10-10";
 }
-<!--------------------------------------------------------- BEGIN _U10-10_ -------------------------------------------------------------->
-<script>
-
-    $(document).ready(function () {
-
-
-      
-    });
-
-
-</script>
+<!--------------------------------------------------------- BEGIN _U10-10_ Create a Goal ------------------------------------------->
 <div data-model="vmGoal">
-    <div link="U10-10" class="panel invisible">
-        <a link="U10-10_link" rel="[link='U10-10']" style=""></a>
-        @ViewBag.Title_U10_10
-        
-        <div class="title">Define a Goal</div>
-        <hr />
-
-        <p>By this date:</p>
-        <label><input type="text" /></label>
-
-        <br />
-
-        <p>I want to:</p>   
-        <label><input size="60"  /></label>
-        
-       
-        <p>Type of goal </p>
- 
-        <label>
-            <select>
-                <option>Choose Goal...</option>
-                <option>Lose Weight</option>
-                <option>Lower Bloodpressure</option>
-                <option>Endurance Training</option>
-                <option>Weight Training</option>
-            </select>
-        </label>
-
-    </div>
+    <div class="title">Define a Goal</div>
+    <hr />
+    This survey is designed to help us develop an optimal health and fitness program for you.
+    <table width="650" border="0" cellspacing="0" cellpadding="5">
+        <tr>
+            <td>
+                <label>What is your goal?</label>
+                <select  data-bind="value: candidateGoalModel().GoalTypeId">
+                    <option>Choose Goal...</option>
+                    <option value="1">Lose Weight</option>
+                    <option value="2">Lower Bloodpressure</option>
+                    <option value="3">Endurance Training</option>
+                    <option value="4">Weight Training</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>By this date:</label>
+                <input data-bind="value:candidateGoalModel().AccomplishDate" type="text" link="goaldate_goal" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Give your goal a name:</label>
+                <input data-bind="value:candidateGoalModel().Name" size="60" link="txtGoalName" value="" />
+            </td>
+        </tr>
+    </table>
 </div>
-
 <!--------------------------------------------------------- END _U10-10_ -------------------------------------------------------------->

@@ -6,7 +6,6 @@
 @{
     if (ViewBag.EnableViewTitles)
     {
-        ViewBag.Title_U01 = "U01";
         ViewBag.Title_U10 = "U10";
         ViewBag.Title_U10_10 = "U10-10";
         ViewBag.Title_U20 = "U20";
@@ -32,27 +31,26 @@ Script.Require("ko").AtHead();
 Script.Require("livequery").AtHead();
 Script.Require("komulti").AtHead();
 Script.Require("common").AtHead();
-Script.Require("viewModel_User").AtHead();
 Script.Require("viewModel_Goal").AtHead();
 Script.Require("viewModel_Program").AtHead();
 }
-
 
 <script>
 
 
     $(document).ready(function () {
-     
+
     });
 
- 
+
 </script>
-<body>
-    @Html.Partial("pvU01")
+<body style="text-transform: none;">
+
     @Html.Partial("pvU10")
-    @*@Html.Partial("pvU10") // Lives in pvU10*@
+    @*@Html.Partial("pvU10-10") // this view is embedded in pvU10 - create a goal*@
     @Html.Partial("pvU20")
     @Html.Partial("pvU20-10")
+
 </body>
 
     
