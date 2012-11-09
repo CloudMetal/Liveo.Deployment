@@ -16,10 +16,13 @@ namespace Liveo.Platform.Drivers
         private readonly ILiveoUserService _liveoUserService;
         private readonly IOrchardServices _orchardServices;
         private readonly ILiveoPersonaService _personaService;
+
         public LiveoUserPartDriver(ILiveoUserService liveoUserService,
+            ILiveoPersonaService personaService,
             IOrchardServices orchardServices) {
             _liveoUserService = liveoUserService;
             _orchardServices = orchardServices;
+            _personaService = personaService;
         }
         protected override string Prefix
         {

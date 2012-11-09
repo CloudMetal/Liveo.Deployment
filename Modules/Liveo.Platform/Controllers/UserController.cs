@@ -18,7 +18,8 @@ namespace Liveo.Platform.Controllers
             return View();
         }
 
-        public ActionResult Profile()
+        [ActionName("Profile")]
+        public ActionResult ShowProfile()
         {
             return View();
         }

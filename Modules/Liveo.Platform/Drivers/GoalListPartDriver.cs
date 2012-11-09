@@ -14,7 +14,7 @@ using Orchard.Users.Models;
 namespace Liveo.Platform.Drivers
 {
     public class GoalListPartDriver : ContentPartDriver<GoalListPart> {
-        private readonly ILiveoGoalService _goalService;
+        //private readonly ILiveoGoalService _goalService;
         private readonly IOrchardServices _orchardServices;
         private readonly IWorkContextAccessor _workContextAccessor;
         public GoalListPartDriver(ILiveoGoalService goalService,
@@ -29,7 +29,7 @@ namespace Liveo.Platform.Drivers
             {
                                         var user = _workContextAccessor.GetContext().CurrentUser;
                                         LiveoUserPart liveoUserPart = null;
-                                        IEnumerable<Goal> goals = null;
+                                        //IEnumerable<Goal> goals = null;
                 if (user != null) {
                     var userItem = _orchardServices.ContentManager.Get(user.ContentItem.Id);
                     var userPart = userItem.As<UserPart>();
