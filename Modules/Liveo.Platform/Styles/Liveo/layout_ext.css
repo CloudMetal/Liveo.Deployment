@@ -19,6 +19,18 @@
 .col-hundred { float: left; width: 100%; padding: 5px; }
 .col-full { width: 100%; }
 
+.row-ten { height: 10%; }
+.row-ten-rt { height: 10%; text-align: right; }
+.row-twenty { height: 20%; }
+.row-twenty-rt { height: 20%; text-align: right; }
+.row-eighty-rt { height: 80%; text-align: right; }
+.row-ninety-rt { height: 90%; text-align: right; }
+
+.row-main-margin-btm { float: left; margin-top: 15px; }
+
+.top-rt { position: absolute; top: 5px; right: 5px; }
+.btm-rt { position: absolute; bottom: 5px; right: 5px; }
+
 /* Margins */
 .margin-ten { margin:10px 0 10px; }
 .margin-top-five { margin-top: 5px; }
@@ -39,6 +51,34 @@
 .txt-right { text-align: right; }
 .txt-left { text-align: left; }
 .txt-center { text-align: center; }
+
+/* Tables */
+table 
+{
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+table.col-full { margin-bottom: 25px; }
+
+td 
+{
+    padding: 0 5px 0 5px;
+    text-align: right;
+}
+
+tr.tr1 {
+	background-color: #e7e7e7;
+	line-height:20px;
+	height:20px;
+}
+tr.tr2 {
+	background-color: #d7d7d7;
+	line-height:20px;
+	height:20px;	
+}
+
+thead { background-color: #b1b1b1; height: 30px; line-height: 30px; color: #fff; }
 
 /* Forms & Inputs
 ***************************************************************/

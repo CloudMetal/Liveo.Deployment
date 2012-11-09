@@ -21,6 +21,12 @@ namespace Liveo.Platform.WebApi
 		public IEnumerable<RouteDescriptor> GetRoutes()
 		{
 			return new[]{
+                 new HttpRouteDescriptor {
+											Name = "AccountApi",
+											Priority = -10,
+											RouteTemplate = "api/Account/{id}",
+											Defaults = new	{ area = "Liveo.Platform", controller = "AccountApi", id = RouteParameter.Optional }		
+										},
                 new HttpRouteDescriptor {
 											Name = "AffiliateApi",
 											Priority = -10,

@@ -3,14 +3,10 @@
 }
 <!--------------------------------------------------------- BEGIN _U20-10_ Program Details --------------------------------------------->
 <script>
-
-
     $(document).ready(function () {
 
 
     });
-
-
 
 </script>
 <div data-model="vmProgram">
@@ -20,31 +16,35 @@
         @ViewBag.Title_U20-10
 
         <div class="wrapper-large height-medium">
-                <div class="title">Program Details</div>
-     
-                <div class="col-fifty">
-                    <label class="large-txt">
-                        Title:
-                        <span data-bind="html:editedProgramModel().Name">
-                        </span>
-                    </label>
+            <div class="title">Program Details</div>
 
-                    <label class="large-txt">
-                        Description:
-                        <span  data-bind="html:editedProgramModel().GeneralDescription">
-                        </span>
-                    </label>
-
+            <div class="col-hundred modal-min-tiny-row">
+                <div class="col-thirty">
+                    <span class="med-font-bld">Title:</span>
                 </div>
-                <div class="col-fourty">
-                </div>
-                <div class="clear"></div>
-            
-                <div class="right">
-                    <button link="modalokbutton" class="nav-btn-light">Close</button>
-
+                <div class="col-eighty">
+                    <span data-bind="html:editedProgramModel().Name"></span>
                 </div>
             </div>
+            <div class="clear"></div>
+
+            <div class="col-hundred modal-min-tiny-row">
+                <div class="col-thirty">
+                    <span class="med-font-bld">General Description:</span>
+                </div>
+                <div class="col-eighty">
+                    <span data-bind="html:editedProgramModel().GeneralDescription"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+
+
+            <div class="right">
+                <button link="modalokbutton" class="nav-btn-light">Close</button>
+
+            </div>
+        </div>
     </div>
 </div>
 <!--------------------------------------------------------- END _U20-10_ -------------------------------------------------------------->

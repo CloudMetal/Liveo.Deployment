@@ -1,15 +1,4 @@
 ﻿
-                             @if (Request.IsAuthenticated)
- {
-		<div id="footer-links">
-			@Html.ActionLink(T("Sign Out").ToString(), "LogOff", new { Controller = "Account", Area = "Orchard.Users", ReturnUrl = Context.Request.RawUrl })
-			|
-            @Html.ActionLink("Dashboard", "Index", new { Area = "Dashboard", Controller = "Admin" })
-		</div>
- }
- else
- {
-		<div id="footer-links">@Html.ActionLink(T("Sign In").ToString(), "LogOn", new { Controller = "Account", Area = "Orchard.Users", ReturnUrl = Context.Request.RawUrl })</div>
- }
+    <span class="footer-links">ABOUT US | CONTACT US | CAREERS | TERMS & CONDITIONS</span>
+    <span class="footer-copy">@T("&#169; COPYRIGHT LIVEO 2012.")</span>
 
-<span class="footer-copy">@T("COPYRIGHT &#169; KUDZOOKINECT, INC. ALL RIGHTS RESERVED.")</span>

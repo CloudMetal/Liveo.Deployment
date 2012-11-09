@@ -23,8 +23,9 @@ namespace Liveo.Platform.Controllers
             return View();
         }
 
-        public ActionResult Survey()
+        public ActionResult Survey(int userId)
         {
+            ViewBag.UserId = userId;
             return View();
         }
 

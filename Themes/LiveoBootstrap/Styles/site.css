@@ -1,6 +1,6 @@
 /* 
-Theme: BootStrap 
-Author: Raptor Concepts (http://www.raptorconcepts.com) 
+Theme: LiveoBootStrap 
+Author: CloudMetal (http://www.cloudmetal.com) 
 Copyright: 2012 
 */
 
@@ -382,4 +382,25 @@ article header h1 {
 visibility:hidden;
 display:none;
 position:absolute;
+}
+
+@font-face {
+    font-family: 'TradeGothicCondNo18Obl';
+    src: url('TradeGothicCondNo18Obl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TradeGothicCondNo18';
+    src: url('TradeGothicCondNo18.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TradeGothicBoldNo20Obl';
+    src: url('TradeGothicBoldNo20Obl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }

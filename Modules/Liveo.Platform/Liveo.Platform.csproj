@@ -138,6 +138,7 @@
     <Content Include="Images\bullet.png" />
     <Content Include="Images\centralcrossfit.JPG" />
     <Content Include="Images\clairedanes.jpg" />
+    <Content Include="Images\Cycling1.jpg" />
     <Content Include="Images\g10albumsfunrun.png" />
     <Content Include="Images\g10albumsfunrun1.png" />
     <Content Include="Images\g10albumsfunrun2.png" />
@@ -173,6 +174,7 @@
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\jerry-springer.jpg" />
     <Content Include="Images\joesfitness.jpg" />
+    <Content Include="Images\kickboxing.jpg" />
     <Content Include="Images\Liveo_Profile_LiveoHealthE_01.png" />
     <Content Include="Images\Liveo_Profile_LiveoHealthE_02.png" />
     <Content Include="Images\Liveo_Profile_LiveoHealthE_03.png" />
@@ -237,6 +239,19 @@
     <Content Include="Scripts\Resources\jquery.mousewheel-3.0.6.pack.js" />
     <Content Include="Scripts\Resources\knockout.validation.js" />
     <Content Include="Scripts\Resources\knockout.validation.min.js" />
+    <Content Include="Styles\Images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Styles\Images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Styles\Images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Styles\Images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Styles\Images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Styles\Images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Styles\Images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Styles\Images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Styles\Images\ui-icons_222222_256x240.png" />
+    <Content Include="Styles\Images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Styles\Images\ui-icons_454545_256x240.png" />
+    <Content Include="Styles\Images\ui-icons_888888_256x240.png" />
+    <Content Include="Styles\Images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Styles\jquery.fancybox.css" />
     <Content Include="Styles\Liveo\Images\add_photo.png" />
     <Content Include="Styles\Liveo\Images\album.png" />
@@ -374,6 +389,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminMenu.cs" />
+    <Compile Include="Controllers\AccountApiController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AffiliateAdminController.cs" />
     <Compile Include="Controllers\AffiliateApiController.cs" />

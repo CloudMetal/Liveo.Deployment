@@ -2,33 +2,75 @@
     ViewBag.Title = "pvU10-10";
 }
 <!--------------------------------------------------------- BEGIN _U10-10_ Create a Goal ------------------------------------------->
+<script>
+    var _goal_ViewModel;
+
+
+    $(document).ready(function () {
+
+        $('[link="goaldate_goal"]').datepicker();
+
+
+        $('[link="U10_step1"]').click(function () { U10_step1(); });
+        $('[link="U10_step3"]').click(function () { U10_step3(); });
+
+        _goal_ViewModel = new Goal_ViewModel();
+        _goal_ViewModel.beginCandidateGoalModel();
+
+        _goal_ViewModel.candidateGoalModel().Name('');
+        _goal_ViewModel.candidateGoalModel().AccomplishDate('');
+
+        //init fields
+
+        //attach after initializing
+        ko.attach("vmGoal", _goal_ViewModel);
+
+    });
+
+    function U10_step1() {
+        CM.fadeTransition('U10', 'U01', 200);
+    }
+
+    function U10_step3() {
+        CM.fadeTransition('U10', 'U20', 200);
+    }
+
+</script>
 <div data-model="vmGoal">
-    <div class="title">Define a Goal</div>
+    <div class="title noupper">Define a Goal</div>
     <hr />
-    This survey is designed to help us develop an optimal health and fitness program for you.
     <table width="650" border="0" cellspacing="0" cellpadding="5">
         <tr>
-            <td>
-                <label>What is your goal?</label>
-                <select  data-bind="value: candidateGoalModel().GoalTypeId">
-                    <option>Choose Goal...</option>
-                    <option value="1">Lose Weight</option>
-                    <option value="2">Lower Bloodpressure</option>
-                    <option value="3">Endurance Training</option>
-                    <option value="4">Weight Training</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>By this date:</label>
-                <input data-bind="value:candidateGoalModel().AccomplishDate" type="text" link="goaldate_goal" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Give your goal a name:</label>
-                <input data-bind="value:candidateGoalModel().Name" size="60" link="txtGoalName" value="" />
+            <td valign="top">
+                <table width="750" border="0">
+                    <tr>
+                        <td>
+                            <label>What is your primary fitness goal?</label>
+                            <select data-bind="value: candidateGoalModel().GoalTypeId">
+                                <option>Choose Goal...</option>
+                                <option value="1">Lose Weight</option>
+                                <option value="2">Gain Weight</option>
+                                <option value="3">Get Ripped</option>
+                                <option value="4">Get Toned</option>
+                                <option value="4">Gain Strength</option>
+                                <option value="4">Gain Flexibility</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>By this date:</label>
+
+                            <input data-bind="value:candidateGoalModel().AccomplishDate" type="text" link="goaldate_goal" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Give your goal a name:</label>
+                            <input data-bind="value:candidateGoalModel().Name" type="text" size="60" link="txtGoalName" value="" />
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>

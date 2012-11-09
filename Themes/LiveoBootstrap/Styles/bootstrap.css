@@ -1790,7 +1790,9 @@ table .span24 {
     text-overflow: ellipsis;
 }
 .dropdown-toggle {
-  *margin-bottom: -3px;
+    *margin-bottom: -3px;
+    width: 130px;
+    overflow: ellipsis;
 }
 .dropdown-toggle:active,
 .open .dropdown-toggle {
@@ -1871,9 +1873,9 @@ table .span24 {
 .dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
-  color: #ffffff;
+  color: #595a5c;
   text-decoration: none;
-  background-color: #0088cc;
+  background-color: #e3ef34;
 }
 .dropdown.open {
   *z-index: 1000;

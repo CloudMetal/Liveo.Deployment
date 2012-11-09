@@ -34,7 +34,7 @@
         CM.showSpinner('U20_spinner_page');
 
         //TODO: /*TODO: Need the logged-in userId*/
-        var currentUserId = 0;
+        var currentUserId = @ViewBag.UserId
         U20_createUserSuccess(currentUserId);
 
     }
@@ -42,6 +42,12 @@
     function U20_createUserSuccess(newId) {
         //upon create user success, create the goal:
         _goal_ViewModel.candidateGoalModel().UserId(newId);
+
+        var day1 = $('[link="goaldate_goal"]').datepicker('getDate').getDate();
+        var month1 = $('[link="goaldate_goal"]').datepicker('getDate').getMonth() + 1;
+        var year1 = $('[link="goaldate_goal"]').datepicker('getDate').getFullYear();
+        var selectedDate = month1 + "/" + day1 + "/" + year1;
+        _goal_ViewModel.candidateGoalModel().AccomplishDate(selectedDate);
         _goal_ViewModel.commitCandidateGoalModel(U20_createGoalSuccess, U20_createGoalFail);
     }
 
@@ -69,7 +75,8 @@
 
     function U20_redirect() {
         CM.hideSpinner('U20_spinner_page');
-        document.location = "Users/Profile";
+        //string userNameOrEmail, string password, string returnUrl, bool rememberMe = false
+        //document.location = "Account/Logon?userNameOrEmail=mammajamma" + "&password=1234" + "&returnUrl='/'" ;
     }
 
 
@@ -78,7 +85,7 @@
     <div link="U20" class="panel invisible">
         <a link="U20_link" rel="[link='U20']" style=""></a>
         @ViewBag.Title_U20
-        <h2>Step 3 - Select a Program</h2><br /><br />
+       <div class="title">Select a Program</div>
 
 
 
@@ -92,10 +99,14 @@
                   @*  <img src="images/g10albumsvacation2.png" height="100px" width="100px" />*@
                 </div>
                 <div class="col-sixty">
+                    <p>
                     <span data-bind="html:Name" class="med-font-bld"></span><span class="med-font"></span>
+                    </p>
                     <br />
                     <hr />
+                     <p>
                     <div data-bind="html:GeneralDescription"></div>
+                    </p>
 
                 </div>
                 <div class="right modal-max-tiny-row margin-top-ten">
@@ -108,7 +119,7 @@
             <!-- /ko -->
 
             <div>
-                <button class="segment-small-status-light" link="U20_step2" class="primaryAction"><- Back to Step 2 - Survey</button>
+                <button class="segment-small-status-light" link="U20_step2" class="primaryAction">Back</button>
                 <button class="segment-small-status-green" link="U20_finish" class="primaryAction">Finish!</button> 
                 <div id="U20_spinner_page" class="invisible">
                     please wait...

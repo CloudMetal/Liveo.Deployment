@@ -13,6 +13,34 @@ namespace Liveo.Platform
         public IEnumerable<RouteDescriptor> GetRoutes()
         {
             return new[] {
+                new RouteDescriptor {
+                    Route = new Route(
+                        "Account/Register",
+                        new RouteValueDictionary {
+                            {"area", "Orchard.Users"},
+                            {"controller", "Account"},
+                            {"action", "Register"}
+                        },
+                        new RouteValueDictionary(),
+                        new RouteValueDictionary {
+                            {"area", "Orchard.Users"}
+                        },
+                        new MvcRouteHandler())
+                },
+                new RouteDescriptor {
+                    Route = new Route(
+                        "Account/Logon",
+                        new RouteValueDictionary {
+                            {"area", "Orchard.Users"},
+                            {"controller", "Account"},
+                            {"action", "LogOn"}
+                        },
+                        new RouteValueDictionary(),
+                        new RouteValueDictionary {
+                            {"area", "Orchard.Users"}
+                        },
+                        new MvcRouteHandler())
+                },
                  new RouteDescriptor {
                     Route = new Route(
                         "Users",
@@ -85,7 +113,7 @@ namespace Liveo.Platform
                 },
                 new RouteDescriptor {
                     Route = new Route(
-                        "Users/Survey",
+                        "Users/Survey/{userId}",
                         new RouteValueDictionary {
                             {"area", "Liveo.Platform"},
                             {"controller", "User"},

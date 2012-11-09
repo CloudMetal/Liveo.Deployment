@@ -1,287 +1,332 @@
 ﻿@{
     ViewBag.Title = "pvUS01";
+
+    Style.Require("reset");
+    Style.Require("font");
+    Style.Require("layout");
+    Style.Require("modal");
+    Style.Require("jqui");
+
+    Script.Require("jQuery").AtHead();
+    Script.Require("jquerytools").AtHead();
+    Script.Require("jqueryuijs").AtHead();
+    Script.Require("ko").AtHead();
+    Script.Require("livequery").AtHead();
+    Script.Require("komulti").AtHead();
+    Script.Require("common").AtHead();
 }
 <!--------------------------------------------------------- BEGIN _US01_ User/Member Settings-------------------------------------------------->
-<script>
+<!--
+    <script>
     $(document).ready(function () {
 
 
-      
-    });
 
+    });
 </script>
 
-<div link="US01" class="panel notinvisible">
+    <div link="US01" class="panel notinvisible">
     <a link="U0S1_link" rel="[link='U0S1']" style=""></a>
     @ViewBag.Title_US01
-   
+    -->
 
-    <div class="wrapper-large ">
-
-        <div class="col-fifty">
-          <div class="title">Member Settings</div>
-            <div class="clear"></div>
-            <label class="large-txt">
-                Member Type:
-                <span>
-                    <input type="text" value="Admin" />
-                </span>
-            </label>
-
-            <label class="large-txt">
-                First Name:
-                <span>
-                    <input type="text" value="Travis" />
-                </span>
-            </label>
-
-            <label class="large-txt">
-                Last Name:
-                <span>
-                    <input type="text" value="James" />
-                </span>
-            </label>
-
-            <label class="large-txt">
-                Birthdate:
-                <span>
-                    <input type="text" value="1/1/1970" />
-                </span>
-            </label>
-
-            <label class="large-txt">
-                Sex:
-                <span>
-                    <select>
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </span>
-            </label>
-
-            <label class="large-txt">
-                Company:
-                <span>
-                    <input type="text" date="CloudMetal" />
-                </span>
-            </label>
+<div class="wrapper-large">
 
 
-            <div class="title">Media</div>
-       
-            <label>
-                Profile Picture<br />
-            </label>
-              <img src="@Href("../../Images/g10photos1.png")" width="80px" height="80px">
-                <span> <input type="file" /></span>
+    <div class="title">Member Settings</div>
 
-            <label>
-                Secondary Profile<br />
-            </label>
-              <img src="@Href("../../Images/g10photos2.png")" width="80px" height="80px">
-                <span> <input type="file" /></span>
+    <label class="large-txt">
+        Member Type:
+        <span>
+            <input type="text" value="Admin" />
+        </span>
+    </label>
+    <div class="col-fifty">
+        <label class="large-txt">
+            First Name:
+            <span>
+                <input type="text" value="Travis" />
+            </span>
+        </label>
+        <label class="large-txt">
+            Sex:
+            <span>
+                <select>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </span>
+        </label>
+        <label class="large-txt">
+            Company:
+            <span>
+                <input type="text" date="CloudMetal" />
+            </span>
+        </label>
+    </div>
+    <div class="col-fourty">
+        <label class="large-txt">
+            Last Name:
+            <span>
+                <input type="text" value="James" />
+            </span>
+        </label>
+        <label class="large-txt">
+            Birthdate:
+            <span>
+                <input type="text" value="1/1/1970" />
+            </span>
+        </label>
+    </div>
+    <div class="clear"></div>
 
-             <label>
-                Profile Background<br />
-            </label>
-              <img src="@Href("../../Images/g10photos3.png")" width="80px" height="80px">
-                <span> <input type="file" /></span>
-           
+    <div class="title">Media</div>
+    <div class="col-hundred">
+        <label>
+            Profile Picture<br />
+        </label>
+        <img src="@Href("../../Images/g10photos1.png")" width="80px" height="80px">
+        <span>
+            <input type="file" /></span>
 
-            <div class="title">Basic Health Information</div>
+        <label>
+            Secondary Profile<br />
+        </label>
+        <img src="@Href("../../Images/g10photos2.png")" width="80px" height="80px">
+        <span>
+            <input type="file" /></span>
 
+        <label>
+            Profile Background<br />
+        </label>
+        <img src="@Href("../../Images/g10photos3.png")" width="80px" height="80px">
+        <span>
+            <input type="file" /></span>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
 
-            <label class="medium-txt">
-                Height:
-                <span>
-                    <input type="text" value="6'1" />
-                </span>
-            </label>
+    <div class="title margin-top-twenty">Basic Health Information</div>
+    <div class="col-hundred">
+        <label class="medium-txt">
+            Height:
+            <span>
+                <input type="text" value="6'1" />
+            </span>
+        </label>
 
-            <label class="medium-txt">
-                Weight:
-                <span>
-                    <input type="number" value="160" />
-                </span>
-            </label>
+        <label class="medium-txt">
+            Weight:
+            <span>
+                <input type="number" value="160" />
+            </span>
+        </label>
 
-            <label class="medium-txt">
-                General Health:
-                <span>
-                    <select>
-                        <option>Poor</option>
-                        <option>Average</option>
-                        <option>Good</option>
-                        <option>Very Good</option>
-                    </select>
-                </span>
-            </label>
+        <label class="medium-txt">
+            General Health:
+            <span>
+                <select>
+                    <option>Poor</option>
+                    <option>Average</option>
+                    <option>Good</option>
+                    <option>Very Good</option>
+                </select>
+            </span>
+        </label>
+    </div>
+    <div class="clear"></div>
 
-             <div class="title">Contact Information</div>
+    <div class="title">Contact Information</div>
+    <div class="col-hundred">
+        <label class="large-txt">
+            Home Phone
+            <span>
+                <input type="text" value="555-555-5555" />
+            </span>
+        </label>
 
-            <label class="large-txt">
-                Home Phone
-                <span>
-                    <input type="text" value="555-555-5555" />
-                </span>
-            </label>
+        <label class="large-txt">
+            Cell Phone
+            <span>
+                <input type="text" value="555-777-7777" />
+            </span>
+        </label>
 
-            <label class="large-txt">
-                Cell Phone
-                <span>
-                    <input type="text" value="555-777-7777" />
-                </span>
-            </label>
+        <label class="large-txt">
+            Office Phone
+            <span>
+                <input type="text" value="555-777-8888" />
+            </span>
+        </label>
 
-             <label class="large-txt">
-                Office Phone
-                <span>
-                    <input type="text" value="555-777-8888" />
-                </span>
-            </label>
+        <label class="large-txt">
+            Email:
+            <span>
+                <input type="text" value="travis@james.com" />
+            </span>
+        </label>
 
-            <label class="large-txt">
-                Email:
-                <span>
-                    <input type="text" value="travis@james.com" />
-                </span>
-            </label>
+        <label class="large-txt">
+            Address:
+            <span>
+                <input type="text" value="111 Smart Street" />
+            </span>
+        </label>
 
-             <label class="large-txt">
-                Address:
-                <span>
-                    <input type="text" value="111 Smart Street" />
-                </span>
-            </label>
+        <label class="large-txt">
+            City:
+            <span>
+                <input type="text" value="Frisco" />
+            </span>
+        </label>
 
-            <label class="large-txt">
-                City:
-                <span>
-                    <input type="text" value="Frisco" />
-                </span>
-            </label>
+        <label class="large-txt">
+            State:
+            <span>
+                <select name="state" id="state">
+                    <option value="ALL,US">-All United States-</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California,US</option>
+                    <option value="CO">Colorado,US</option>
+                    <option value="CT">Connecticut,US</option>
+                    <option value="DE">Delaware,US</option>
+                    <option value="DC">District of Columbia,US</option>
+                    <option value="FL">Florida,US</option>
+                    <option value="GA">Georgia,US</option>
+                    <option value="HI">Hawaii,US</option>
+                    <option value="ID">Idaho,US</option>
+                    <option value="IL">Illinois,US</option>
+                    <option value="IN">Indiana,US</option>
+                    <option value="IA">Iowa,US</option>
+                    <option value="KS">Kansas,US</option>
+                    <option value="KY">Kentucky,US</option>
+                    <option value="LA">Louisana,US</option>
+                    <option value="ME">Maine,US</option>
+                    <option value="MD">Maryland,US</option>
+                    <option value="MA">Massachusetts,US</option>
+                    <option value="MI">Michigan,US</option>
+                    <option value="MN">Minnesota,US</option>
+                    <option value="MS">Mississippi,US</option>
+                    <option value="MO">Missouri,US</option>
+                    <option value="MT">Montana,US</option>
+                    <option value="NE">Nebraska,US</option>
+                    <option value="NV">Nevada,US</option>
+                    <option value="NH">New Hampshire,US</option>
+                    <option value="NJ">New Jersey,US</option>
+                    <option value="NM">New Mexico,US</option>
+                    <option value="NY">New York,US</option>
+                    <option value="NC">North Carolina,US</option>
+                    <option value="ND">North Dakota,US</option>
+                    <option value="OH">Ohio,US</option>
+                    <option value="OK">Oklahoma,US</option>
+                    <option value="OR">Oregon,US</option>
+                    <option value="PA">Pennsylvania,US</option>
+                    <option value="RI">Rhode Island,US</option>
+                    <option value="SC">South Carolina,US</option>
+                    <option value="SD">South Dakota,US</option>
+                    <option value="TN">Tennessee,US</option>
+                    <option value="TX" selected>Texas,US</option>
+                    <option value="UT">Utah,US</option>
+                    <option value="VT">Vermont,US</option>
+                    <option value="VA">Virginia,US</option>
+                    <option value="WA">Washington,US</option>
+                    <option value="WV">West Virginia,US</option>
+                    <option value="WI">Wisconsin,US</option>
+                    <option value="WY">Wyoming,US</option>
+                </select>
+            </span>
+        </label>
 
-            <label class="large-txt">
-                State:
-                <span>
-                    <select name="state" id="state">
-                        <option value="ALL,US">-All United States-</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California,US</option>
-                        <option value="CO">Colorado,US</option>
-                        <option value="CT">Connecticut,US</option>
-                        <option value="DE">Delaware,US</option>
-                        <option value="DC">District of Columbia,US</option>
-                        <option value="FL">Florida,US</option>
-                        <option value="GA">Georgia,US</option>
-                        <option value="HI">Hawaii,US</option>
-                        <option value="ID">Idaho,US</option>
-                        <option value="IL">Illinois,US</option>
-                        <option value="IN">Indiana,US</option>
-                        <option value="IA">Iowa,US</option>
-                        <option value="KS">Kansas,US</option>
-                        <option value="KY">Kentucky,US</option>
-                        <option value="LA">Louisana,US</option>
-                        <option value="ME">Maine,US</option>
-                        <option value="MD">Maryland,US</option>
-                        <option value="MA">Massachusetts,US</option>
-                        <option value="MI">Michigan,US</option>
-                        <option value="MN">Minnesota,US</option>
-                        <option value="MS">Mississippi,US</option>
-                        <option value="MO">Missouri,US</option>
-                        <option value="MT">Montana,US</option>
-                        <option value="NE">Nebraska,US</option>
-                        <option value="NV">Nevada,US</option>
-                        <option value="NH">New Hampshire,US</option>
-                        <option value="NJ">New Jersey,US</option>
-                        <option value="NM">New Mexico,US</option>
-                        <option value="NY">New York,US</option>
-                        <option value="NC">North Carolina,US</option>
-                        <option value="ND">North Dakota,US</option>
-                        <option value="OH">Ohio,US</option>
-                        <option value="OK">Oklahoma,US</option>
-                        <option value="OR">Oregon,US</option>
-                        <option value="PA">Pennsylvania,US</option>
-                        <option value="RI">Rhode Island,US</option>
-                        <option value="SC">South Carolina,US</option>
-                        <option value="SD">South Dakota,US</option>
-                        <option value="TN">Tennessee,US</option>
-                        <option value="TX"  selected>Texas,US</option>
-                        <option value="UT">Utah,US</option>
-                        <option value="VT">Vermont,US</option>
-                        <option value="VA">Virginia,US</option>
-                        <option value="WA">Washington,US</option>
-                        <option value="WV">West Virginia,US</option>
-                        <option value="WI">Wisconsin,US</option>
-                        <option value="WY">Wyoming,US</option>
-                    </select>
-                </span>
-            </label>
+        <label class="large-txt">
+            Password:
+            <span>
+                <input type="password" value="xxxxxx" />
+            </span>
+        </label>
 
-            <label class="large-txt">
-                Password:
-                <span>
-                    <input type="password" value="xxxxxx" />
-                </span>
-            </label>
-
-            <label class="large-txt">
-                Retype Password:
-                <span>
-                    <input type="password" value="xxxxxx" />
-                </span>
-            </label>
-
-
-            <div class="title">Credit Card Info</div>
-
-            <table>
-                <thead>
-                    <tr><th>Card Name</th><th>Card Number</th><th>Expiration Date</th><th></th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Visa</td><td>*1423</td><td>1/1/2014</td><td><a>Delete</a></td></tr>
-                    <tr><td>Master Card</td><td>*6354</td><td>1/1/2015</td><td><a>Delete</a></td></tr>
-                    <tr><td>&nbsp</td><td></td><td></td><td><a></a></td></tr>
-                    <tr><td></td><td></td><td></td><td><a>Add</a></td></tr>
-                </tbody>
-            </table>
-
-            <div class="title">Notifications</div>
-
-            <label class="large-txt">
-                <b>Select how I would like to manage my notifications:</b>
-                <span>
-                    <input type="checkbox"  /> Email <br />
-                    <input type="checkbox"  /> Text
-                </span>
-            </label>
-
-
-            <label class="large-txt">
-                <b>Select My Notifications:</b>
-                <span>
-                    
-                        <input type="checkbox">JOURNAL COMMENTS <br />
-                        <input type="checkbox">CHALLENGES <br />
-                        <input type="checkbox">HEALTH TRACKER <br />
-                        <input type="checkbox">HEALTH PROFILE <br />
-                        <input type="checkbox">HEALTH RISKS <br />
-                   
-                </span>
-            </label>
-
-            <p>
-                <button>Save Member Settings</button>
-            </p>
-
-        </div>
-           
+        <label class="large-txt">
+            Retype Password:
+            <span>
+                <input type="password" value="xxxxxx" />
+            </span>
+        </label>
 
     </div>
+    <div class="clear"></div>
 
+    <div class="title">Credit Card Info</div>
+            <table class="col-full" summary="">
+            <caption></caption>
+            <thead>
+                <tr>
+                    <th>Card Name</th>
+                    <th>Card Number</th>
+                    <th>Expiration Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr1">
+                    <td>Visa</td>
+                    <td>*1423</td>
+                    <td>1/1/2014</td>
+                    <td><a>Delete</a></td>
+                </tr>
+                <tr class="tr2">
+                    <td>Master Card</td>
+                    <td>*6354</td>
+                    <td>1/1/2015</td>
+                    <td><a>Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    <div class="clear"></div>
+
+    <div class="title">Notifications</div>
+    <div class="col-hundred">
+        <label class="large-txt">
+            <b>Select how I would like to manage my notifications:</b>
+            <span>
+                <input type="checkbox" />
+                Email
+                <br />
+                <input type="checkbox" />
+                Text
+            </span>
+        </label>
+
+
+        <label class="large-txt">
+            <b>Select My Notifications:</b>
+            <span>
+
+                <input type="checkbox">JOURNAL COMMENTS
+                <br />
+                <input type="checkbox">CHALLENGES
+                <br />
+                <input type="checkbox">HEALTH TRACKER
+                <br />
+                <input type="checkbox">HEALTH PROFILE
+                <br />
+                <input type="checkbox">HEALTH RISKS
+                <br />
+
+            </span>
+        </label>
+
+        <div class="right">
+            <button class="segment-small-status-green">Save Member Settings</button>
+        </div>
+
+    </div>
+    <div class="clear"></div>
 </div>
-<!--------------------------------------------------------- END _US01_ -------------------------------------------------------------->
+<!--
+</div>
+    -->
+    <div class="clear"></div>
+    <!--------------------------------------------------------- END _US01_ -------------------------------------------------------------->

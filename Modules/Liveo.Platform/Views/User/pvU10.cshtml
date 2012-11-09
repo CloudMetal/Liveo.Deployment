@@ -2,36 +2,19 @@
     ViewBag.Title = "pvU10";
 }
 <!--------------------------------------------------------- BEGIN _U10_ Member Survey --------------------------------------------->
+
 <script>
-    var _goal_ViewModel;
-
-
     $(document).ready(function () {
-
-        $('[link="U10_step1"]').click(function () { U10_step1(); });
-        $('[link="U10_step3"]').click(function () { U10_step3(); });
-
-        _goal_ViewModel = new Goal_ViewModel();
-        _goal_ViewModel.beginCandidateGoalModel();
-
-        _goal_ViewModel.candidateGoalModel().Name('');
-
-        //init fields
-
-        //attach after initializing
-        ko.attach("vmGoal", _goal_ViewModel);
+        $('[link="U10_cancel"]').click(function () { U10_backHome(); })
 
     });
 
-    function U10_step1() {
-        CM.fadeTransition('U10', 'U01', 200);
-    }
-
-    function U10_step3() {
-        CM.fadeTransition('U10', 'U20', 200);
+    function U10_backHome() {
+        location = "/";
     }
 
 </script>
+
 <style>
     td { padding: 10px; }
 </style>
@@ -41,527 +24,320 @@
         <a link="U10_link" rel="[link='U10']" style=""></a>
         @ViewBag.Title_U10
         <div class="wrapper-large">
-            <h1>Liveo Health and Fitness Survey</h1>
+            <div class="title">Liveo Health and Fitness Survey</div>
 
             <img src="@Href("../../Images/survey_banner.jpg")" />
             <br />
-<<<<<<< HEAD
-            <!---------------------------------------------- BEGIN define a goal ----------------------------------------------------->
-
-            <div class="title">Define a Goal</div>
-            <hr />
-            This survey is designed to help us develop an optimal health and fitness program for you.
-            
-            <table width="680" border="0" align="center" cellpadding="0" cellspacing="0" class="border">
-                <tr>
-                    <td width="699"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <table width="650" border="0" cellpadding="10" cellspacing="0">
-                            <tr>
-                            <tr>
-                                <table width="650" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td width="219" class="field_name">First Name:</td>
-                                        <td width="204" class="field_name">Last Name:</td>
-                                        <td width="237" class="field_name">Street Address:</td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <input name="first_name" type="text" id="first_name" size="30"></td>
-                                        <td valign="top">
-                                            <input name="last_name" type="text" id="last_name" size="30"></td>
-                                        <td>
-                                            <input name="address" type="text" id="address" size="30"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field_name">City: </td>
-                                        <td class="field_name">State</td>
-                                        <td valign="bottom">
-                                            <p><span class="field_name">Zip:</span></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <input name="city" type="text" id="city" size="30"></td>
-                                        <td valign="middle">
-                                            <select name="state" id="state">
-                                                <option value="ALL,US" selected>-All United States-</option>
-                                                <option value="AL">Alabama</option>
-                                                <option value="AK">Alaska</option>
-                                                <option value="AZ">Arizona</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="CA">California,US</option>
-                                                <option value="CO">Colorado,US</option>
-                                                <option value="CT">Connecticut,US</option>
-                                                <option value="DE">Delaware,US</option>
-                                                <option value="DC">District of Columbia,US</option>
-                                                <option value="FL">Florida,US</option>
-                                                <option value="GA">Georgia,US</option>
-                                                <option value="HI">Hawaii,US</option>
-                                                <option value="ID">Idaho,US</option>
-                                                <option value="IL">Illinois,US</option>
-                                                <option value="IN">Indiana,US</option>
-                                                <option value="IA">Iowa,US</option>
-                                                <option value="KS">Kansas,US</option>
-                                                <option value="KY">Kentucky,US</option>
-                                                <option value="LA">Louisana,US</option>
-                                                <option value="ME">Maine,US</option>
-                                                <option value="MD">Maryland,US</option>
-                                                <option value="MA">Massachusetts,US</option>
-                                                <option value="MI">Michigan,US</option>
-                                                <option value="MN">Minnesota,US</option>
-                                                <option value="MS">Mississippi,US</option>
-                                                <option value="MO">Missouri,US</option>
-                                                <option value="MT">Montana,US</option>
-                                                <option value="NE">Nebraska,US</option>
-                                                <option value="NV">Nevada,US</option>
-                                                <option value="NH">New Hampshire,US</option>
-                                                <option value="NJ">New Jersey,US</option>
-                                                <option value="NM">New Mexico,US</option>
-                                                <option value="NY">New York,US</option>
-                                                <option value="NC">North Carolina,US</option>
-                                                <option value="ND">North Dakota,US</option>
-                                                <option value="OH">Ohio,US</option>
-                                                <option value="OK">Oklahoma,US</option>
-                                                <option value="OR">Oregon,US</option>
-                                                <option value="PA">Pennsylvania,US</option>
-                                                <option value="RI">Rhode Island,US</option>
-                                                <option value="SC">South Carolina,US</option>
-                                                <option value="SD">South Dakota,US</option>
-                                                <option value="TN">Tennessee,US</option>
-                                                <option value="TX">Texas,US</option>
-                                                <option value="UT">Utah,US</option>
-                                                <option value="VT">Vermont,US</option>
-                                                <option value="VA">Virginia,US</option>
-                                                <option value="WA">Washington,US</option>
-                                                <option value="WV">West Virginia,US</option>
-                                                <option value="WI">Wisconsin,US</option>
-                                                <option value="WY">Wyoming,US</option>
-                                            </select></td>
-                                        <td>
-                                            <input name="zip" type="text" id="zip" size="10"></td>
-                                    </tr>
-                                    <tr>
-                                        <td height="19"><span class="field_name">Email Address:</span></td>
-                                        <td><span class="field_name">Phone:</span></td>
-                                        <td><span class="field_name">Age:</span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td height="32" valign="top">
-                                            <input name="email" type="text" id="email"></td>
-                                        <td valign="top">
-                                            <input name="phone" type="text" id="phone">
-                                        </td>
-                                        <td valign="top">
-                                            <p>
-                                                <input name="age" type="text" id="age" size="3" maxlength="3">
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" valign="top">
-
-                                            <table width="650" border="0" cellspacing="0" cellpadding="0">
-                                                <tr>
-                                                    <td width="218" class="field_name">Gender:</td>
-                                                    <td width="204" class="field_name">Household income:</td>
-                                                    <td width="228" class="field_name">Ethnicity:</td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="35">
-                                                        <select name="gender" id="select3">
-                                                            <option value="select">
-                                                            select
-                 
-                                                        <option value="male">
-                                                            male
-                 
-                                                        <option value="female">
-                                                            female
-                         
-                                                        </select></td>
-                                                    <td>
-                                                        <input name="income" type="text" id="zip3" size="10"></td>
-                                                    <td>
-                                                        <select name="marital" id="select4">
-                                                            <option value="select">select </option>
-                                                            <option value="single">Black </option>
-                                                            <option value="married">Caucasian</option>
-                                                            <option value="divorced">Asian</option>
-                                                            <option value="separated">Hispanic</option>
-                                                            <option value="widow">American Indian</option>
-                                                        </select></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td height="22" class="field_name"></td>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td valign="top" class="field_name"></td>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
-                                                </tr>
-                                            </table>
-
-
-
-                                            <table width="650" border="0" cellspacing="0" cellpadding="0">
-                                                <tr>
-                                                    <td width="218" class="field_name">DOB:</td>
-                                                    <td width="204" class="field_name">Height:</td>
-                                                    <td width="228" class="field_name">Weight:</td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="35">
-                                                        <input type="date" />
-                                                    </td>
-                                                    <td>
-                                                        <input name="income" type="text" size="10">
-                                                    </td>
-                                                    <td>
-
-                                                        <input name="income" type="text" size="10">
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td height="22" class="field_name"></td>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td valign="top" class="field_name"></td>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-
-                                <table width="650" border="0" cellspacing="0" cellpadding="5">
-                                    <tr>
-                                        <td>
-                                            <label>What is your goal?</label>
-                                            <select>
-                                                <option>Choose Goal...</option>
-                                                <option>Lose Weight</option>
-                                                <option>Lower Bloodpressure</option>
-                                                <option>Endurance Training</option>
-                                                <option>Weight Training</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>By this date:</label>
-                                            <input type="text" link="goaldate_goal" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>Give your goal a name:</label>
-                                            <input size="60" link="txtGoalName" value="" />
-                                        </td>
-                                    </tr>
-
-
-=======
-<!------------------------------------------------ BEGIN define a goal ------------>
-
-                @Html.Partial("pvU10-10") 
-                                   
-<!------------------------------------------------ END define a goal --------------> 
             <br />
-                                        <br />
-                                        <div class="title">Fitness Questions</div>
-                                        <hr />
-                                        <table width="650" border="0" cellspacing="0" cellpadding="5">
+            <br />
+
+
+
+            <h3 class="header-font-italic">This survey is designed to help us develop an optimal health and fitness program for you.</h3>
+   
+                         <!------------------------------------------------ BEGIN define a goal ------------>
+
+                @Html.Partial("pvU10-10")
+
+
+                <br />
+                <br />
+                <div class="title noupper">Fitness Questions</div>
+                <hr />
+                <table width="650" border="0" cellspacing="0" cellpadding="5">
+
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">What is your age?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>Choose...</option>
+                                            <option value="20">20 and under</option>
+                                            <option value="35">20-35</option>
+                                            <option value="50">36-50</option>
+                                            <option value="65">51-65</option>
+                                            <option value="66">66 and up</option>
+
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">What is your Race?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>Choose...</option>
+                                            <option>White</option>
+                                            <option>Black</option>
+                                            <option>Hispanic</option>
+                                            <option>Asian</option>
+                                            <option>American Indian</option>
+
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">What is your Gender?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>Choose...</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">What is your timeline for reaching your goal?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>6 weeks</option>
+                                            <option>3 months</option>
+                                            <option>1 year</option>
+                                            <option>I'm willing to make a lifestyle change</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">How many times a week are you willing to work out?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>2-3 times a week</option>
+                                            <option>3-5 times a week</option>
+                                            <option>5-6 times a week</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">How long do you have to work out?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>15 minutes</option>
+                                            <option>30 minutes</option>
+                                            <option>45 minutes</option>
+                                            <option>As long as I want</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">What type of workouts do you enjoy the most?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>High Intensity</option>
+                                            <option>Cardio</option>
+                                            <option>Yoga-type</option>
+                                            <option>MMA</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">Which trainer would you prefer?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>Male trainer</option>
+                                            <option>Female trainer</option>
+                                            <option>No preference</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">Where do you work out most of the time?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>Gym</option>
+                                            <option>Home</option>
+                                            <option>Office</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <br />
+                            <br />
+                            <div class="title  noupper">Diet Questions</div>
+                            <hr />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">Which of the following best describes your diet?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>Good</option>
+                                            <option>Okay</option>
+                                            <option>Bad</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">Which of the following categories applies to you?</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table>
                                             <tr>
-                                                <td valign="top"><span class="field_name">Please tell us which of the outdoor activities you 
->>>>>>> 668d2d106ed72af8d1b115f2687558de2e47f7a3
+                                                <td>
+                                                    <input name="Nautilus" type="checkbox" value="Vegetarian" />
+                                                    Vegetarian</td>
+                                                <td>
+                                                    <input name="Gluten_Free" type="checkbox" value="Gluten Free" />
+                                                    Gluten Free</td>
+                                                <td>
+                                                    <input name="No_Red_Meat" type="checkbox" value="No Red Meat" />
+                                                    No Red Meat</td>
+                                            </tr>
 
-                                </table>
-                                <br />
-                                <br />
-                                <div class="title">Fitness Questions</div>
-                                <hr />
-                                <table width="650" border="0" cellspacing="0" cellpadding="5">
-                                    
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">What is your current fitness level?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>Beginner</option>
-                                                            <option>Intermediate</option>
-                                                            <option>Advanced</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">What is your primary fitness goal?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>Lose weight</option>
-                                                            <option>Gaint weight</option>
-                                                            <option>Get toned</option>
-                                                            <option>Gain strength</option>
-                                                            <option>Gain flexibility</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">What is your timeline for reaching your goal?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>6 weeks</option>
-                                                            <option>3 months</option>
-                                                            <option>1 year</option>
-                                                            <option>I'm willing to make a lifestyle change</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">How many times a week are you willing to work out?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>2-3 times a week</option>
-                                                            <option>3-5 times a week</option>
-                                                            <option>5-6 times a week</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">How long do you have to work out?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>15 minutes</option>
-                                                            <option>30 minutes</option>
-                                                            <option>45 minutes</option>
-                                                            <option>As long as I want</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">What type of workouts do you enjoy the most?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>High Intensity</option>
-                                                            <option>Cardio</option>
-                                                            <option>Yoga-type</option>
-                                                            <option>MMA</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">Which trainer would you prefer?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>Male trainer</option>
-                                                            <option>Female trainer</option>
-                                                            <option>No preference</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">Where do you work out most of the time?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>Gym</option>
-                                                            <option>Home</option>
-                                                            <option>Office</option>
-                                                            <option>Other</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <br />
-                                            <br />
-                                            <div class="title">Diet Questions</div>
-                                            <hr />
-                                        </td>
-                                    </tr>
+                                            <tr>
+                                                <td>
+                                                    <input name="Dairy_Allergy" type="checkbox" value="Dairy Allergy" />
+                                                    Dairy Allergy</td>
+                                                <td>
+                                                    <input name="Nut_Allergy" type="checkbox" value="Nut Allergy" />
+                                                    Nut Allergy</td>
+                                            </tr>
+                                            <tr>
+                                            </tr>
 
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">Which of the following best describes your diet?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>Good</option>
-                                                            <option>Okay</option>
-                                                            <option>Bad</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">Which of the following categories applies to you?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <table>
-                                                            <tr>
-                                                                <td>
-                                                                    <input name="Nautilus" type="checkbox" value="Vegetarian" />
-                                                                    Vegetarian</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input name="Gluten_Free" type="checkbox" value="Gluten Free" />
-                                                                    Gluten Free</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input name="Dairy_Allergy" type="checkbox" value="Dairy Allergy" />
-                                                                    Dairy Allergy</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input name="Nut_Allergy" type="checkbox" value="Nut Allergy" />
-                                                                    Nut Allergy</td>
-                                                            </tr>
-                                                                                                                        <tr>
-                                                                <td>
-                                                                    <input name="No_Red_Meat" type="checkbox" value="No Red Meat" />
-                                                                    No Red Meat</td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">What would be the best thing we could provide you regarding diet?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>Please tell me exactly what to eat and give me recipes</option>
-                                                            <option>Just tell me what I can eat and what I can't eat and I'll handle the rest</option>
-                                                            <option>I know what I should eat, I just need some motivation</option>
-                                                            <option>I don't need any help with my diet</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                                                        <tr>
-                                        <td valign="top">
-                                            <table width="750" border="0">
-                                                <tr>
-                                                    <td class="field_name">How do you feel about nutritional and workout supplements?</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="34">
-                                                        <select>
-                                                            <option>I currently take supplements</option>
-                                                            <option>I don't take supplements but I would consider taking them if they help me reach my goal</option>
-                                                            <option>I really don't want to take supplements</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">What would be the best thing we could provide you regarding diet?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>Please tell me exactly what to eat and give me recipes</option>
+                                            <option>Just tell me what I can eat and what I can't eat and I'll handle the rest</option>
+                                            <option>I know what I should eat, I just need some motivation</option>
+                                            <option>I don't need any help with my diet</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table width="750" border="0">
+                                <tr>
+                                    <td class="field_name">How do you feel about nutritional and workout supplements?</td>
+                                </tr>
+                                <tr>
+                                    <td width="34">
+                                        <select>
+                                            <option>I currently take supplements</option>
+                                            <option>I don't take supplements but I would consider taking them if they help me reach my goal</option>
+                                            <option>I really don't want to take supplements</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
 
+                <br />
+                <br />
+                <br>
+                <div>
+                    <button class="segment-small-status-light" link="U10_cancel" class="primaryAction">Skip Survey</button>
+                    <button class="segment-small-status-green" link="U10_step3" class="primaryAction">Select a Program</button>
 
-                                <div>
-                                    <button class="segment-small-status-light" link="U10_step1" class="primaryAction"><- Back to Step 1 - Registration</button>
-                                    <button class="segment-small-status-green" link="U10_step3" class="primaryAction">Step 3 - Select a Program -></button>
+                </div>
 
-                                </div>
-                                Click <a href="/">here</a>
-                        to skip the survey and proceed to your profile.
-        <p>
-            <label>
-                <div link="U10_message"></div>
-            </label>
-
-        </p>
+                <label>
+                    <div link="U10_message"></div>
+                </label>
+            </p>
 
         </div>
     </div>

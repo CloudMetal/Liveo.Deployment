@@ -86,6 +86,7 @@ button { }
 .highlight-font-bld { color: #d8e250; font-weight: bold;}
 .header-font { color: #b9165a; }
 .header-font-bold { color: #b9165a; font-weight: bold; }
+.header-font-italic { color: #b9165a; font-style: italic; }
 .white-font { color: #fff;}
 .white-font-bld { color: #fff; font-weight: bold;}
 .small-font { color: #595a5c; font-size: 14px; font-weight:normal;}
@@ -103,4 +104,8 @@ label { font-weight:bold; }
 .invalid {
     color: red;
     font-weight: bold;
+}
+
+.noupper {
+    text-transform:none;
 }

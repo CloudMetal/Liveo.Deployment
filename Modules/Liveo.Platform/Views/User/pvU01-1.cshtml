@@ -1,26 +1,312 @@
 ﻿@{
     ViewBag.Title = "pvU01-1";
+
+    Style.Require("reset");
+    Style.Require("font");
+    Style.Require("layout_ext");
+    Style.Require("modal");
+    Style.Require("jqui");
+
+    Script.Require("jQuery").AtHead();
+    Script.Require("jquerytools").AtHead();
+    Script.Require("jqueryuijs").AtHead();
+    Script.Require("ko").AtHead();
+    Script.Require("livequery").AtHead();
+    Script.Require("komulti").AtHead();
+    Script.Require("common").AtHead();    
 }
 <!--------------------------------------------------------- BEGIN _U01-1_ Actual sign up with credit card ------------------------------------------->
 <script>
-   
+
 
     $(document).ready(function () {
 
-    
+        $('[link="creditcard_expdate"]').datepicker();
+
     });
 
-   
+
 </script>
 <div data-model="vmUser">
     <div link="U01-1" class="panel notinvisible">
         <a link="U01-1_link" rel="[link='U01-1']" style=""></a>
         @ViewBag.Title_U01_1
-        <h2>Step 1 - Registration (Credit Card)</h2>
-        <br />
-        <br />
 
-      
+
+
+        <div class="wrapper-large">
+
+            <br />
+            <br />
+            <div class="noupper">
+                <input type="checkbox" />
+                Annual Savings Plan
+            </div>
+
+            <br />
+            <br />
+            <div class="noupper">
+                <input type="checkbox" />
+                Monthly Plan
+            </div>
+
+            <div class="title">Create An Account</div>
+            <div class="col-fifty">
+                <label class="large-txt">
+                    First Name:
+                    <span>
+                        <input type="text" value="Travis" />
+                    </span>
+                </label>
+                <label class="large-txt">
+                    Sex:
+                    <span>
+                        <select>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </span>
+                </label>
+                <label class="large-txt">
+                    Company:
+                    <span>
+                        <input type="text" date="CloudMetal" />
+                    </span>
+                </label>
+            </div>
+            <div class="col-fourty">
+                <label class="large-txt">
+                    Last Name:
+                    <span>
+                        <input type="text" value="James" />
+                    </span>
+                </label>
+                <label class="large-txt">
+                    Birthdate:
+                    <span>
+                        <input type="text" value="1/1/1970" />
+                    </span>
+                </label>
+            </div>
+            <div class="clear"></div>
+
+
+            <div class="title">Billing Information</div>
+            <div class="col-hundred">
+                <label class="large-txt">
+                    Home Phone:
+                    <span>
+                        <input type="text" value="555-555-5555" />
+                    </span>
+                </label>
+
+                <label class="large-txt">
+                    Cell Phone:
+                    <span>
+                        <input type="text" value="555-777-7777" />
+                    </span>
+                </label>
+
+                <label class="large-txt">
+                    Office Phone:
+                    <span>
+                        <input type="text" value="555-777-8888" />
+                    </span>
+                </label>
+
+                <label class="large-txt">
+                    Email:
+                    <span>
+                        <input type="text" value="travis@james.com" />
+                    </span>
+                </label>
+
+                <label class="large-txt">
+                    Address:
+                    <span>
+                        <input type="text" value="111 Smart Street" />
+                    </span>
+                </label>
+
+                <label class="large-txt">
+                    City:
+                    <span>
+                        <input type="text" value="Frisco" />
+                    </span>
+                </label>
+
+                <label class="large-txt">
+                    State:
+                    <span>
+                        <select name="state" id="state">
+                            <option value="ALL,US">-All United States-</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California,US</option>
+                            <option value="CO">Colorado,US</option>
+                            <option value="CT">Connecticut,US</option>
+                            <option value="DE">Delaware,US</option>
+                            <option value="DC">District of Columbia,US</option>
+                            <option value="FL">Florida,US</option>
+                            <option value="GA">Georgia,US</option>
+                            <option value="HI">Hawaii,US</option>
+                            <option value="ID">Idaho,US</option>
+                            <option value="IL">Illinois,US</option>
+                            <option value="IN">Indiana,US</option>
+                            <option value="IA">Iowa,US</option>
+                            <option value="KS">Kansas,US</option>
+                            <option value="KY">Kentucky,US</option>
+                            <option value="LA">Louisana,US</option>
+                            <option value="ME">Maine,US</option>
+                            <option value="MD">Maryland,US</option>
+                            <option value="MA">Massachusetts,US</option>
+                            <option value="MI">Michigan,US</option>
+                            <option value="MN">Minnesota,US</option>
+                            <option value="MS">Mississippi,US</option>
+                            <option value="MO">Missouri,US</option>
+                            <option value="MT">Montana,US</option>
+                            <option value="NE">Nebraska,US</option>
+                            <option value="NV">Nevada,US</option>
+                            <option value="NH">New Hampshire,US</option>
+                            <option value="NJ">New Jersey,US</option>
+                            <option value="NM">New Mexico,US</option>
+                            <option value="NY">New York,US</option>
+                            <option value="NC">North Carolina,US</option>
+                            <option value="ND">North Dakota,US</option>
+                            <option value="OH">Ohio,US</option>
+                            <option value="OK">Oklahoma,US</option>
+                            <option value="OR">Oregon,US</option>
+                            <option value="PA">Pennsylvania,US</option>
+                            <option value="RI">Rhode Island,US</option>
+                            <option value="SC">South Carolina,US</option>
+                            <option value="SD">South Dakota,US</option>
+                            <option value="TN">Tennessee,US</option>
+                            <option value="TX" selected>Texas,US</option>
+                            <option value="UT">Utah,US</option>
+                            <option value="VT">Vermont,US</option>
+                            <option value="VA">Virginia,US</option>
+                            <option value="WA">Washington,US</option>
+                            <option value="WV">West Virginia,US</option>
+                            <option value="WI">Wisconsin,US</option>
+                            <option value="WY">Wyoming,US</option>
+                        </select>
+                    </span>
+                </label>
+
+                <label class="large-txt">
+                    Password:
+                    <span>
+                        <input type="password" value="xxxxxx" />
+                    </span>
+                </label>
+
+                <label class="large-txt">
+                    Retype Password:
+                    <span>
+                        <input type="password" value="xxxxxx" />
+                    </span>
+                </label>
+
+            </div>
+            <div class="clear"></div>
+
+            <div class="title">Payment Information</div>
+            <div class="col-hundred">
+                <label class="large-txt">
+                    Card Type:
+                    <span>
+                        <input type="text" />
+                    </span>
+                </label>
+                <label class="large-txt">
+                    Credit Card Number:
+                    <span>
+                        <input type="text" />
+                    </span>
+                </label>
+                <label class="large-txt">
+                    CVV:
+                    <span>
+                        <input type="text" />
+                    </span>
+                </label>
+                <label class="large-txt">
+                    Expiration Date:
+                    <span>
+                        <input link="creditcard_expdate" type="text" />
+                    </span>
+                </label>
+            </div>
+            <div class="clear"></div>
+
+            <div class="title">Notifications</div>
+            <div class="col-hundred">
+                <label class="large-txt">
+                    <b>Select how I would like to manage my notifications:</b>
+                    <span>
+                        <input type="checkbox" />
+                        Email
+                        <br />
+                        <input type="checkbox" />
+                        Text
+                    </span>
+                </label>
+
+
+                <label class="large-txt">
+                    <b>Select My Notifications:</b>
+                    <span>
+
+                        <input type="checkbox">JOURNAL COMMENTS
+                        <br />
+                        <input type="checkbox">CHALLENGES
+                        <br />
+                        <input type="checkbox">HEALTH TRACKER
+                        <br />
+                        <input type="checkbox">HEALTH PROFILE
+                        <br />
+                        <input type="checkbox">HEALTH RISKS
+                        <br />
+
+                    </span>
+                </label>
+                <br />
+                <br />
+                <div class="noupper">
+                    <input type="checkbox" />
+                    Sign me up to receive Liveo Health & Fitness Information regarding the latest trends.
+                </div>
+                <br />
+                <label class="large-txt">
+                    How did you hear about us?
+                    <input type="text" />
+                </label>
+                <br />
+                <label class="large-txt">
+                    Promotional Code:
+                    <input type="text" />
+                </label>
+                <br />
+                <br />
+                <div class="noupper">
+                    <input type="checkbox" />
+                    I agree to the Liveo <a href="@Href("../../Images/LIVEO Terms of Service.pdf")" target="_blank">User Agreement</a> and <a href="@Href("../../Images/LIVEO Privacy Policy.pdf")" target="_blank">Privacy Policy</a>.
+                </div>
+                <br />
+                <br />
+                <div class="noupper">
+                    <input type="checkbox" />
+                    I want to join the <a href="@Href("../../Images/LIVEO Privacy Policy.pdf")" target="_blank">Liveo Rewards Program</a> for $5/month.
+                </div>
+                <div>
+                    <button class="segment-small-status-light">Cancel</button>
+                    <button class="segment-small-status-green">Submit</button>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
     </div>
-</div>
-<!--------------------------------------------------------- END _U01-10_ --------------------------------------------------------------------------->
+    <div class="clear"></div>
+    <!--------------------------------------------------------- END _U01-10_ --------------------------------------------------------------------------->
