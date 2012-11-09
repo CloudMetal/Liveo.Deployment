@@ -1,8 +1,5 @@
 ﻿@model dynamic
-           @{
-               var ImgPath = Url.Content("~/Themes/TheAdmin/Styles/Images/");
-           }
 <div id="branding">
 <div id="app">@Html.Link(T("Project Orchard").ToString(), Url.Content("~/"))</div>
-    <div id="site"><a href="/"><img src="@(ImgPath + "logo.png")"></a></div>
+<div id="site">@Html.Link(T("Your Site").ToString(), Url.Content("~/"))</div>
 </div>

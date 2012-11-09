@@ -104,14 +104,14 @@ Pixels   EMs         Percent    Points
 html, body { height:100%; }
 
 html {
-    background:#595a5c;  
+    background:#f3f4f5 url(images/adminNavBackground.gif) repeat-y top left;  
     color:#333;
 }
 
 body {
   font-size: 81.3%;
   color: #333; 
-  background:#595a5c;
+  background:#f3f4f5 url(images/adminNavBackground.gif) repeat-y top left;
   font-family: Segoe UI,Trebuchet,Arial,Sans-Serif;
   line-height:1.6em;
   margin:0 auto;  
@@ -156,7 +156,7 @@ hr {border:0; height:1px; color:#e4e5e6; background-color:#e4e5e6;}
 }
 #layout-content {
     /*overflow:auto;*/
-    background: #595a5c;
+    background:#f3f4f5 url(images/adminNavBackground.gif) repeat-y top left;
     min-height:100%;
 }
 #layout-main {
@@ -172,7 +172,7 @@ hr {border:0; height:1px; color:#e4e5e6; background-color:#e4e5e6;}
     margin-right:20px;
 }
 #menu {
-    background:#595a5c;
+    background:#323232;
     display:inline;
     float:left;
     position:relative;
@@ -185,7 +185,7 @@ hr {border:0; height:1px; color:#e4e5e6; background-color:#e4e5e6;}
     clear:both;
     height:70px;
     margin-top:-70px; /*Top margin set negative px of footer height*/
-    /* background:url(images/vinesBackgroundBottom.gif) no-repeat bottom left; */
+    background:url(images/vinesBackgroundBottom.gif) no-repeat bottom left;
 }
 
 /* Links
@@ -215,12 +215,12 @@ ul.disc {list-style:disc inside; margin:12px 0;}
 /* Header - Branding and Login  
 ***************************************************************/
 #header {
-    height:55px;
+    height:50px;
     margin:16px 0 0 0;
     background:#f3f4f5;
 }
 #branding {
-    background:#FFDDE569;
+    background:#323232;
     /*width: 15.401%;*/
     width: 240px;
     height:50px;
@@ -232,6 +232,7 @@ ul.disc {list-style:disc inside; margin:12px 0;}
     padding:.4em 0;
 }
 #header #app a {
+    background:url(images/orchardLogo.gif) no-repeat;
     display:block;
     height:60px;
     margin:-11px 0 0 14px;
@@ -366,7 +367,6 @@ ul.menuItems {margin:6px 0 0 0;}
 .localmenu li.middle, .localmenu li.first, .localmenu li.last {
     border:1px solid #E4E5E6;
     border-bottom:none;
-    background: #d8e056;
 }
 .localmenu li.first {
     margin-left:16px;
@@ -393,9 +393,10 @@ ul.menuItems {margin:6px 0 0 0;}
      border-radius: 2px;
 }
 .section-dashboard, .section-new {
-    background:#404041;
+    background:#2b2b2b;
     border:1px solid #404040;
     padding:6px 0;
+    
      /*CSS3 properties*/
      -webkit-border-radius: 2px;
      -moz-border-radius: 2px;
@@ -404,7 +405,6 @@ ul.menuItems {margin:6px 0 0 0;}
      -webkit-box-shadow: inset 0px 0px 1px rgba(64, 64, 64, 1.0), 1px 1px 1px rgba(54, 54, 65, 1.0); 
      -moz-box-shadow: inset 0px 0px 1px rgba(64, 64, 64, 1.0), 1px 1px 1px rgba(54, 54, 65, 1.0);
 }
-
 .section-dashboard h3, .section-new h3,
 .section-dashboard ul, .section-new ul {
     margin-left:-1px;

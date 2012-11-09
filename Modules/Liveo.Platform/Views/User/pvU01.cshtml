@@ -105,98 +105,93 @@
         location = ".";
     }
 
+    //function U01_join() {
+    //    if (U01_validated()) {
+    //        CM.showSpinner('spinner_join');
+    //        _user_ViewModel.commitCandidateUserModel(U01_commitSuccess, U01_commitFail);
+    //    } 
+    //}
+
     function U01_join() {
         if (U01_validated()) {
             CM.showSpinner('spinner_join');
-            _user_ViewModel.commitCandidateUserModel(U01_commitSuccess, U01_commitFail);
-            //function U01_join() {
-            //    if (U01_validated()) {
-            //        CM.showSpinner('spinner_join');
-            //        _user_ViewModel.commitCandidateUserModel(U01_commitSuccess, U01_commitFail);
-            //    } 
-            //}
-
-            function U01_join() {
-                if (U01_validated()) {
-                    CM.showSpinner('spinner_join');
-                    U01_registerNewUser();
-                }
-            }
-        }
-
-        function U01_validated() {
-
-            var userAgreement = $('[link="U01_userAgreement"]').is(':checked');
-
-            var divFirstName = $('[link="U01_firstName"]');
-            var firstName = $('[link="U01_txtFirstName"]');
-
-            var divLastName = $('[link="U01_lastName"]');
-            var lastName = $('[link="U01_txtLastName"]');
-
-            var divEmail = $('[link="U01_email"]');
-            var email = $('[link="U01_txtEmail"]');
-
-            var divPassword = $('[link="U01_password"]');
-            var password = $('[link="U01_txtPassword"]');
-
-            var divRPassword = $('[link="U01_repeatPassword"]');
-            var rpassword = $('[link="U01_txtRepeatPassword"]');
-
-            var passwordsMatch = validPasswordsMatch(password, rpassword);
-
-            var validFirstName = validNotBlank(firstName, divFirstName);
-            var validLastName = validNotBlank(lastName, divLastName);
-            var validEmail = validNotBlank(email, divEmail);
-            var validPassword = validNotBlank(password, divPassword);
-            var validRepeatPassword = validNotBlank(rpassword, divRPassword);
-
-
-            if (userAgreement != true) {
-                alert("You must agree to the User Agreement and Privacy Policy");
-                return false;
-            }
-
-            if (validFirstName && validLastName && validEmail && validPassword && validRepeatPassword && passwordsMatch) {
-                return true;
-            } else {
-                if (!passwordsMatch) {
-                    $('[link="U01_invalidPasswordMatch"]').html("<label class='invalid'>Passwords do not match</label>");
-                } else {
-                    $('[link="U01_invalidPasswordMatch"]').html("");
-                }
-                return false;
-            }
-        }
-
-        function invalid($element) {
-            $element.addClass("invalid");
-        }
-
-        function valid($element) {
-            $element.removeClass("invalid");
-        }
-
-        function validNotBlank($txt, $outerDiv) {
-            if (!$txt.val()) {
-                invalid($outerDiv)
-                return false;
-            } else {
-                valid($outerDiv)
-                return true;
-            }
-        }
-
-        function validPasswordsMatch($p1, $p2) {
-            if ($p1.val() != $p2.val()) {
-                invalid($p1);
-                invalid($p2);
-                return false;
-            } else {
-                return true;
-            }
+            U01_registerNewUser();
         }
     }
+
+    function U01_validated() {
+
+        var userAgreement = $('[link="U01_userAgreement"]').is(':checked');
+
+        var divFirstName = $('[link="U01_firstName"]');
+        var firstName = $('[link="U01_txtFirstName"]');
+
+        var divLastName = $('[link="U01_lastName"]');
+        var lastName = $('[link="U01_txtLastName"]');
+
+        var divEmail = $('[link="U01_email"]');
+        var email = $('[link="U01_txtEmail"]');
+
+        var divPassword = $('[link="U01_password"]');
+        var password = $('[link="U01_txtPassword"]');
+
+        var divRPassword = $('[link="U01_repeatPassword"]');
+        var rpassword = $('[link="U01_txtRepeatPassword"]');
+
+        var passwordsMatch = validPasswordsMatch(password, rpassword);
+
+        var validFirstName = validNotBlank(firstName, divFirstName);
+        var validLastName = validNotBlank(lastName, divLastName);
+        var validEmail = validNotBlank(email, divEmail);
+        var validPassword = validNotBlank(password, divPassword);
+        var validRepeatPassword = validNotBlank(rpassword, divRPassword);
+
+
+        if (userAgreement != true) {
+            alert("You must agree to the User Agreement and Privacy Policy");
+            return false;
+        }
+
+        if (validFirstName && validLastName && validEmail && validPassword && validRepeatPassword && passwordsMatch) {
+            return true;
+        } else {
+            if (!passwordsMatch) {
+                $('[link="U01_invalidPasswordMatch"]').html("<label class='invalid'>Passwords do not match</label>");
+            } else {
+                $('[link="U01_invalidPasswordMatch"]').html("");
+            }
+            return false;
+        }
+    }
+
+    function invalid($element) {
+        $element.addClass("invalid");
+    }
+
+    function valid($element) {
+        $element.removeClass("invalid");
+    }
+
+    function validNotBlank($txt, $outerDiv) {
+        if (!$txt.val()) {
+            invalid($outerDiv)
+            return false;
+        } else {
+            valid($outerDiv)
+            return true;
+        }
+    }
+
+    function validPasswordsMatch($p1, $p2) {
+        if ($p1.val() != $p2.val()) {
+            invalid($p1);
+            invalid($p2);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 </script>
 <div data-model="vmUser">
     <div link="U01" class="panel notinvisible">
@@ -206,45 +201,34 @@
                 <a link="U01_link" rel="[link='U01']" style=""></a>
                 @ViewBag.Title_U01
 
-                <label link="U01_FirstName" class="large-txt">
-                    First Name:
+                <label link="U01_FirstName" class="large-txt">First Name:
                     <input data-bind="value:candidateUserModel().Name" link="U01_txtFirstName" type="text" />
                 </label>
-                <br />
-                <label link="U01_lastName" class="large-txt">
-                    Last Name:
+                <br/>
+                <label link="U01_lastName" class="large-txt">Last Name:
                     <input data-bind="value:candidateUserModel().UserName" link="U01_txtLastName" type="text" />
                 </label>
-                <br />
-                <label link="U01_email" class="large-txt">
-                    Email (Username):
-                    <input data-bind="value:candidateUserModel().Email" link="U01_txtEmail" type="text" />
+                <br/>
+                <label link="U01_email" class="large-txt">Email (Username):
+                    <input data-bind="value:candidateUserModel().Email"  link="U01_txtEmail" type="text" />
                 </label>
+                <br/>
+                <div class="noupper">Your password must be at least 8 characters <br /> and contain at least 1 numeric digit.</div>
                 <br />
-                <div class="noupper">Your password must be at least 8 characters
-                    <br />
-                    and contain at least 1 numeric digit.</div>
-                <br />
-                <label link="U01_password" class="large-txt">
-                    Password:
-                    <input data-bind="value:candidateUserModel().Password" link="U01_txtPassword" type="password" /><div link="U01_invalidPasswordMatch"></div>
-                </label>
-                <br />
-                <label link="U01_repeatPassword" class="large-txt">
-                    Password Confirmation:
+                <label link="U01_password" class="large-txt">Password:
+                    <input data-bind="value:candidateUserModel().Password"  link="U01_txtPassword" type="password" /><div link="U01_invalidPasswordMatch"></div>
+                </label>    
+                <br/>
+                <label  link="U01_repeatPassword"  class="large-txt">Password Confirmation:
                     <input link="U01_txtRepeatPassword" type="password" />
                 </label>
-                <br />
-                <label class="large-txt">
-                    Promotional Code:
-                    <input data-bind="value:candidateUserModel().PromotionCode" type="text" />
+                <br/>                <label class="large-txt">Promotional Code:
+                    <input  data-bind="value:candidateUserModel().PromotionCode"   type="text" />
                 </label>
+                <br/>
                 <br />
-                <br />
-                <div class="noupper">
-                    <input link="U01_userAgreement" type="checkbox" />
-                    I agree to the Liveo <a href="@Href("../../Images/LIVEO Terms of Service.pdf")" target="_blank">User Agreement</a> and <a href="@Href("../../Images/LIVEO Privacy Policy.pdf")" target="_blank">Privacy Policy</a>.</div>
-
+                <div class="noupper"><input link="U01_userAgreement" type="checkbox"/> I agree to the Liveo <a href="@Href("../../Images/LIVEO Terms of Service.pdf")">User Agreement</a> and <a href="@Href("../../Images/LIVEO Privacy Policy.pdf")">Privacy Policy</a>.</div>
+		       
                 <br />
                 <br />
                 <div>
@@ -258,30 +242,27 @@
                     </div>
 
 
-                    <br />
-                    <br />
-                    <br />
+                <br/><br/><br />
                 </div>
                 <br />
 
                 <div class="noupper">Already have an account? Sign in  <a href="Users/Account/LogOn">HERE</a>.</div>
 
-
+            
                 @*<br/><br/><br/>
                 <img src="@Href("../../Images/sign_facebook.jpg")" /><br/>
                 <img src="@Href("../../Images/sign_twitter.jpg")" />*@
                 <p>
-                    <label>
-                        <div link="U01_message"></div>
-                    </label>
-
+                    <label><div link="U01_message"></div></label>
+          
                 </p>
             </div>
             <div col="col-thirty">
-                <img class="btm-rt" src="@Href("../../Images/U01_signup_banner2.jpg")" />
+                      @*<img class="btm-rt" src="@Href("../../Images/U01_signup_banner2.jpg")" />*@
+                  </div>
+                <img src="@Href("../../Images/U01_signup_banner2.jpg")" />
             </div>
         </div>
     </div>
-</div>
 </div>
 <!--------------------------------------------------------- END _U01_ -------------------------------------------------------------->

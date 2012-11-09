@@ -1,19 +1,19 @@
-﻿@model IEnumerable<Orchard.Comments.Models.CommentPart>
-@using Orchard.Comments.Models;
-@using Orchard.Utility.Extensions;
-<ul class="comments">
-@foreach (var comment in Model) {
+﻿<ul class="comments">
+@foreach (var comment in Model.CommentShapes) {
     <li>
-        <article class="comment" id="comment-@comment.Id">
-            <header>
-                <h4>
-                    <span class="who">@Display.CommentAuthor(ContentPart: comment)</span>
-                    <span class="when">@Display.CommentMetadata(ContentPart: comment)</span>
-                </h4>
-            </header>
-            <p class="text">@(new MvcHtmlString(Html.Encode(comment.Record.CommentText).Replace("\r\n", "<br />\r\n")))</p>
-        </article>
+        @{
+            comment.Id = "comment-" + comment.ContentItem.Id;
+            var tag = Tag(comment, "article"); // using Tag so the comment can be altered by custom modules
+            tag.AddCssClass("comment");
+        }
+                
+        @tag.StartElement
+            @Display(comment)
+        @tag.EndElement
+                
+        @if(comment.CommentShapes != null) {
+            @Display.ListOfComments(CommentShapes: comment.CommentShapes)
+        }
     </li>
 }
 </ul>
-
