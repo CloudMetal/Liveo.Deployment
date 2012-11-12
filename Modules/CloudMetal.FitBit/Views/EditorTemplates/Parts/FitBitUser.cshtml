@@ -1,0 +1,14 @@
+﻿@model CloudMetal.FitBit.Models.FitBitUserPart 
+           
+<fieldset>
+    <legend>@T("FitBit User Settings")</legend>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.Email)">@T("Email")</label>
+        @Html.EditorFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.OAuthToken)">@T("OAuth Token")</label>
+        @Html.LabelFor(m => m.OAuthToken)
+    </div>
+</fieldset>

@@ -1,0 +1,15 @@
+﻿@model CloudMetal.FitBit.Models.OAuthSettingsPart
+           
+<fieldset>
+    <legend>@T("FitBit API OAuth Settings")</legend>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.ConsumerKey)">@T("Consumer Key")</label>
+        @Html.EditorFor(m => m.ConsumerKey)
+        @Html.ValidationMessage("ConsumerKey", "*")
+    </div>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.ConsumerSecret)">@T("Consumer Secret")</label>
+        @Html.EditorFor(m => m.ConsumerSecret)
+        @Html.ValidationMessage("Secret", "*") 
+    </div>
+</fieldset>

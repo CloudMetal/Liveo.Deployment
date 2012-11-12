@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" ?>
+<Orchard>
+  <Recipe>
+    <Name>Liveo</Name>
+    <Description>The Liveo Site Initialization Recipe</Description>
+    <Author>CloudMetal, LLC</Author>
+    <WebSite>http://www.liveo.com</WebSite>
+    <Tags></Tags>
+    <Version>1.0</Version>
+  </Recipe>
+
+  <Feature enable="Orchard.Blogs,Orchard.Comments,Orchard.Tags,Orchard.Alias,Orchard.Autoroute,
+                   TinyMce,Orchard.Media,Orchard.MediaPicker,Orchard.ContentPicker,Orchard.PublishLater,
+                   Orchard.jQuery,Orchard.Widgets,Orchard.Widgets.PageLayerHinting,Orchard.ContentTypes,
+                   Orchard.Scripting,Orchard.Scripting.Lightweight,
+                   PackagingServices,Orchard.Packaging,Orchard.Warmup,Orchard.Projections,Orchard.Fields,
+                   TheThemeMachine,Liveo.Platform" />
+
+  <Metadata>
+    <Types>
+      <Page ContentTypeSettings.Draftable="True" TypeIndexing.Included="true">
+        <TagsPart />
+        <LocalizationPart />
+        <TitlePart/>
+        <AutoroutePart />
+      </Page>
+      <BlogPost ContentTypeSettings.Draftable="True" TypeIndexing.Included="true">
+        <CommentsPart />
+        <TagsPart />
+        <LocalizationPart />
+        <TitlePart/>
+        <AutoroutePart />
+      </BlogPost>
+    </Types>
+    <Parts>
+      <BodyPart BodyPartSettings.FlavorDefault="html" />
+    </Parts>
+  </Metadata>
+
+  <Settings>
+    <SiteSettingsPart PageTitleSeparator=" - " SiteName="Liveo" SuperUser="admin" SiteCulture="en-US" PageSize="10" SiteTimeZone="Pacific Standard Time"  />
+    <RegistrationSettingsPart UsersCanRegister="true" UsersMustValidateEmail="false" UsersAreModerated="false" NotifyModeration="false" EnableLostPassword="false" />
+    <ThemeSiteSettingsPart CurrentThemeName="LiveoBootstrap" />
+  </Settings>
+
+  <Migration features="*" />
+
+  <Command>
+    layer create Default /LayerRule:"true" /Description:"The widgets in this layer are displayed on all pages"
+    layer create Authenticated /LayerRule:"authenticated" /Description:"The widgets in this layer are displayed when the user is authenticated"
+    layer create Anonymous /LayerRule:"not authenticated" /Description:"The widgets in this layer are displayed when the user is anonymous"
+    layer create Disabled /LayerRule:"false" /Description:"The widgets in this layer are never displayed"
+    layer create TheHomepage /LayerRule:"url '~/'" /Description:"The widgets in this layer are displayed on the home page"
+    site setting set baseurl
+    menu create /MenuName:"Main Menu"
+    page create /Slug:"welcome-to-liveo" /Title:"Welcome to Liveo!" /Path:"welcome-to-liveo" /Homepage:true /Publish:true /UseWelcomeText:false /MenuText:"Home" /MenuName:"Main Menu"
+    page create /Slug:"affiliate" /Title:"Affiliates" /Path:"affiliate" /Homepage:false /Publish:true /UseWelcomeText:false /MenuText:"Affiliates" /MenuName:"Main Menu"
+    page create /Slug:"my-gallery" /Title:"My Gallery" /Path:"my-gallery" /Homepage:false /Publish:true /UseWelcomeText:false /MenuText:"My Gallery" /MenuName:"Main Menu"
+    page create /Slug:"my-liveo" /Title:"My Liveo" /Path:"my-liveo" /Homepage:false /Publish:true /UseWelcomeText:false /MenuText:"My Liveo" /MenuName:"Main Menu"
+    page create /Slug:"health" /Title:"Health" /Path:"health" /Homepage:false /Publish:true /UseWelcomeText:false /MenuText:"Health" /MenuName:"Main Menu"
+    widget create MenuWidget /Title:"Main Menu" /RenderTitle:false /Zone:"TripelFirst" /Position:"1" /Layer:"Default" /Identity:"MenuWidget1" /MenuName:"Main Menu"
+    theme activate "LiveoBootstrap"
+  </Command>
+</Orchard>
+
