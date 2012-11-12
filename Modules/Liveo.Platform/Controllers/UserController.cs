@@ -39,7 +39,9 @@ namespace Liveo.Platform.Controllers
 
         public ActionResult Settings()
         {
-            return View();
+            var userPart = _workContextAccessor.GetContext().CurrentUser as UserPart;
+
+            return View(userPart);
         }
 
         public ActionResult HealthProfile()

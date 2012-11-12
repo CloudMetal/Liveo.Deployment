@@ -38,7 +38,7 @@ Script.Require("viewModel_User").AtHead();
 
 
 <script>
-    var UP01_userId = '@liveoUser.Id';
+    var UP01_userId = '@liveoUser.User.Id';
     var jsonUser;
     var _user_ViewModel = new User_ViewModel();
     ko.attach("vmUser", _user_ViewModel);

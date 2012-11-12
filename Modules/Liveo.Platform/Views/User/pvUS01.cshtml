@@ -6,7 +6,7 @@
 
         $('[link="US01_saveChangesButton"]').click(function () { US01_saveChanges(); });
       
-        
+        alert('second : ' + US01_userId);
         //ajax here to get the current user info:
         $.ajax({
             url: '/api/Liveo.Platform/UserApi?id=' + US01_userId,
