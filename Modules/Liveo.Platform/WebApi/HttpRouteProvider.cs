@@ -228,7 +228,7 @@ namespace Liveo.Platform.WebApi
                 new HttpRouteDescriptor {
 											Name = "UserApi",
 											Priority = -10,
-											RouteTemplate = "api/User/{action}/{id}",
+											RouteTemplate = "api/User/{id}",
 											Defaults = new	{ area = "Liveo.Platform", controller = "UserApi", id = RouteParameter.Optional }		
 										},
                 new HttpRouteDescriptor {

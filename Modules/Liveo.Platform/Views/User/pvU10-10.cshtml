@@ -39,40 +39,36 @@
 <div data-model="vmGoal">
     <div class="title noupper">Define a Goal</div>
     <hr />
-    <table width="650" border="0" cellspacing="0" cellpadding="5">
-        <tr>
-            <td valign="top">
-                <table width="750" border="0">
-                    <tr>
-                        <td>
-                            <label>What is your primary fitness goal?</label>
-                            <select data-bind="value: candidateGoalModel().GoalTypeId">
-                                <option>Choose Goal...</option>
-                                <option value="1">Lose Weight</option>
-                                <option value="2">Gain Weight</option>
-                                <option value="3">Get Ripped</option>
-                                <option value="4">Get Toned</option>
-                                <option value="4">Gain Strength</option>
-                                <option value="4">Gain Flexibility</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>By this date:</label>
 
-                            <input data-bind="value:candidateGoalModel().AccomplishDate" type="text" link="goaldate_goal" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Give your goal a name:</label>
-                            <input data-bind="value:candidateGoalModel().Name" type="text" size="60" link="txtGoalName" value="" />
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+    <label class="large-txt">
+        What is your primary fitness goal?
+                <span>
+                    <select data-bind="value: candidateGoalModel().GoalTypeId">
+                        <option>Choose Goal...</option>
+                        <option value="1">Lose Weight</option>
+                        <option value="2">Gain Weight</option>
+                        <option value="3">Get Ripped</option>
+                        <option value="4">Get Toned</option>
+                        <option value="4">Gain Strength</option>
+                        <option value="4">Gain Flexibility</option>
+                    </select>
+                </span>
+    </label>
+
+    <label class="large-txt">
+        By this date:
+                <span>
+                    <input data-bind="value:candidateGoalModel().AccomplishDate" type="text" link="goaldate_goal" />
+                </span>
+    </label>
+
+    <label class="large-txt">
+        Give your goal a name:
+                <span>
+                    <input data-bind="value:candidateGoalModel().Name" type="text" size="60" link="txtGoalName" value="" />
+                </span>
+    </label>
+
+
 </div>
 <!--------------------------------------------------------- END _U10-10_ -------------------------------------------------------------->

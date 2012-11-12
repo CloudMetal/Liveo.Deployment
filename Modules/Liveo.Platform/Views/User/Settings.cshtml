@@ -11,8 +11,13 @@
 }
 
 
-@{
 
+@{
+Style.Require("reset");
+Style.Require("font");
+Style.Require("layout_ext");
+Style.Require("modal");
+Style.Require("jqui");
 }
 
 @{
@@ -24,20 +29,16 @@ Script.Require("livequery").AtHead();
 Script.Require("komulti").AtHead();
 Script.Require("common").AtHead();
 Script.Require("viewModel_User").AtHead();
-Script.Require("viewModel_Goal").AtHead();
-Script.Require("viewModel_Program").AtHead();
+
 }
 
-
 <script>
-
-
-    $(document).ready(function () {
-     
-    });
-
- 
+    var US01_userId = '@Session["CurrentUserId"].ToString()';
+    var jsonUser;
+    var _user_ViewModel = new User_ViewModel();
+    ko.attach("vmUser", _user_ViewModel);   
 </script>
+
 <body style="text-transform: none;">
     @Html.Partial("pvUS01")
    

@@ -52,6 +52,8 @@ a:link,
 a:focus,
 a:hover { text-decoration:none; color:#b9165a; cursor:pointer; }
 a { text-decoration:underline; color:#b9165a; }
+.white-font-normal a { text-decoration:none; color: #fff; font-weight: normal; text-transform:none; font-size:13px;}
+.white-font-normal a:hover { text-decoration:underline; color: #fff; font-weight: normal; text-transform:none; font-size:13px;}
 
 table a { color:#b9165a; }
 
@@ -60,6 +62,11 @@ strong { font-weight: bold; }
 em, dfn { font-style: italic; }
 dfn { font-weight: bold; }
 sup, sub { line-height: 0; }
+
+.line-10 { line-height: 10px;}
+.line-20 { line-height: 20px;}
+.line-30 { line-height: 30px;}
+.line-40 { line-height: 40px;}
 
 abbr,
 acronym { border-bottom: 1px dotted #666; }
@@ -89,12 +96,21 @@ button { }
 .header-font-italic { color: #b9165a; font-style: italic; }
 .white-font { color: #fff;}
 .white-font-bld { color: #fff; font-weight: bold;}
+.white-font-normal { color: #fff; font-weight: normal; text-transform:none; font-size:15px;}
+.white-font-med { color: #fff; font-weight: bold; text-transform:none; font-size:15px;}
+.white-font-lrg { color: #fff; font-weight: bold; text-transform:none; font-size:18px;}
+.white-font-huge { color: #fff; font-weight: bold; text-transform:none; font-size:22px;}
+.grey-font-med { color: #464646; font-weight: bold; text-transform:none; font-size:14px;}
+.grey-font-lrg { color: #464646; font-weight: bold; text-transform:none; font-size:18px;}
 .small-font { color: #595a5c; font-size: 14px; font-weight:normal;}
 .small-font-bld { color: #595a5c; font-size: 14px; font-weight:bold;}
 .med-font { color: #595a5c; font-weight: normal; font-size: 16px;}
 .med-font-bld { color: #595a5c; font-weight: bold; font-size: 16px;}
 .large-font { color: #595a5c; font-weight: normal; font-size: 16px;}
 .large-font-bld { color: #595a5c; font-weight: bold; font-size: 18px;}
+label.white-font-caps span { font-size:11px; text-transform: uppercase; color:#fff;}
+label.white-font-caps {  color: #464646; font-weight: normal; font-size: 15px;}
+fieldset legend { text-transform: none; font-size: 18px;}
 
 /* general structure */
 .title { padding: 5px 0 5px 5px; background-color: #e1e1e2; margin-bottom: 10px; text-transform: uppercase;}

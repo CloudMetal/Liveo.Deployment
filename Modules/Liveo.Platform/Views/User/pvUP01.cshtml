@@ -3,81 +3,154 @@
 }
 <!--------------------------------------------------------- BEGIN _UP01_ User Profile Homepage------------------------------------------------>
 <script>
-    $(document).ready(function () {
+
+    //$(document).ready(function () {
+    _user_ViewModel.CreateDateFormatted = ko.computed(function () {
+            var thedate = new Date(_user_ViewModel.editedUserModel().CreateDate());
+            return thedate.toString('MMMM yyyy');
+        }, this);
 
 
-      
-    });
+        //ajax here to get the current user info:
+        $.ajax({
+            url: '/api/Liveo.Platform/UserApi?id=' + UP01_userId,
+            dataType: 'json',
+            success: function (data) {
+                jsonUser = data;
+
+                _user_ViewModel.editedUserModel().Id(data.Id);
+                _user_ViewModel.editedUserModel().Name(data.Name);
+                _user_ViewModel.editedUserModel().DateOfBirth(data.DateOfBirth);
+                _user_ViewModel.editedUserModel().GenderTypeId(data.GenderTypeId);
+                _user_ViewModel.editedUserModel().IsInitialSurveyComplete(data.IsInitialSurveyComplete);
+                _user_ViewModel.editedUserModel().UserName(data.UserName);
+                _user_ViewModel.editedUserModel().CreateDate(data.CreateDate);
+                _user_ViewModel.editedUserModel().LastUpdateDate(data.LastUpdateDate);
+                _user_ViewModel.editedUserModel().LastLoginDate(data.LastLoginDate);
+                _user_ViewModel.editedUserModel().LastLockoutDate(data.LastLockoutDate);
+                _user_ViewModel.editedUserModel().LastActivityDate(data.LastActivityDate);
+                _user_ViewModel.editedUserModel().LastPasswordChangeDate(data.LastPasswordChangeDate);
+                _user_ViewModel.editedUserModel().FailedPasswordAttemptCount(data.FailedPasswordAttemptCount);
+                _user_ViewModel.editedUserModel().FailedPasswordAttemptWindowStart(data.FailedPasswordAttemptWindowStart);
+                _user_ViewModel.editedUserModel().FailedPasswordAnswerAttemptCount(data.FailedPasswordAnswerAttemptCount);
+                _user_ViewModel.editedUserModel().FailedPasswordAnswerAttemptWindowStart(data.FailedPasswordAnswerAttemptWindowStart);
+                _user_ViewModel.editedUserModel().Comment(data.Comment);
+                _user_ViewModel.editedUserModel().PasswordSalt(data.PasswordSalt);
+                _user_ViewModel.editedUserModel().Password(data.Password);
+                _user_ViewModel.editedUserModel().LoweredEmail(data.LoweredEmail);
+                _user_ViewModel.editedUserModel().Email(data.Email);
+                _user_ViewModel.editedUserModel().PasswordFormat(data.PasswordFormat);
+                _user_ViewModel.editedUserModel().IsOnline(data.IsOnline);
+                _user_ViewModel.editedUserModel().IsLockedOut(data.IsLockedOut);
+                _user_ViewModel.editedUserModel().IsApproved(data.IsApproved);
+                _user_ViewModel.editedUserModel().PasswordAnswer(data.PasswordAnswer);
+                _user_ViewModel.editedUserModel().PasswordQuestion(data.PasswordQuestion);
+                _user_ViewModel.editedUserModel().PromotionCode(data.PromotionCode);
+                _user_ViewModel.editedUserModel().Bio(data.Bio);
+                _user_ViewModel.editedUserModel().PrimaryImage(data.PrimaryImage);
+                _user_ViewModel.editedUserModel().SecondaryImage(data.SecondaryImage);
+                _user_ViewModel.editedUserModel().BackgroundImage(data.BackgroundImage);
+                _user_ViewModel.editedUserModel().City(data.City);
+                _user_ViewModel.editedUserModel().State(data.State);
+                _user_ViewModel.editedUserModel().Company(data.Company);
+                _user_ViewModel.editedUserModel().Department(data.Department);
+                _user_ViewModel.editedUserModel().Occupation(data.Occupation);
+                _user_ViewModel.editedUserModel().FirstName(data.FirstName);
+                _user_ViewModel.editedUserModel().LastName(data.LastName);
+
+                _user_ViewModel.editedUserModel().Sex(data.Sex);
+                _user_ViewModel.editedUserModel().HeightFeet(data.HeightFeet);
+                _user_ViewModel.editedUserModel().HeightInches(data.HeightInches);
+                _user_ViewModel.editedUserModel().Weight(data.Weight);
+                _user_ViewModel.editedUserModel().GeneralHealth(data.GeneralHealth);
+                _user_ViewModel.editedUserModel().PhoneHome(data.PhoneHome);
+                _user_ViewModel.editedUserModel().PhoneCell(data.PhoneCell);
+                _user_ViewModel.editedUserModel().PhoneOffice(data.PhoneOffice);
+                _user_ViewModel.editedUserModel().Address(data.Address);
+                _user_ViewModel.editedUserModel().ManageNotifications(data.ManageNotifications);
+                _user_ViewModel.editedUserModel().Notifications(data.Notifications);
+
+
+            },
+            error: function (xhr, textStatus, errorThrown) {
+            }
+        });
+
+ 
 
 </script>
 
-<div link="UP01" class="panel notinvisible">
+<div data-model="vmUser" link="UP01" class="panel notinvisible">
     <a link="U0P1_link" rel="[link='U0P1']" style=""></a>
-    @ViewBag.Title_UP01
-    <h2>User Profile</h2>
+    @*    @ViewBag.Title_UP01
+    <h2>User Profile</h2>*@
 
-    <div id="content" class="clearfix">
-        <section id="left">
-            <div id="userStats" class="clearfix">
-                <div class="pic">
-                    <a href="#"><img src="@Href("../../images/g10albumsfunrun3.png")" width="150" height="150" /></a>
-                </div>
-                <div class="data">
-                    <h1>Mary Conroy</h1>
-                    <h3>Frisco, TX</h3>
-                    <h4><a href="http://funfitness.com/">http://funfitness.com/</a></h4>
+    <div class="profile-window-wrapper padding-none">
 
-                    <div class="sep"></div>
-                    <ul class="numbers clearfix">
-                        <li>Followers<strong>10</strong></li>
-                        <li>Following<strong>120</strong></li>
-                    </ul>
-                </div>
+        <div class="col-member-stats height-small padding-none bg-lt-grey">
+            <img src="@Href("../../Images/profile-pic.jpg")" width="80px" class="bg-shadow margin-five">
+            <div class="col-hundred row-profile-name bg-lt-green">
+                <span data-bind="text: editedUserModel().FirstName" class="margin-five white-font-med">[no first]</span>
+                 <span  data-bind="text:editedUserModel().LastName" class="margin-five white-font-med">[no last]</span> 
+
             </div>
-            <h1>About Me:</h1>
-            <p>[Descriptive blurb]</p>
-        </section>
-        <section id="right">
-            <div class="gcontent">
-                <div class="head"><h1>Goals(3)</h1></div>
-                <div class="boxy">
-                    <p>Keep working on your goals!</p>
-                    <div class="badgeCount">
-                        <a href="#"><img src="@Href("../../Images/orderedList1.png")" width="30" height="30"></a>
-                        <a href="#"><img src="@Href("../../Images/orderedList2.png")" /></a>
-                        <a href="#"><img src="@Href("../../Images/orderedList3.png")" /></a>
+            <div class="clear"></div>
+            <div class="margin-top-five">
+                <label class="white-font-caps">DALLAS, TX</label>
+                <label class="white-font-caps">
+                    Company:
+            <span data-bind="text:editedUserModel().Company">[no company]</span>
+                    Occupation:
+            <span data-bind="text:editedUserModel().Occupation">[no occupation]</span></label>
+
+            </div>
+           
+        </div>
+        <div class="col-member-main">
+            <div class="row-profile-header col-hundred bg-dark">
+
+                <!-- <span class="white-font-huge margin-five line-40">My Health Plan</span> -->
+
+            </div>
+
+            <div class="col-member-bio padding-none" style="background: url(@Href("../../Images/Cycling1.jpg")); background-repeat: no-repeat; background-size: 390px 225px;">
+                <div class="col-sixty right padding-none">
+                    <div class="modal-max-large-row right bg-profile-window padding-none padding-top-btm-5">
+                        <span class="grey-font-med inline">MEMBER SINCE:</span>
+                        <label class="white-font-caps inline" data-bind="text:CreateDateFormatted">JULY 2011</label>
+                        <label class="white-font-caps">Personal Bio:<span data-bind="text:editedUserModel().Bio"></span></label>
                     </div>
-                    <span><a href="#">See all...</a></span>
+
                 </div>
             </div>
-            <div class="gcontent">
-                <div class="head"><h1>Following Me</h1></div>
-                <div class="boxy">
-                    <p>Your followers - 10 Total</p>
-                    <div class="friendslist clearfix">
-                        <div class="friend">
-                            <a href="#"><img src="@Href("../../Images/g10albumsgym1.png")" width="30" height="30"></a><span ><a href="#">Jerry K.</a></span>
+            <div class="col-member-albums">
+                <ul class="profile-album-list">
+                    <li>
+                        <img src="@Href("../../Images/profile-pic.jpg")"><div class="font-style-none">
+                            <span>Subscribers
+                            <label>0</label></span>
                         </div>
-                        <div class="friend">
-                            <a href="#"><img src="@Href("../../Images/groupsphotos1.png")" width="30" height="30"></a><span class="friendly"><a href="#">Katie F.</a></span>
-                        </div> 
-                        <div class="friend">
-                            <a href="#"><img src="@Href("../../Images/galleryphotos1.png")" width="30" height="30"></a><span class="friendly"><a href="#">Ash K.</a></span>
+                    </li>
+                    <li>
+                        <img src="@Href("../../Images/profile-pic.jpg")"><div class="font-style-none">
+                            <span>Groups
+                            <label>0</label></span>
                         </div>
-                        <div class="friend">
-                            <a href="#"><img src="@Href("../../Images/g10albumsvacation3.png")" width="30" height="30"></a><span class="friendly"><a href="#">Ryan</a></span>
+                    </li>
+                    <li>
+                        <img src="@Href("../../Images/profile-pic.jpg")"><div class="font-style-none">
+                            <span>Challenges
+                            <label>0</label></span>
                         </div>
-                        <div class="friend">
-                            <a href="#"><img src="@Href("../../Images/joesfitness.jpg")" width="30" height="30"></a><span class="friendly"><a href="#">Frank</a></span>
-                        </div>
-                        <div class="friend">
-                            <a href="#"><img src="@Href("../../Images/g10photos2.png")" width="30" height="30"></a><span class="friendly"><a href="#">Alexa S.</a></span>
-                        </div>
-                    </div>
-                    <span><a href="#">See all...</a></span>
-                </div>
+                    </li>
+                </ul>
             </div>
-        </section>
+
+       
+        </div>
+        <div class="clear"></div>
     </div>
 </div>
 <!--------------------------------------------------------- END _UP01_ -------------------------------------------------------------->
+
+

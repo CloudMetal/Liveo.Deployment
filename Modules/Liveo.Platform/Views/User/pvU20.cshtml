@@ -33,8 +33,9 @@
         //Save User
         CM.showSpinner('U20_spinner_page');
 
+        alert('@Session["CurrentUserId"].ToString()');
         //TODO: /*TODO: Need the logged-in userId*/
-        var currentUserId = @ViewBag.UserId
+        var currentUserId = @Session["CurrentUserId"].ToString()
         U20_createUserSuccess(currentUserId);
 
     }
@@ -75,6 +76,7 @@
 
     function U20_redirect() {
         CM.hideSpinner('U20_spinner_page');
+        document.location = '/Users/Profile';
         //string userNameOrEmail, string password, string returnUrl, bool rememberMe = false
         //document.location = "Account/Logon?userNameOrEmail=mammajamma" + "&password=1234" + "&returnUrl='/'" ;
     }

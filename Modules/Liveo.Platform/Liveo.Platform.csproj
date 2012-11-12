@@ -233,12 +233,21 @@
     <Content Include="Images\tonylittle.jpg" />
     <Content Include="Images\waiting.gif" />
     <Content Include="Images\witherspoon.jpg" />
+    <Content Include="Scripts\Generated\viewModel_AnswerSelectionFactors.js" />
+    <Content Include="Scripts\Generated\viewModel_QuestionProgramWeights.js" />
+    <Content Include="Scripts\Generated\viewModel_SurveyProgramFactors.js" />
+    <Content Include="Scripts\Generated\viewModel_UserIngredient.js" />
+    <Content Include="Scripts\Generated\viewModel_UserMeal.js" />
+    <Content Include="Scripts\Generated\viewModel_UserProgram.js" />
+    <Content Include="Scripts\Generated\viewModel_UserProgramCycle.js" />
+    <Content Include="Scripts\Resources\date.js" />
     <Content Include="Scripts\Resources\jquery.cookie.js" />
     <Content Include="Scripts\Resources\jquery.fancybox.js" />
     <Content Include="Scripts\Resources\jquery.fancybox.pack.js" />
     <Content Include="Scripts\Resources\jquery.mousewheel-3.0.6.pack.js" />
     <Content Include="Scripts\Resources\knockout.validation.js" />
     <Content Include="Scripts\Resources\knockout.validation.min.js" />
+    <Content Include="Styles\Liveo\Images\profile-window-bg.png" />
     <Content Include="Styles\Images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Styles\Images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Styles\Images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -430,6 +439,7 @@
     <Compile Include="Data\ILiveoSystemInstallationRepository.cs" />
     <Compile Include="Data\ILiveoUnitTypeRepository.cs" />
     <Compile Include="Data\ILiveoUserPersonaRepository.cs" />
+    <Compile Include="Data\ILiveoUserProgramRepository.cs" />
     <Compile Include="Data\ILiveoUserRepository.cs" />
     <Compile Include="Data\LiveoAffiliateRepository.cs" />
     <Compile Include="Data\LiveoAnswerSelectionRepository.cs" />
@@ -447,6 +457,7 @@
     <Compile Include="Data\LiveoSystemInstallationRepository.cs" />
     <Compile Include="Data\LiveoUnitTypeRepository.cs" />
     <Compile Include="Data\LiveoUserPersonaRepository.cs" />
+    <Compile Include="Data\LiveoUserProgramRepository.cs" />
     <Compile Include="Data\LiveoUserRepository.cs" />
     <Compile Include="Drivers\AffiliatePartDriver.cs" />
     <Compile Include="Drivers\GoalListPartDriver.cs" />
@@ -491,6 +502,7 @@
     <Compile Include="Services\ILiveoSurveyService.cs" />
     <Compile Include="Services\ILiveoSystemInstallationService.cs" />
     <Compile Include="Services\ILiveoUnitTypeService.cs" />
+    <Compile Include="Services\ILiveoUserProgramService.cs" />
     <Compile Include="Services\ILiveoUserService.cs" />
     <Compile Include="Services\LiveoAffiliateService.cs" />
     <Compile Include="Services\LiveoAnswerSelectionService.cs" />
@@ -506,6 +518,7 @@
     <Compile Include="Services\LiveoSurveyService.cs" />
     <Compile Include="Services\LiveoSystemInstallationService.cs" />
     <Compile Include="Services\LiveoUnitTypeService.cs" />
+    <Compile Include="Services\LiveoUserProgramService.cs" />
     <Compile Include="Services\LiveoUserService.cs" />
     <Compile Include="ViewModels\AffiliateListViewModel.cs" />
     <Compile Include="ViewModels\AlbumIndexViewModel.cs" />
@@ -942,6 +955,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)..\..\Liveo.Web\Scripts\Generated\*.js $(ProjectDir)scripts\generated</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

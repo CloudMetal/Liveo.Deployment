@@ -20,7 +20,11 @@
     $(document).ready(function () {
 
         $('[link="U01_join"]').click(function () { U01_join(); });
-        $('[link="U01_cancel"]').click(function () { U01_cancel(); })
+        $('[link="U01_cancel"]').click(function () { U01_cancel(); });
+
+        CM.hookLink('U01_joinFull', 'fade', 'U01', 'U01-1');
+
+        $('[link="U01_joinFull"]').click(function () { U01_joinFull(); });
 
         _user_ViewModel = new User_ViewModel();
 
@@ -30,6 +34,8 @@
         _user_ViewModel.candidateUserModel().Email('');
         _user_ViewModel.candidateUserModel().Password('');
         _user_ViewModel.candidateUserModel().Name('');
+        _user_ViewModel.candidateUserModel().FirstName('');
+        _user_ViewModel.candidateUserModel().LastName('');
 
         _user_ViewModel.candidateUserModel().DateOfBirth('1/1/1800');
         _user_ViewModel.candidateUserModel().GenderTypeId("1");
@@ -69,7 +75,12 @@
 
     function U01_registerNewUser() {
         CM.hideSpinner('spinner_join');
-        var username = _user_ViewModel.candidateUserModel().UserName();
+        var username = _user_ViewModel.candidateUserModel().FirstName() + ' ' +  _user_ViewModel.candidateUserModel().LastName();
+
+
+        _user_ViewModel.candidateUserModel().UserName(username);
+        _user_ViewModel.candidateUserModel().Name(username);
+
         var password = _user_ViewModel.candidateUserModel().Password();
         var email = _user_ViewModel.candidateUserModel().Email();
 
@@ -118,6 +129,7 @@
             U01_registerNewUser();
         }
     }
+
 
     function U01_validated() {
 
@@ -202,11 +214,11 @@
                 @ViewBag.Title_U01
 
                 <label link="U01_FirstName" class="large-txt">First Name:
-                    <input data-bind="value:candidateUserModel().Name" link="U01_txtFirstName" type="text" />
+                    <input data-bind="value:candidateUserModel().FirstName" link="U01_txtFirstName" type="text" />
                 </label>
                 <br/>
                 <label link="U01_lastName" class="large-txt">Last Name:
-                    <input data-bind="value:candidateUserModel().UserName" link="U01_txtLastName" type="text" />
+                    <input data-bind="value:candidateUserModel().LastName" link="U01_txtLastName" type="text" />
                 </label>
                 <br/>
                 <label link="U01_email" class="large-txt">Email (Username):

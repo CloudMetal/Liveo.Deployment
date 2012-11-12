@@ -14,7 +14,7 @@ using System.Web.Mvc;
 using Liveo.Framework.Model;
 using Liveo.Framework.Model.Service;
 using Liveo.Platform.Services;
-
+using System.Reflection;
 namespace Liveo.Platform.Controllers
 {
     using System.Web.Http;
@@ -52,6 +52,31 @@ namespace Liveo.Platform.Controllers
             return Request.CreateResponse<User>(HttpStatusCode.Created, model);
         }
 
+        [HttpPut]
+        public virtual User Put(int id, User model)
+        {
+            var final = _userService.GetById(id);
+            MapProperties<User>(model, final);
+            _userService.Save(final);
+            return final;
+        }
+
+        protected void MapProperties<T>(T source, T destination)
+        {
+            var type = typeof(T);
+
+            foreach (var property in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                // IsSealed is a funny choice, but it turns out native .NET properties are Sealed where custom objects are not
+                // There are other choices as well, but none really made "English" sense so I chose this one as I felt it was the best match for what we are doing
+                if (property.PropertyType.IsSealed
+                    && property.Name != "Id")
+                {
+                    var value = property.GetValue(source, null);
+                    property.SetValue(destination, value, null);
+                }
+            }
+        }
 
         //[ActionName("HasCompletedInitialScreen")]
         //public bool HasCompletedInitialScreen(int id)

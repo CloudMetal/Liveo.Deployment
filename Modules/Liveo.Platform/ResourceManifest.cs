@@ -63,6 +63,7 @@ namespace Liveo.Platform
             manifest.DefineScript("jqueryfancybox").SetUrl("Resources/jquery.fancybox.js", "Resources/jquery.fancybox.js").SetVersion("2012.1.1");
             manifest.DefineScript("jqueryfancyboxpack").SetUrl("Resources/jquery.fancybox.pack.js", "Resources/jquery.fancybox.pack.js").SetVersion("2012.1.1");
             manifest.DefineScript("jquerymousewheelpack").SetUrl("Resources/jquery.mousewheel-3.0.6.pack.js", "Resources/jquery.mousewheel-3.0.6.pack.js").SetVersion("3.0.6");
+            manifest.DefineScript("datejs").SetUrl("Resources/date.js", "Resources/date.js").SetVersion("1.0");
 
 			manifest.DefineScript("livequery").SetUrl("Resources/jquery.livequery.js", "Resources/jquery.livequery.js").SetVersion("1.1.1");
 			manifest.DefineScript("form").SetUrl("Resources/jquery.form.js", "Resources/jquery.form.min.js").SetVersion("3.18");

@@ -1,6 +1,12 @@
-﻿@{
+﻿@using Liveo.Platform.Models
+@using Orchard.ContentManagement
+@model Orchard.Users.Models.UserPart
+@{
+    Script.Require("datejs").AtHead();
     //ViewBag.EnableViewTitles = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableViewTitles"].ToString());
     ViewBag.EnableViewTitles = true;
+
+    var liveoUser = Model.As<LiveoUserPart>();
 }
 
 @{
@@ -28,19 +34,14 @@ Script.Require("livequery").AtHead();
 Script.Require("komulti").AtHead();
 Script.Require("common").AtHead();
 Script.Require("viewModel_User").AtHead();
-Script.Require("viewModel_Goal").AtHead();
-Script.Require("viewModel_Program").AtHead();
 }
 
 
 <script>
-
-
-    $(document).ready(function () {
-     
-    });
-
- 
+    var UP01_userId = '@liveoUser.Id';
+    var jsonUser;
+    var _user_ViewModel = new User_ViewModel();
+    ko.attach("vmUser", _user_ViewModel);
 </script>
 <body style="text-transform: none;">
     

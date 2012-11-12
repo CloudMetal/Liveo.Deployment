@@ -10,7 +10,8 @@ function ExerciseModel(
             dayOfWeekId,
             pictureUrl,
             isLibrary,
-            programCycleId) {
+            programCycleId,
+            exerciseTypeId) {
 
     var _self = this;
 	_self.Id = ko.observable(id);
@@ -24,6 +25,7 @@ function ExerciseModel(
 	_self.PictureUrl = ko.observable(pictureUrl);
 	_self.IsLibrary = ko.observable(isLibrary);
 	_self.ProgramCycleId = ko.observable(programCycleId);
+	_self.ExerciseTypeId = ko.observable(exerciseTypeId);
 
 }
 
@@ -33,7 +35,7 @@ function Exercise_ViewModel() {
 
     var _self = this;
 
-    var dummyExerciseModel = new ExerciseModel(0,0,0,0,0,0,0,0,0,0,0);
+    var dummyExerciseModel = new ExerciseModel(0,0,0,0,0,0,0,0,0,0,0,0);
     var obsModels = new Array();
     var data;
     _self.addedExerciseModel = new ko.observable(dummyExerciseModel);
@@ -55,7 +57,7 @@ function Exercise_ViewModel() {
 			success: function (data) {
 
 				for (var i = 0; i < data.length; i++) {
-					obsModels.push(new ExerciseModel(data[i].Id, data[i].Name, data[i].Description, data[i].DurationInMinutes, data[i].CaloriesBurnedManualOverride, data[i].RepsWeight, data[i].SearchTags, data[i].DayOfWeekId, data[i].PictureUrl, data[i].IsLibrary, data[i].ProgramCycleId));
+					obsModels.push(new ExerciseModel(data[i].Id, data[i].Name, data[i].Description, data[i].DurationInMinutes, data[i].CaloriesBurnedManualOverride, data[i].RepsWeight, data[i].SearchTags, data[i].DayOfWeekId, data[i].PictureUrl, data[i].IsLibrary, data[i].ProgramCycleId, data[i].ExerciseTypeId));
 				}
 				_self.exerciseModels(obsModels);
 
@@ -140,6 +142,7 @@ function Exercise_ViewModel() {
 				_self.addedExerciseModel().PictureUrl(addedModel.PictureUrl);
 				_self.addedExerciseModel().IsLibrary(addedModel.IsLibrary);
 				_self.addedExerciseModel().ProgramCycleId(addedModel.ProgramCycleId);
+				_self.addedExerciseModel().ExerciseTypeId(addedModel.ExerciseTypeId);
 	
                 if (callbackSuccess) {
                     callbackSuccess(addedModel.Id);

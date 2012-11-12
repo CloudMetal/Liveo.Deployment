@@ -27,7 +27,29 @@ function UserModel(
             isApproved,
             passwordAnswer,
             passwordQuestion,
-            promotionCode) {
+            promotionCode,
+            bio,
+            primaryImage,
+            secondaryImage,
+            backgroundImage,
+            city,
+            state,
+            company,
+            department,
+            occupation,
+            firstName,
+            lastName,
+            sex,
+            heightFeet,
+            heightInches,
+            weight,
+            generalHealth,
+            phoneHome,
+            phoneCell,
+            phoneOffice,
+            address,
+            manageNotifications,
+            notifications) {
 
     var _self = this;
 	_self.Id = ko.observable(id);
@@ -58,6 +80,28 @@ function UserModel(
 	_self.PasswordAnswer = ko.observable(passwordAnswer);
 	_self.PasswordQuestion = ko.observable(passwordQuestion);
 	_self.PromotionCode = ko.observable(promotionCode);
+	_self.Bio = ko.observable(bio);
+	_self.PrimaryImage = ko.observable(primaryImage);
+	_self.SecondaryImage = ko.observable(secondaryImage);
+	_self.BackgroundImage = ko.observable(backgroundImage);
+	_self.City = ko.observable(city);
+	_self.State = ko.observable(state);
+	_self.Company = ko.observable(company);
+	_self.Department = ko.observable(department);
+	_self.Occupation = ko.observable(occupation);
+	_self.FirstName = ko.observable(firstName);
+	_self.LastName = ko.observable(lastName);
+	_self.Sex = ko.observable(sex);
+	_self.HeightFeet = ko.observable(heightFeet);
+	_self.HeightInches = ko.observable(heightInches);
+	_self.Weight = ko.observable(weight);
+	_self.GeneralHealth = ko.observable(generalHealth);
+	_self.PhoneHome = ko.observable(phoneHome);
+	_self.PhoneCell = ko.observable(phoneCell);
+	_self.PhoneOffice = ko.observable(phoneOffice);
+	_self.Address = ko.observable(address);
+	_self.ManageNotifications = ko.observable(manageNotifications);
+	_self.Notifications = ko.observable(notifications);
 
 }
 
@@ -67,7 +111,7 @@ function User_ViewModel() {
 
     var _self = this;
 
-    var dummyUserModel = new UserModel(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+    var dummyUserModel = new UserModel(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
     var obsModels = new Array();
     var data;
     _self.addedUserModel = new ko.observable(dummyUserModel);
@@ -89,7 +133,7 @@ function User_ViewModel() {
 			success: function (data) {
 
 				for (var i = 0; i < data.length; i++) {
-					obsModels.push(new UserModel(data[i].Id, data[i].Name, data[i].DateOfBirth, data[i].GenderTypeId, data[i].IsInitialSurveyComplete, data[i].UserName, data[i].CreateDate, data[i].LastUpdateDate, data[i].LastLoginDate, data[i].LastLockoutDate, data[i].LastActivityDate, data[i].LastPasswordChangeDate, data[i].FailedPasswordAttemptCount, data[i].FailedPasswordAttemptWindowStart, data[i].FailedPasswordAnswerAttemptCount, data[i].FailedPasswordAnswerAttemptWindowStart, data[i].Comment, data[i].PasswordSalt, data[i].Password, data[i].LoweredEmail, data[i].Email, data[i].PasswordFormat, data[i].IsOnline, data[i].IsLockedOut, data[i].IsApproved, data[i].PasswordAnswer, data[i].PasswordQuestion, data[i].PromotionCode));
+					obsModels.push(new UserModel(data[i].Id, data[i].Name, data[i].DateOfBirth, data[i].GenderTypeId, data[i].IsInitialSurveyComplete, data[i].UserName, data[i].CreateDate, data[i].LastUpdateDate, data[i].LastLoginDate, data[i].LastLockoutDate, data[i].LastActivityDate, data[i].LastPasswordChangeDate, data[i].FailedPasswordAttemptCount, data[i].FailedPasswordAttemptWindowStart, data[i].FailedPasswordAnswerAttemptCount, data[i].FailedPasswordAnswerAttemptWindowStart, data[i].Comment, data[i].PasswordSalt, data[i].Password, data[i].LoweredEmail, data[i].Email, data[i].PasswordFormat, data[i].IsOnline, data[i].IsLockedOut, data[i].IsApproved, data[i].PasswordAnswer, data[i].PasswordQuestion, data[i].PromotionCode, data[i].Bio, data[i].PrimaryImage, data[i].SecondaryImage, data[i].BackgroundImage, data[i].City, data[i].State, data[i].Company, data[i].Department, data[i].Occupation, data[i].FirstName, data[i].LastName, data[i].Sex, data[i].HeightFeet, data[i].HeightInches, data[i].Weight, data[i].GeneralHealth, data[i].PhoneHome, data[i].PhoneCell, data[i].PhoneOffice, data[i].Address, data[i].ManageNotifications, data[i].Notifications));
 				}
 				_self.userModels(obsModels);
 
@@ -191,6 +235,28 @@ function User_ViewModel() {
 				_self.addedUserModel().PasswordAnswer(addedModel.PasswordAnswer);
 				_self.addedUserModel().PasswordQuestion(addedModel.PasswordQuestion);
 				_self.addedUserModel().PromotionCode(addedModel.PromotionCode);
+				_self.addedUserModel().Bio(addedModel.Bio);
+				_self.addedUserModel().PrimaryImage(addedModel.PrimaryImage);
+				_self.addedUserModel().SecondaryImage(addedModel.SecondaryImage);
+				_self.addedUserModel().BackgroundImage(addedModel.BackgroundImage);
+				_self.addedUserModel().City(addedModel.City);
+				_self.addedUserModel().State(addedModel.State);
+				_self.addedUserModel().Company(addedModel.Company);
+				_self.addedUserModel().Department(addedModel.Department);
+				_self.addedUserModel().Occupation(addedModel.Occupation);
+				_self.addedUserModel().FirstName(addedModel.FirstName);
+				_self.addedUserModel().LastName(addedModel.LastName);
+				_self.addedUserModel().Sex(addedModel.Sex);
+				_self.addedUserModel().HeightFeet(addedModel.HeightFeet);
+				_self.addedUserModel().HeightInches(addedModel.HeightInches);
+				_self.addedUserModel().Weight(addedModel.Weight);
+				_self.addedUserModel().GeneralHealth(addedModel.GeneralHealth);
+				_self.addedUserModel().PhoneHome(addedModel.PhoneHome);
+				_self.addedUserModel().PhoneCell(addedModel.PhoneCell);
+				_self.addedUserModel().PhoneOffice(addedModel.PhoneOffice);
+				_self.addedUserModel().Address(addedModel.Address);
+				_self.addedUserModel().ManageNotifications(addedModel.ManageNotifications);
+				_self.addedUserModel().Notifications(addedModel.Notifications);
 	
                 if (callbackSuccess) {
                     callbackSuccess(addedModel.Id);
